@@ -3,14 +3,6 @@ $font-name: "Source Sans Pro";
 $font-family: $font-name, "Arial", "Helvetica", sans-serif;
 $font-size: 14px;
 
-//Google Fonts
-@font-face {
-  font-family: $font-name;
-  font-style: normal;
-  font-weight: normal;
-  src: url("fonts/" + $font-name + ".woff") format("woff");
-}
-
 //Colors
 $obvious-color: #2ECC71;
 

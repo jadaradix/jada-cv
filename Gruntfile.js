@@ -4,23 +4,22 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    directories: {
-      jade: 'jade',
-      build: 'build'
-    },
-
     shell: {
       clean: {
-        command: 'rm -rf build'
+        command: [
+          'rm -rf build'
+        ].join("&&")
       },
-      jade: {
+      main: {
         command: [
           'mkdir build',
           'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build"); do cp -rf $i build/$i ; done',
           'cp index.jade build/index.jade',
           'jade $(find build/* -type f -maxdepth 0 | grep -viw "partials") --pretty',
           'rm -rf build/partials',
-          'find build -name *.jade -type f -delete'
+          'find build -name *.jade -type f -delete',
+          'rm -rf build/css/sass',
+          'rm -rf build/css/sass-cache',
         ].join("&&")
       },
       sass: {
@@ -34,7 +33,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'shell:clean',
-    'shell:jade',
+    'shell:main',
   ]);
 
   grunt.registerTask('clean', [
