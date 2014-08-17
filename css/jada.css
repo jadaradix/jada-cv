@@ -136,6 +136,9 @@ html, body, #Wrapper {
   z-index: 1;
   background-color: #172029; }
 
+#Content {
+  display: none; }
+
 h1, h2, h3 {
   text-transform: lowercase;
   font-weight: normal; }
@@ -183,7 +186,8 @@ p:last-child {
   position: relative;
   z-index: 0;
   border-radius: 2px;
-  opacity: 0; }
+  opacity: 0;
+  overflow: auto; }
 
 .tile:not(.static) {
   cursor: pointer; }

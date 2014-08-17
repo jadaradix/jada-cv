@@ -17,6 +17,27 @@ function fadeWork(selectorResult, opacity, setInitially) {
   );
 }
 
+function switchMainContent(content, callback) {
+  var main = $('main');
+  var mainRow = $("#main");
+  var mainTile = $($("#main .tile")[0]);
+  mainTile.html(content);
+  mainRow.css("display", "block");
+  mainTile.fadeIn(waitTime * 2);
+  main.animate(
+    { scrollTop: mainRow.offset().top - (spacing * 2) + main.scrollTop() },
+    waitTime * 2,
+    "swing",
+    function(){ if (callback) callback() }
+  );
+}
+
+function switchMain(id, callback) {
+  var html = $("#" + id);
+  if (!html) return;
+  switchMainContent(html, callback);
+}
+
 async.waterfall([
   function(next) {
     $(window).load(function() {
@@ -33,11 +54,7 @@ async.waterfall([
         $(this).fadeTo(waitTime * 2, opacity);
       });
       $("#read-more-link").click(function() {
-        $("#main").css("display", "block");
-        $("#main .tile").fadeIn(waitTime * 2);
-        $('main').animate({
-          scrollTop: $("#main").offset().top - (spacing * 2) + $("main").scrollTop()
-        }, waitTime * 2);
+        switchMain("about-me");
         return false;
       });
     });

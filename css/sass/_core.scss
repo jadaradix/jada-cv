@@ -58,6 +58,10 @@ html, body, #Wrapper {
   background-color: darken($navy, 16%);
 }
 
+#Content {
+  display: none;
+}
+
 h1, h2, h3 {
   text-transform: lowercase;
   font-weight: normal;
