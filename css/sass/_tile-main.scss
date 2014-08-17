@@ -1,3 +1,6 @@
 #tile-main {
   opacity: 1;
+  .content {
+    margin-bottom: ($spacing / 2);
+  }
 }

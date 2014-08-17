@@ -17,11 +17,12 @@ function fadeWork(selectorResult, opacity, setInitially) {
   );
 }
 
-function switchMainContent(content, callback) {
+function showMainContent(content, callback) {
   var main = $('main');
   var mainRow = $("#main");
-  var mainTile = $($("#main .tile")[0]);
-  mainTile.html(content);
+  var mainTile = $($(".tile", mainRow)[0]);
+  var mainTileContent = $($(".content", mainTile)[0]);
+  mainTileContent.html(content);
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
   main.animate(
@@ -32,17 +33,35 @@ function switchMainContent(content, callback) {
   );
 }
 
-function switchMain(id, callback) {
-  var html = $("#" + id);
+function showMain(id, callback) {
+  var html = $("#" + id).html();
   if (!html) return;
-  switchMainContent(html, callback);
+  showMainContent(html, callback);
+}
+
+function hideMain() {
+  var main = $('main');
+  var mainRow = $("#main");
+  var mainTile = $($(".tile", mainRow)[0]);
+  mainTile.fadeOut(waitTime * 2, function() {
+    mainRow.css("display", "none");
+    main.animate(
+      { scrollTop: 0 },
+      waitTime * 2,
+      "swing",
+      function() {
+        
+      }
+    );
+  });
 }
 
 async.waterfall([
   function(next) {
-    $(window).load(function() {
-      $("#Fader").fadeOut(waitTime, next);
-    });
+    // $(window).load(function() {
+    //   $("#Fader").fadeOut(waitTime, next);
+    // });
+    next();
   },
   function(next) {
     $(document).ready(function() {
@@ -53,8 +72,12 @@ async.waterfall([
         var opacity = ($(this).hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
       });
-      $("#read-more-link").click(function() {
-        switchMain("about-me");
+      $("#hide-main-link").click(function() {
+        hideMain();
+        return false;
+      });
+      $("#about-me-read-more-link").click(function() {
+        showMain("about-me-content");
         return false;
       });
     });

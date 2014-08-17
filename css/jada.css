@@ -218,6 +218,16 @@ p:last-child {
   margin: 0 2px 0 1px;
   border-radius: 2px; }
 
+.tile a.inner-link:first-child {
+  margin-left: 0; }
+
+.tile a.inner-link.big {
+  display: block;
+  max-width: 142px;
+  margin-top: 8px;
+  padding: 4px 16px 4px 16px;
+  text-align: center; }
+
 .tile:last-child {
   margin-right: 0; }
 
@@ -243,3 +253,5 @@ p:last-child {
 
 #tile-main {
   opacity: 1; }
+  #tile-main .content {
+    margin-bottom: 8px; }
