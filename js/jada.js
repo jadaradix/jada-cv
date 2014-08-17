@@ -1,6 +1,7 @@
 var waitTime = 250;
 var fadedOutOpacity = 0.85;
 var fadedOutIconsOpacity = 0.5;
+var spacing = 16;
 
 function fadeWork(selectorResult, opacity, setInitially) {
   if (setInitially) {
@@ -27,10 +28,18 @@ async.waterfall([
       fadeWork($(".tile").not(".static"), fadedOutOpacity, false);
       fadeWork($('.tile.me-text p.icons a'), fadedOutIconsOpacity, true);
       fadeWork($('.tile a.inner-link'), fadedOutOpacity, true);
-    });
-    $(".tile").each(function() {
-      var opacity = ($(this).hasClass("static") ? 1 : fadedOutOpacity);
-      $(this).fadeTo(waitTime * 2, opacity);
+      $(".tile").not(".hide").each(function() {
+        var opacity = ($(this).hasClass("static") ? 1 : fadedOutOpacity);
+        $(this).fadeTo(waitTime * 2, opacity);
+      });
+      $("#read-more-link").click(function() {
+        $("#main").css("display", "block");
+        $("#main .tile").fadeIn(waitTime * 2);
+        $('main').animate({
+          scrollTop: $("#main").offset().top - (spacing * 2)
+        }, waitTime * 2);
+        return false;
+      });
     });
   }
 ]);

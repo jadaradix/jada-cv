@@ -236,3 +236,6 @@ p:last-child {
   .tile.me-text p.icons a {
     margin-right: 8px;
     color: white; }
+
+.tile.main {
+  opacity: 1; }
