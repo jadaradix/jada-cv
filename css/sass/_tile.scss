@@ -1,0 +1,59 @@
+.tile-column {
+  overflow: auto;
+  height: 100%;
+}
+
+.tile-row {
+  height: $tile-size;
+  margin-bottom: $spacing;
+}
+
+.tile-row:last-child {
+  margin-bottom: 0;
+}
+
+.tile {
+  float: left;
+  margin-right: $spacing;
+  padding: $spacing;
+  width: $tile-size;
+  height: $tile-size;
+  position: relative;
+  z-index: 0;
+  @extend .boxy;
+  opacity: 0;
+  // width: 50%;
+  // margin-right: 0;
+}
+
+.tile:not(.static) {
+  cursor: pointer;
+}
+
+.tile img.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  @extend .boxy;
+  opacity: 0.5;
+}
+
+.tile h1 {
+  opacity: 0.75;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.tile p {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.tile:last-child {
+  margin-right: 0;
+}
+
+.tile.spread {
+  width: ($tile-size * 2) + $spacing;
+}

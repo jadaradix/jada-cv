@@ -1,0 +1,55 @@
+@mixin text-shadow($color) {
+  text-shadow: 0 2px 2px darken($color, 15%)
+}
+
+$fg: white;
+
+$turquoise: #1ABC9C;
+.bg-turquoise { background-color: $turquoise; }
+.fg-turquoise { color: $turquoise; }
+.ts-turquoise { @include text-shadow($turquoise); }
+
+$green: #2ECC71;
+.bg-green { background-color: $green; }
+.fg-green { color: $green; }
+.ts-green { @include text-shadow($green); }
+
+$blue: #3498DB;
+.bg-blue { background-color: $blue; }
+.fg-blue { color: $blue; }
+.ts-blue { @include text-shadow($blue); }
+
+$purple: #9B59B6;
+.bg-purple { background-color: $purple; }
+.fg-purple { color: $purple; }
+.ts-purple { @include text-shadow($purple); }
+
+$navy: #34495E;
+.bg-navy { background-color: $navy; }
+.fg-navy { color: $navy; }
+.ts-navy { @include text-shadow($navy); }
+
+$yellow: #F1C40F;
+.bg-yellow { background-color: $yellow; }
+.fg-yellow { color: $yellow; }
+.ts-yellow { @include text-shadow($yellow); }
+
+$orange: #E67E22;
+.bg-orange { background-color: $orange; }
+.fg-orange { color: $orange; }
+.ts-orange { @include text-shadow($orange); }
+
+$red: #E74C3C;
+.bg-red { background-color: $red; }
+.fg-red { color: $red; }
+.ts-red { @include text-shadow($red); }
+
+$light-gray: #95A5A6;
+.bg-light-gray { background-color: $light-gray; }
+.fg-light-gray { color: $light-gray; }
+.ts-light-gray { @include text-shadow($light-gray); }
+
+$gray: #5D6566;
+.bg-gray { background-color: $gray; }
+.fg-gray { color: $gray; }
+.ts-gray { @include text-shadow($gray); }
