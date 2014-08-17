@@ -43,16 +43,13 @@ function hideMain() {
   var main = $('main');
   var mainRow = $("#main");
   var mainTile = $($(".tile", mainRow)[0]);
+  main.animate(
+    { scrollTop: 0 },
+    waitTime * 2,
+    "swing"
+  );
   mainTile.fadeOut(waitTime * 2, function() {
     mainRow.css("display", "none");
-    main.animate(
-      { scrollTop: 0 },
-      waitTime * 2,
-      "swing",
-      function() {
-        
-      }
-    );
   });
 }
 
