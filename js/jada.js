@@ -55,10 +55,10 @@ function hideMain() {
 
 async.waterfall([
   function(next) {
-    // $(window).load(function() {
-    //   $("#Fader").fadeOut(waitTime, next);
-    // });
-    next();
+    $(window).load(function() {
+      // $("#Fader").fadeOut(waitTime, next);
+      next();
+    });
   },
   function(next) {
     $(document).ready(function() {

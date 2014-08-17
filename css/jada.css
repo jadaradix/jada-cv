@@ -211,7 +211,6 @@ p:last-child {
 
 .tile a.inner-link {
   color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.15);
   text-decoration: none;
   padding: 0 3px 1px 3px;
@@ -225,7 +224,7 @@ p:last-child {
   display: block;
   max-width: 142px;
   margin-top: 8px;
-  padding: 4px 16px 4px 16px;
+  padding: 5.33333px 16px 5.33333px 16px;
   text-align: center; }
 
 .tile:last-child {

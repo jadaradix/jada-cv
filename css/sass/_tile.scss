@@ -58,7 +58,7 @@
 
 .tile a.inner-link {
   color: $fg;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  // border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.15);
   text-decoration: none;
   padding: 0 3px 1px 3px;
@@ -74,7 +74,7 @@
   display: block;
   max-width: 142px;
   margin-top: ($spacing / 2);
-  padding: ($spacing / 4) $spacing ($spacing / 4) $spacing;
+  padding: ($spacing / 3) $spacing ($spacing / 3) $spacing;
   text-align: center;
 }
 
