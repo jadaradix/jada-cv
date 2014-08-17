@@ -36,7 +36,7 @@ async.waterfall([
         $("#main").css("display", "block");
         $("#main .tile").fadeIn(waitTime * 2);
         $('main').animate({
-          scrollTop: $("#main").offset().top - (spacing * 2)
+          scrollTop: $("#main").offset().top - (spacing * 2) + $("main").scrollTop()
         }, waitTime * 2);
         return false;
       });
