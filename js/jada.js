@@ -26,6 +26,7 @@ async.waterfall([
     $(document).ready(function() {
       fadeWork($(".tile").not(".static"), fadedOutOpacity, false);
       fadeWork($('.tile.me-text p.icons a'), fadedOutIconsOpacity, true);
+      fadeWork($('.tile a.inner-link'), fadedOutOpacity, true);
     });
     $(".tile").each(function() {
       var opacity = ($(this).hasClass("static") ? 1 : fadedOutOpacity);

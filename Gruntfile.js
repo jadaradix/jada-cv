@@ -12,8 +12,8 @@ module.exports = function(grunt) {
       },
       main: {
         command: [
+          'rm -rf build',
           'mkdir build',
-          'rm -rf build/*',
           'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build"); do cp -rf $i build/$i ; done',
           'cp index.jade build/index.jade',
           'jade $(find build/* -type f -maxdepth 0 | grep -viw "partials") --pretty',

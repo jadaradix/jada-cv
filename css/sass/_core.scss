@@ -8,8 +8,8 @@
   clear: both;
 }
 
-.boxy {
-  border-radius: $radius;
+.hide {
+  display: none;
 }
 
 body {
@@ -34,18 +34,18 @@ html, body, #Wrapper {
   padding: $spacing;
   width: 100%;
   max-width: 1024px;
-  @extend .boxy;
+  border-radius: $radius;
 }
 
 #Wrapper aside {
   float: left;
   width: $tile-size;
-  @extend .boxy;
+  border-radius: $radius;
 }
 
 #Wrapper main {
   margin-left: $tile-size + $spacing;
-  @extend .boxy;
+  border-radius: $radius;
 }
 
 #Fader {
