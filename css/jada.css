@@ -203,8 +203,7 @@ p:last-child {
   opacity: 0.5; }
 
 .tile h1 {
-  opacity: 0.75;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5); }
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
 
 .tile p {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
