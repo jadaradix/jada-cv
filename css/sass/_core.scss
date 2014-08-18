@@ -29,7 +29,7 @@ html, body, #Wrapper {
 }
 
 #Wrapper {
-  background-color: darken($navy, 18%);
+  background-color: rgba(0, 0, 0, 0.15);
   margin: 0 auto 0 auto;
   padding: $spacing;
   width: 100%;

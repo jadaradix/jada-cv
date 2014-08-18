@@ -1,5 +1,5 @@
 var waitTime = 250;
-var fadedOutOpacity = 0.85;
+var fadedOutOpacity = 0.9;
 var fadedOutIconsOpacity = 0.5;
 var spacing = 16;
 
@@ -53,15 +53,10 @@ function hideMain() {
   });
 }
 
-async.waterfall([
-  function(next) {
-    $(window).load(function() {
-      // $("#Fader").fadeOut(waitTime, next);
-      next();
-    });
-  },
-  function(next) {
-    $(document).ready(function() {
+$(window).load(function() {
+
+  async.waterfall([
+    function(next) {
       fadeWork($(".tile").not(".static"), fadedOutOpacity, false);
       fadeWork($('.tile.me-text p.icons a'), fadedOutIconsOpacity, true);
       fadeWork($('.tile a.inner-link'), fadedOutOpacity, true);
@@ -77,6 +72,7 @@ async.waterfall([
         showMain("about-me-content");
         return false;
       });
-    });
-  }
-]);
+    }
+  ]);
+
+});

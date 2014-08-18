@@ -111,7 +111,7 @@ html, body, #Wrapper {
   height: 100%; }
 
 #Wrapper {
-  background-color: #131b23;
+  background-color: rgba(0, 0, 0, 0.15);
   margin: 0 auto 0 auto;
   padding: 16px;
   width: 100%;
@@ -234,7 +234,6 @@ p:last-child {
   width: 528px; }
 
 #tile-me {
-  color: green;
   background-image: url(https://scontent-a-lhr.xx.fbcdn.net/hphotos-xaf1/l/t1.0-9/10154996_10151873753062242_1300283340_n.jpg);
   background-size: auto 100%; }
 
