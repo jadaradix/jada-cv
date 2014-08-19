@@ -116,16 +116,16 @@ html, body, #Wrapper {
   padding: 16px;
   width: 100%;
   max-width: 1024px;
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 #Wrapper aside {
   float: left;
   width: 256px;
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 #Wrapper main {
   margin-left: 272px;
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 #Fader {
   position: absolute;
@@ -165,41 +165,50 @@ p:last-child {
   overflow: auto;
   height: 100%; }
 
-.tile-row {
-  min-height: 256px;
-  margin-bottom: 16px; }
+.tile-column.no-right-padding .tile {
+  padding-right: 0; }
 
-.tile-row:last-child {
-  margin-bottom: 0; }
+.tile-row {
+  clear: both; }
+
+.tile-row:last-child .tile:last-child {
+  height: 256px;
+  padding-bottom: 0; }
 
 .tile-row.spread-tall {
-  height: 512px; }
+  min-height: 528px; }
   .tile-row.spread-tall .tile {
     height: 512px; }
 
 .tile {
   float: left;
-  margin-right: 16px;
-  padding: 16px;
-  width: 256px;
-  min-height: 256px;
-  position: relative;
+  width: 100%;
+  height: 272px;
+  max-width: 272px;
+  padding-right: 16px;
+  padding-bottom: 16px;
   z-index: 0;
-  border-radius: 2px;
   opacity: 0;
   overflow: auto; }
+  .tile > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border-radius: 3px;
+    overflow: auto; }
 
-.tile:not(.static) {
+.tile:not(.static) > div {
   cursor: pointer; }
 
-.tile img.bg {
+.tile div img.bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  border-radius: 2px;
+  border-radius: 3px;
   opacity: 0.5; }
 
 .tile h1 {
@@ -214,7 +223,7 @@ p:last-child {
   text-decoration: none;
   padding: 0 3px 1px 3px;
   margin: 0 2px 0 1px;
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 .tile a.inner-link:first-child {
   margin-left: 0; }
@@ -226,13 +235,11 @@ p:last-child {
   padding: 5.33333px 16px 5.33333px 16px;
   text-align: center; }
 
-.tile:last-child {
-  margin-right: 0; }
-
 .tile.spread-wide {
-  width: 528px; }
+  width: 100%;
+  max-width: 544px; }
 
-#tile-me {
+#tile-me div {
   background-image: url(https://scontent-a-lhr.xx.fbcdn.net/hphotos-xaf1/l/t1.0-9/10154996_10151873753062242_1300283340_n.jpg);
   background-size: auto 100%; }
 

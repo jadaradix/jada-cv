@@ -25,12 +25,19 @@ function showMainContent(content, callback) {
   mainTileContent.html(content);
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  main.animate(
-    { scrollTop: mainRow.offset().top - (spacing * 2) + main.scrollTop() },
-    waitTime * 2,
-    "swing",
-    function(){ if (callback) callback() }
-  );
+  console.log(mainRow.position().top);
+  console.log(main.scrollTop());
+  var ans = mainRow.offset().top-main.offset().top+mainRow.scrollTop();
+  console.log(ans);
+main.animate({scrollTop:ans});
+  // var scrollTop = mainRow.offset().top - main.scrollTop();
+  // console.log(scrollTop);
+  // main.animate(
+  //   { scrollTop: scrollTop },
+  //   waitTime * 2,
+  //   "swing",
+  //   function(){ if (callback) callback() }
+  // );
 }
 
 function showMain(id, callback) {
@@ -57,7 +64,7 @@ $(window).load(function() {
 
   async.waterfall([
     function(next) {
-      fadeWork($(".tile").not(".static"), fadedOutOpacity, false);
+      fadeWork($("> div", $(".tile").not(".static")), fadedOutOpacity, false);
       fadeWork($('.tile.me-text p.icons a'), fadedOutIconsOpacity, true);
       fadeWork($('.tile a.inner-link'), fadedOutOpacity, true);
       $(".tile").not(".hide").each(function() {
