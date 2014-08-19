@@ -25,19 +25,13 @@ function showMainContent(content, callback) {
   mainTileContent.html(content);
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  console.log(mainRow.position().top);
-  console.log(main.scrollTop());
-  var ans = mainRow.offset().top-main.offset().top+mainRow.scrollTop();
-  console.log(ans);
-main.animate({scrollTop:ans});
-  // var scrollTop = mainRow.offset().top - main.scrollTop();
-  // console.log(scrollTop);
-  // main.animate(
-  //   { scrollTop: scrollTop },
-  //   waitTime * 2,
-  //   "swing",
-  //   function(){ if (callback) callback() }
-  // );
+  var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top;
+  main.animate(
+    { scrollTop: scrollTop },
+    waitTime * 2,
+    "swing",
+    function(){ if (callback) callback() }
+  );
 }
 
 function showMain(id, callback) {
