@@ -21,7 +21,7 @@
 }
 
 .tile-row.spread-tall {
-  min-height: ($tile-size * 2) + $spacing;
+  min-height: ($tile-size * 2);
   .tile {
     height: ($tile-size * 2);
   }

@@ -176,7 +176,7 @@ p:last-child {
   padding-bottom: 0; }
 
 .tile-row.spread-tall {
-  min-height: 528px; }
+  min-height: 512px; }
   .tile-row.spread-tall .tile {
     height: 512px; }
 
