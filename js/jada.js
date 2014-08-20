@@ -60,7 +60,7 @@ $(window).load(function() {
     function(next) {
       fadeWork($("> div", $(".tile").not(".static")), fadedOutOpacity, false);
       fadeWork($('.tile.me-text p.icons a'), fadedOutIconsOpacity, true);
-      fadeWork($('.tile a.inner-link'), fadedOutOpacity, true);
+      fadeWork($('.tile p a'), fadedOutOpacity, true);
       $(".tile").not(".hide").each(function() {
         var opacity = ($(this).hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
