@@ -34,10 +34,10 @@
   max-width: $tile-size + $spacing;
   padding-right: $spacing;
   padding-bottom: $spacing;
-  z-index: 0;
   opacity: 0;
   overflow: auto;
   > div {
+    z-index: 0;
     position: relative;
     width: 100%;
     height: 100%;
@@ -46,10 +46,6 @@
     overflow: auto;
   }
 }
-
-// .tile:last-child {
-//   max-width: $tile-size;
-// }
 
 .tile:not(.static) > div {
   cursor: pointer;
@@ -63,15 +59,18 @@
   height: 100%;
   z-index: -1;
   border-radius: $radius;
+}
+
+.tile:not(.static) div img.bg {
   opacity: 0.5;
 }
 
 .tile h1 {
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  @include text-shadow(rgba(0, 0, 0, 0.5));
 }
 
 .tile p {
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  @include text-shadow(rgba(0, 0, 0, 0.25));
 }
 
 .tile a.inner-link {
