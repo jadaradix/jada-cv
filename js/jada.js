@@ -59,18 +59,18 @@ $(window).load(function() {
   async.waterfall([
     function(next) {
       fadeWork($("> div", $(".tile").not(".static")), fadedOutOpacity, false);
-      fadeWork($('.tile.me-text p.icons a'), fadedOutIconsOpacity, true);
+      fadeWork($('.tile.me-text .icons a'), fadedOutIconsOpacity, true);
       fadeWork($('.tile p a'), fadedOutOpacity, true);
-      $(".tile").not(".hide").each(function() {
+      $(".tile > div").not(".hide").each(function() {
         var opacity = ($(this).hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
       });
-      $("#hide-main-link").click(function() {
-        hideMain();
-        return false;
-      });
       $("#about-me-read-more-link").click(function() {
         showMain("about-me-content");
+        return false;
+      });
+      $("#hide-main-link").click(function() {
+        hideMain();
         return false;
       });
     }

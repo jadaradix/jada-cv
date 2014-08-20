@@ -192,14 +192,14 @@ ul {
   max-width: 272px;
   padding-right: 16px;
   padding-bottom: 16px;
-  opacity: 0;
   overflow: auto; }
   .tile > div {
-    z-index: 0;
     position: relative;
     width: 100%;
     height: 100%;
     padding: 16px;
+    opacity: 0;
+    z-index: 0;
     border-radius: 3px;
     overflow: auto; }
 
@@ -227,8 +227,8 @@ ul {
   color: white;
   background-color: rgba(0, 0, 0, 0.15);
   text-decoration: none;
-  padding: 0 3px 1px 3px;
-  margin: 0 2px 0 1px;
+  padding: 0 3px 0 3px;
+  margin: 0 1px 0 1px;
   border-radius: 3px; }
 
 .tile p a:first-child {
@@ -251,9 +251,9 @@ ul {
 .tile.me-text p.subtitle {
   opacity: 0.5; }
 
-.tile.me-text p.icons {
+.tile.me-text .icons {
   font-size: 225%; }
-  .tile.me-text p.icons a {
+  .tile.me-text .icons a {
     margin-right: 8px;
     color: white; }
 

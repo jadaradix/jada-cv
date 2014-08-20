@@ -34,14 +34,14 @@
   max-width: $tile-size + $spacing;
   padding-right: $spacing;
   padding-bottom: $spacing;
-  opacity: 0;
   overflow: auto;
   > div {
-    z-index: 0;
     position: relative;
     width: 100%;
     height: 100%;
     padding: $spacing;
+    opacity: 0;
+    z-index: 0;
     border-radius: $radius;
     overflow: auto;
   }
@@ -77,8 +77,8 @@
   // border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.15);
   text-decoration: none;
-  padding: 0 3px 1px 3px;
-  margin: 0 2px 0 1px;
+  padding: 0 3px 0 3px;
+  margin: 0 1px 0 1px;
   border-radius: $radius;
 }
 
