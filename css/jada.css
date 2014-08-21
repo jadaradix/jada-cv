@@ -202,48 +202,41 @@ ul {
     z-index: 0;
     border-radius: 3px;
     overflow: auto; }
-
-.tile:not(.static) > div {
-  cursor: pointer; }
-
-.tile div img.bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  z-index: -1;
-  border-radius: 3px; }
-
-.tile:not(.static) div img.bg {
-  opacity: 0.5; }
-
-.tile h1 {
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
-
-.tile p {
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
-
-.tile p a {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.15);
-  text-decoration: none;
-  padding: 0 3px 0 3px;
-  margin: 0 1px 0 1px;
-  border-radius: 3px; }
-
-.tile p a:first-child {
-  margin-left: 0; }
-
-.tile p a.big {
-  display: block;
-  max-width: 142px;
-  margin-top: 8px;
-  padding: 5.33333px 16px 5.33333px 16px;
-  text-align: center; }
+    .tile > div > img.bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: -1;
+      border-radius: 3px; }
+  .tile h1 {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
+  .tile p {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
+  .tile p a, .tile ul a {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    padding: 0 3px 0 3px;
+    margin: 0 2px 0 1px;
+    border-radius: 3px; }
+  .tile p a:first-child, .tile ul a:first-child {
+    margin-left: 0; }
+  .tile p a.big, .tile ul a.big {
+    display: block;
+    max-width: 142px;
+    margin-top: 8px;
+    padding: 5.33333px 16px 5.33333px 16px;
+    text-align: center; }
 
 .tile.spread-wide {
   width: 100%;
   max-width: 544px; }
+
+.tile:not(.static) > div {
+  cursor: pointer; }
+  .tile:not(.static) > div > img.bg {
+    opacity: 0.5; }
 
 .tile.me-text h1 {
   opacity: 1; }
