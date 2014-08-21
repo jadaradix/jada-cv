@@ -19,14 +19,15 @@ function fadeWork(selectorResult, opacity, setInitially) {
 
 function showMainContent(content, callback) {
   var main = $('main');
+  var mainNanoContent = $(".nano-content", main);
   var mainRow = $("#main");
   var mainTile = $($(".tile", mainRow)[0]);
   var mainTileContent = $($(".content", mainTile)[0]);
   mainTileContent.html(content);
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top;
-  main.animate(
+  var scrollTop = mainRow.offset().top + mainNanoContent.scrollTop() - mainNanoContent.offset().top;
+  mainNanoContent.animate(
     { scrollTop: scrollTop },
     waitTime * 2,
     "swing",
@@ -42,9 +43,10 @@ function showMain(id, callback) {
 
 function hideMain() {
   var main = $('main');
+  var mainNanoContent = $(".nano-content", main);
   var mainRow = $("#main");
   var mainTile = $($(".tile", mainRow)[0]);
-  main.animate(
+  mainNanoContent.animate(
     { scrollTop: 0 },
     waitTime * 2,
     "swing"
@@ -58,11 +60,11 @@ $(window).load(function() {
 
   async.waterfall([
     function(next) {
-      fadeWork($("> div", $(".tile").not(".static")), fadedOutOpacity, false);
+      fadeWork($(".tile-content", $(".tile").not(".static")), fadedOutOpacity, false);
       fadeWork($('.tile.me-text .icons a'), fadedOutIconsOpacity, true);
       fadeWork($('.tile p a'), fadedOutOpacity, true);
-      $(".tile > div").not(".hide").each(function() {
-        var opacity = ($(this).hasClass("static") ? 1 : fadedOutOpacity);
+      $(".tile-content", $(".tile")).not(".hide").each(function() {
+        var opacity = ($(this).parent().hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
       });
       $("#about-me-read-more-link").click(function() {
@@ -73,6 +75,7 @@ $(window).load(function() {
         hideMain();
         return false;
       });
+      $(".nano").nanoScroller();
     }
   ]);
 
