@@ -181,9 +181,9 @@ ul {
   padding-bottom: 0; }
 
 .tile-row.spread-tall {
-  min-height: 512px; }
+  min-height: 544px; }
   .tile-row.spread-tall .tile {
-    height: 512px; }
+    height: 544px; }
 
 .tile {
   float: left;
@@ -227,7 +227,8 @@ ul {
     max-width: 142px;
     margin-top: 8px;
     padding: 5.33333px 16px 5.33333px 16px;
-    text-align: center; }
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.5); }
 
 .tile.spread-wide {
   width: 100%;

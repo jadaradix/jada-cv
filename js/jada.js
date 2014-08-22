@@ -67,8 +67,8 @@ $(window).load(function() {
         var opacity = ($(this).parent().hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
       });
-      $("#about-me-read-more-link").click(function() {
-        showMain("about-me-content");
+      $("*[data-show-div]").click(function() {
+        showMain($(this).attr("data-show-div"));
         return false;
       });
       $("#hide-main-link").click(function() {
