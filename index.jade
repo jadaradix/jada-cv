@@ -5,27 +5,25 @@ html
   body
     //- #Fader
     #Wrapper
-      aside.tile-column.no-right-padding.nano
-        .nano-content
-          .tile-row
-            include partials/_tile-me.jade
-          .tile-row
-            include partials/_tile-me-text.jade
-      main.tile-column.nano
-        .nano-content
-          .tile-row
-            include partials/_tile-open-source.jade
-            include partials/_tile-cv.jade
-          .tile-row
-            include partials/_tile-about-me.jade
-          .tile-row
-            include partials/_tile-1.jade
-            include partials/_tile-2.jade
-          .tile-row.spread-tall.hide#main
-            include partials/_tile-main.jade
-          .tile-row
-            include partials/_tile-3.jade
-            include partials/_tile-4.jade
-          .tile-row
-            include partials/_tile-5.jade
-        .clear-fix
+      aside.tile-column
+        .tile-row
+          include partials/_tile-me.jade
+        .tile-row
+          include partials/_tile-me-text.jade
+      main.tile-column
+        .tile-row
+          include partials/_tile-open-source.jade
+          include partials/_tile-cv.jade
+        .tile-row
+          include partials/_tile-about-me.jade
+        .tile-row
+          include partials/_tile-1.jade
+          include partials/_tile-2.jade
+        .tile-row.spread-tall.hide#main
+          include partials/_tile-main.jade
+        .tile-row
+          include partials/_tile-3.jade
+          include partials/_tile-4.jade
+        .tile-row
+          include partials/_tile-5.jade
+      .clear-fix
