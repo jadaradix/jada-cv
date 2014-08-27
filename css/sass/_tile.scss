@@ -43,18 +43,13 @@
 .tile.spread {
   padding-left: 0 !important;
   padding-right: 0 !important;
-}
-
-.tile.spread-wide {
   width: 100%;
-  max-width: ($tile-size * 2) + ($spacing * 2);
 }
 
 .tile {
   float: left;
-  width: 100%;
-  height: $tile-size + $spacing;
-  max-width: $tile-size + $spacing;
+  width: 50%;
+  height: $tile-size;
   overflow: auto;
   padding: $spacing / 2;
   > div {

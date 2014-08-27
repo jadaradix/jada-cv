@@ -29,11 +29,10 @@ html, body, #Wrapper {
 }
 
 #Wrapper {
-  background-color: rgba(0, 0, 0, 0.15);
   margin: 0 auto 0 auto;
+  max-width: ($tile-size * 3) + ($spacing * 3);
   padding: $spacing;
-  width: 100%;
-  max-width: 1024px;
+  background-color: rgba(0, 0, 0, 0.15);
   border-radius: $radius;
 }
 

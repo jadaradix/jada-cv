@@ -111,11 +111,10 @@ html, body, #Wrapper {
   height: 100%; }
 
 #Wrapper {
-  background-color: rgba(0, 0, 0, 0.15);
   margin: 0 auto 0 auto;
+  max-width: 816px;
   padding: 16px;
-  width: 100%;
-  max-width: 1024px;
+  background-color: rgba(0, 0, 0, 0.15);
   border-radius: 3px; }
 
 #Wrapper aside {
@@ -196,17 +195,13 @@ ul {
 
 .tile.spread {
   padding-left: 0 !important;
-  padding-right: 0 !important; }
-
-.tile.spread-wide {
-  width: 100%;
-  max-width: 544px; }
+  padding-right: 0 !important;
+  width: 100%; }
 
 .tile {
   float: left;
-  width: 100%;
-  height: 272px;
-  max-width: 272px;
+  width: 50%;
+  height: 256px;
   overflow: auto;
   padding: 8px; }
   .tile > div {
