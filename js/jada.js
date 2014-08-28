@@ -26,8 +26,8 @@ function showMainContent(content, callback) {
   mainTileContent.html(content);
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
-  main.animate(
+  var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top; + //parseInt(mainTile.css("padding-top").substr(0, 1));
+  $("body").animate(
     { scrollTop: scrollTop },
     waitTime * 2,
     "swing",
@@ -46,7 +46,7 @@ function hideMain() {
   var mainNanoContent = $(".nano-content", main);
   var mainRow = $("#main");
   var mainTile = $($(".tile", mainRow)[0]);
-  main.animate(
+  $("body").animate(
     { scrollTop: 0 },
     waitTime * 2,
     "swing"

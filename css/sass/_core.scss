@@ -13,10 +13,7 @@
 }
 
 body {
-  padding: $spacing;
-  background-color: darken($navy, 16%);
-  // background: url(../images/bg-sky.jpg) no-repeat center center fixed;
-  // background-size: cover;
+  background-color: darken($navy, 17%);
   color: $fg;
 }
 
@@ -24,27 +21,21 @@ body, input, button {
   font: $font-size $font-family;
 }
 
-html, body, #Wrapper {
-  height: 100%;
-}
-
 #Wrapper {
   margin: 0 auto 0 auto;
-  max-width: ($tile-size * 3) + ($spacing * 3);
   padding: $spacing;
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: $radius;
+  background-color: rgba(255, 255, 255, 0.05);
+  max-width: ($tile-size * 3) + ($spacing * 3);
 }
 
 #Wrapper aside {
-  float: left;
-  width: $tile-size;
   border-radius: $radius;
+  // background-color: red;
 }
 
 #Wrapper main {
-  margin-left: $tile-size + $spacing;
   border-radius: $radius;
+  // background-color: yellow;
 }
 
 #Fader {

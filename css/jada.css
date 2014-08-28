@@ -100,30 +100,22 @@
   display: none; }
 
 body {
-  padding: 16px;
-  background-color: #172029;
+  background-color: #151e26;
   color: white; }
 
 body, input, button {
   font: 15px "Source Sans Pro", "Arial", "Helvetica", sans-serif; }
 
-html, body, #Wrapper {
-  height: 100%; }
-
 #Wrapper {
   margin: 0 auto 0 auto;
-  max-width: 816px;
   padding: 16px;
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: 3px; }
+  background-color: rgba(255, 255, 255, 0.05);
+  max-width: 816px; }
 
 #Wrapper aside {
-  float: left;
-  width: 256px;
   border-radius: 3px; }
 
 #Wrapper main {
-  margin-left: 272px;
   border-radius: 3px; }
 
 #Fader {
@@ -166,26 +158,19 @@ ul {
     margin-bottom: 1px; }
 
 .tile-column {
-  overflow: auto;
-  height: 100%; }
+  margin-bottom: 16px; }
+
+.tile-column:last-child {
+  margin-bottom: 0; }
 
 .tile-row {
-  clear: both; }
-  .tile-row .tile:first-child {
-    padding-left: 0;
-    padding-bottom: 8px; }
-  .tile-row .tile:last-child {
-    padding-right: 0;
-    padding-bottom: 8px; }
+  clear: both;
+  min-height: 256px; }
 
 .tile-row:first-child .tile:first-child {
   padding-top: 0; }
-.tile-row:first-child .tile:last-child {
-  padding-top: 0; }
 
 .tile-row:last-child .tile:last-child {
-  padding-bottom: 0; }
-.tile-row:last-child .tile:first-child {
   padding-bottom: 0; }
 
 .tile-row.spread-tall {
@@ -199,11 +184,10 @@ ul {
   width: 100%; }
 
 .tile {
-  float: left;
-  width: 50%;
   height: 256px;
   overflow: auto;
-  padding: 8px; }
+  padding-top: 8px;
+  padding-bottom: 8px; }
   .tile > div {
     position: relative;
     width: 100%;
@@ -306,3 +290,46 @@ ul {
   visibility: visible\9;
   /* IE7 and IE8 hack */
   opacity: 0.99; }
+
+@media only screen and (min-width: 576px) {
+  body {
+    padding: 16px; }
+
+  #Wrapper {
+    border-radius: 3px; }
+
+  .tile-column {
+    margin-bottom: 0; }
+
+  #Wrapper aside {
+    float: left;
+    width: 256px; }
+
+  #Wrapper main {
+    float: left;
+    margin-left: 16px; }
+
+  #Wrapper main {
+    width: 256px; } }
+@media only screen and (min-width: 848px) {
+  #Wrapper main {
+    width: 512px; }
+
+  .tile {
+    float: left;
+    width: 50%; }
+
+  .tile-row .tile {
+    padding: 8px; }
+  .tile-row .tile:first-child {
+    padding-left: 0;
+    padding-bottom: 8px; }
+  .tile-row .tile:last-child {
+    padding-right: 0;
+    padding-bottom: 8px; }
+
+  .tile-row:first-child .tile {
+    padding-top: 0; }
+
+  .tile-row:last-child .tile {
+    padding-bottom: 0; } }

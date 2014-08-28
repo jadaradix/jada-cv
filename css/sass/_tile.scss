@@ -1,34 +1,24 @@
 .tile-column {
-  overflow: auto;
-  height: 100%;
+  margin-bottom: $spacing;
+}
+
+.tile-column:last-child {
+  margin-bottom: 0;
 }
 
 .tile-row {
   clear: both;
-  .tile:first-child {
-    padding-left: 0;
-    padding-bottom: $spacing / 2;
-  }
-  .tile:last-child {
-    padding-right: 0;
-    padding-bottom: $spacing / 2;
-  }
+  min-height: $tile-size;
 }
 
 .tile-row:first-child {
   .tile:first-child {
     padding-top: 0;
   }
-  .tile:last-child {
-    padding-top: 0;
-  }
 }
 
 .tile-row:last-child {
   .tile:last-child {
-    padding-bottom: 0;
-  }
-  .tile:first-child {
     padding-bottom: 0;
   }
 }
@@ -47,11 +37,10 @@
 }
 
 .tile {
-  float: left;
-  width: 50%;
   height: $tile-size;
   overflow: auto;
-  padding: $spacing / 2;
+  padding-top: $spacing / 2;
+  padding-bottom: $spacing / 2;
   > div {
     position: relative;
     width: 100%;
