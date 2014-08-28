@@ -1,4 +1,4 @@
-@media only screen and (min-width: ($tile-size * 2) + ($spacing * 4)) {
+@media only screen and (min-width: ($tile-size * 2) + ($spacing * 6)) {
 
   body {
     padding: $spacing;
@@ -18,21 +18,12 @@
   }
 
   #Wrapper main {
-    float: left;
-    margin-left: $spacing;
-  }
-
-  #Wrapper main {
-    width: $tile-size;
+    margin-left: $tile-size + $spacing;
   }
 
 }
 
-@media only screen and (min-width: ($tile-size * 3) + ($spacing * 5)) {
-
-  #Wrapper main {
-    width: ($tile-size * 2);
-  }
+@media only screen and (min-width: ($tile-size * 3) + ($spacing * 6)) {
 
   .tile {
     float: left;

@@ -25,7 +25,7 @@ body, input, button {
   margin: 0 auto 0 auto;
   padding: $spacing;
   background-color: rgba(255, 255, 255, 0.05);
-  max-width: ($tile-size * 3) + ($spacing * 3);
+  max-width: $max-width;
 }
 
 #Wrapper aside {
