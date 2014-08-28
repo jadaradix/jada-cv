@@ -12,6 +12,10 @@
   display: none;
 }
 
+.no-overflow {
+  overflow: hidden !important;
+}
+
 body {
   background-color: darken($navy, 17%);
   color: $fg;
