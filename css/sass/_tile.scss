@@ -1,9 +1,5 @@
-.tile-column {
+.tile-column:first-child {
   margin-bottom: $spacing;
-}
-
-.tile-column:last-child {
-  margin-bottom: 0;
 }
 
 .tile-row {
@@ -23,16 +19,10 @@
 }
 
 .tile-row.spread-tall {
-  min-height: ($tile-size * 2) + ($spacing * 2);
+  min-height: ($tile-size * 2) + ($spacing / 2);
   .tile {
-    height: ($tile-size * 2) + ($spacing * 2);
+    height: ($tile-size * 2) + ($spacing / 2);
   }
-}
-
-.tile.spread {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  width: 100%;
 }
 
 .tile {
@@ -90,4 +80,14 @@
   > img.bg {
     opacity: 0.5;
   }
+}
+
+.tile.spread {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100%;
+}
+
+.tile.preserve-bottom-padding {
+  padding-bottom: $spacing / 2 !important;
 }

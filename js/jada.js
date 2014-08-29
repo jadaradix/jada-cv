@@ -26,7 +26,7 @@ function showMainContent(content, callback) {
   mainTileContent.html(content);
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top; + //parseInt(mainTile.css("padding-top").substr(0, 1));
+  var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
   $("body").animate(
     { scrollTop: scrollTop },
     waitTime * 2,
