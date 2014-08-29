@@ -67,8 +67,13 @@ $(window).load(function() {
         var opacity = ($(this).parent().hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
       });
-      $("*[data-show-div]").click(function() {
-        showMain($(this).attr("data-show-div"));
+      //Static Content
+      $("*[data-show-static]").click(function() {
+        showMain($(this).attr("data-show-static"));
+        return false;
+      });
+      //Blog Content
+      $("*[data-show-blog]").click(function() {
         return false;
       });
       $("#hide-main-link").click(function() {

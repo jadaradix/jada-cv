@@ -197,26 +197,29 @@ ul {
       width: 100%;
       z-index: -1;
       border-radius: 3px; }
-  .tile h1 {
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
-  .tile p {
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
-  .tile p a, .tile ul a {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.15);
-    text-decoration: none;
-    padding: 0 3px 0 3px;
-    margin: 0 2px 0 1px;
-    border-radius: 3px; }
-  .tile p a:first-child, .tile ul a:first-child {
-    margin-left: 0; }
-  .tile p a.big, .tile ul a.big {
-    display: block;
-    max-width: 142px;
-    margin-top: 8px;
-    padding: 5.33333px 16px 5.33333px 16px;
-    text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.5); }
+    .tile > div > span {
+      text-transform: lowercase;
+      opacity: 0.75; }
+    .tile > div h1 {
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
+    .tile > div p {
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
+    .tile > div p a, .tile > div ul a {
+      color: white;
+      background-color: rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      padding: 0 3px 0 3px;
+      margin: 0 2px 0 1px;
+      border-radius: 3px; }
+    .tile > div p a:first-child, .tile > div ul a:first-child {
+      margin-left: 0; }
+    .tile > div p a.big, .tile > div ul a.big {
+      display: block;
+      max-width: 142px;
+      margin-top: 8px;
+      padding: 5.33333px 16px 5.33333px 16px;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.5); }
 
 .tile:not(.static) > div {
   cursor: pointer; }
