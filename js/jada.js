@@ -27,7 +27,11 @@ function showMainContent(content, callback) {
   updateHandlers();
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
+  var scrollTop = mainRow.offset().top - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
+  console.log("NEW:")
+  console.log("add " + mainRow.offset().top + " [mainRow.offset().top]");
+  console.log("take away " + main.offset().top + " [main.offset().top]");
+  console.log("add " + parseInt(mainTile.css("padding-top").substr(0, 1)) + " [parseInt(mainTile.css(\"padding-top\").substr(0, 1))]");
   $("body").animate(
     { scrollTop: scrollTop },
     waitTime * 2,
@@ -83,7 +87,7 @@ function updateHandlers() {
     .off("click", hideMain)
     .on("click", hideMain);
   //Tile Links
-  fadeWork($('.tile p a'), fadedOutOpacity, true);
+  fadeWork($('.tile-content a'), fadedOutOpacity, true);
 }
 
 $(window).load(function() {
