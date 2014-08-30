@@ -1,0 +1,11 @@
+//Fonts
+$font-name: "Source Sans Pro";
+$font-family: $font-name, "Arial", "Helvetica", sans-serif;
+$font-size: 15px;
+
+//Sizes
+$spacing: 16px;
+$radius: 3px;
+$tile-size: 272px;
+$scrollbar-width: 16px;
+$max-width: ($tile-size * 3) + ($spacing * 3);

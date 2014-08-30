@@ -14,18 +14,27 @@ module.exports = function(grunt) {
         command: [
           'rm -rf build',
           'mkdir build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build"); do cp -rf $i build/$i ; done',
-          'cp index.jade build/index.jade',
+          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass"); do cp -rf $i build/$i ; done',
+          'for i in $(find *.jade -type f -maxdepth 0); do cp $i build/$i ; done',
           'cp index.js build/index.js',
           'jade $(find build/* -type f -maxdepth 0 | grep -viw "partials") --pretty',
           'rm -rf build/partials',
-          'find build -name *.jade -type f -delete',
-          'rm -rf build/css/sass',
-          'rm -rf build/css/sass-cache',
+          'rm -rf build/*.jade',
+          'mkdir build/css',
+          'cd sass',
+          'for i in $(find *.scss -maxdepth 0); do sass $i:../build/css/$i.css --cache-location "cache" --style compressed ; done',
+          'cd ..',
         ].join("&&")
       },
-      sass: {
-        command: 'sass --watch "css/sass":"css" --cache-location "css/sass-cache"'
+      server: {
+        command: [
+          'node index.js'
+        ].join("&&"),
+        options: {
+          execOptions: {
+            cwd: 'build'
+          }
+        }
       }
     }
 
@@ -37,12 +46,12 @@ module.exports = function(grunt) {
     'shell:main',
   ]);
 
-  grunt.registerTask('clean', [
-    'shell:clean',
+  grunt.registerTask('server', [
+    'shell:server',
   ]);
 
-  grunt.registerTask('sass', [
-    'shell:sass',
+  grunt.registerTask('clean', [
+    'shell:clean',
   ]);
 
 };

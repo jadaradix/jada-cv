@@ -1,4 +1,4 @@
 node_modules/
-css/sass-cache/
+sass/cache/
 build/
 .DS_Store

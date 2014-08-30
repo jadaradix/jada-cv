@@ -2,8 +2,8 @@ doctype html
 html
   head
     include partials/_head.jade
+    link(rel='stylesheet', href='css/jada.scss.css')
   body
-    //- #Fader
     #Wrapper
       aside.tile-column
         .tile-row
@@ -24,6 +24,4 @@ html
         .tile-row
           include partials/_tile-github.jade
           include partials/_tile-project-this-site.jade
-        //- .tile-row
-        //-   include partials/_tile-5.jade
       .clear-fix
