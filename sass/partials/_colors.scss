@@ -53,3 +53,8 @@ $gray: #5D6566;
 .bg-gray { background-color: $gray; }
 .fg-gray { color: $gray; }
 .ts-gray { @include text-shadow($gray); }
+
+$white: white;
+.bg-white { background-color: white; }
+.fg-white { color: $white; }
+.ts-white { @include text-shadow($white); }

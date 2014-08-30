@@ -23,6 +23,10 @@
     width: 50%;
   }
 
+  .tile.tile-blank {
+    display: block;
+  }
+
   .tile-row {
     .tile {
       padding: $spacing / 2;

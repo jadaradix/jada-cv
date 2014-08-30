@@ -1,0 +1,20 @@
+- var css = 'jada'
+doctype html
+html
+  head
+    include partials/_head.jade
+  body
+    #Wrapper
+      aside.tile-column
+        .tile-row
+          include partials/_tile-me.jade
+        .tile-row
+          include partials/_tile-404.jade
+      main.tile-column
+        .tile-row
+          include partials/_tile-404-text.jade
+          include partials/_tile-blank.jade
+        .tile-row
+          include partials/_tile-blank.jade
+          include partials/_tile-404-gif.jade
+      .clear-fix

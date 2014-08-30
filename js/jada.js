@@ -1,7 +1,7 @@
 var waitTime = 250;
 var fadedOutOpacity = 0.9;
 var fadedOutIconsOpacity = 0.5;
-var spacing = 16;
+var tileFadeDelay = 75;
 
 function fadeWork(selectorResult, opacity, setInitially) {
   if (setInitially) {
@@ -100,10 +100,16 @@ $(window).load(function() {
     function(next) {
       updateHandlers();
       fadeWork($(".tile-content", $(".tile").not(".static")), fadedOutOpacity, false);
-      fadeWork($('.tile.me-text .icons a'), fadedOutIconsOpacity, true);
+      fadeWork($('.tile.tile-me-text .icons a'), fadedOutIconsOpacity, true);
+      var i = 0;
       $(".tile-content", $(".tile")).not(".hide").each(function() {
-        var opacity = ($(this).parent().hasClass("static") ? 1 : fadedOutOpacity);
-        $(this).fadeTo(waitTime * 2, opacity);
+        var el = $(this);
+        console.log(el.css("opacity"));
+        setTimeout(function() {
+          var opacity = el.parent().hasClass("static") ? 1 : fadedOutOpacity;
+          el.fadeTo(waitTime * 2, opacity);
+        }, i * tileFadeDelay);
+        i += 1;
       });
     }
   ]);

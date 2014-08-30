@@ -2,4 +2,4 @@ node_modules/
 sass/cache/
 build/
 .DS_Store
-cv.pdf
+static/cv.pdf
