@@ -17,7 +17,7 @@ function fadeWork(selectorResult, opacity, setInitially) {
   );
 }
 
-function showMainContent(content, callback) {
+function showMainContent(content, callback, hideHideLink) {
   var main = $('main');
   var mainNanoContent = $(".nano-content", main);
   var mainRow = $("#main");
@@ -25,13 +25,14 @@ function showMainContent(content, callback) {
   var mainTileContent = $($(".content", mainTile)[0]);
   mainTileContent.html(content);
   updateHandlers();
+  $(".hide-link", mainTile).css("display", hideHideLink ? "none" : "block");
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
   var scrollTop = mainRow.offset().top - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
-  console.log("NEW:")
-  console.log("add " + mainRow.offset().top + " [mainRow.offset().top]");
-  console.log("take away " + main.offset().top + " [main.offset().top]");
-  console.log("add " + parseInt(mainTile.css("padding-top").substr(0, 1)) + " [parseInt(mainTile.css(\"padding-top\").substr(0, 1))]");
+  // console.log("NEW:")
+  // console.log("add " + mainRow.offset().top + " [mainRow.offset().top]");
+  // console.log("take away " + main.offset().top + " [main.offset().top]");
+  // console.log("add " + parseInt(mainTile.css("padding-top").substr(0, 1)) + " [parseInt(mainTile.css(\"padding-top\").substr(0, 1))]");
   $("body").animate(
     { scrollTop: scrollTop },
     waitTime * 2,
@@ -42,10 +43,11 @@ function showMainContent(content, callback) {
   );
 }
 
-function showMain(id, callback) {
+function showMain(id, callback, hideHideLink) {
+  if (!hideHideLink) hideHideLink = false;
   var html = $("#" + id).html();
   if (!html) return;
-  showMainContent(html, callback);
+  showMainContent(html, callback, hideHideLink);
 }
 
 function hideMain() {
@@ -65,7 +67,7 @@ function hideMain() {
 }
 
 function updateHandlersStaticContent() {
-  showMain($(this).attr("data-show-static"));
+  showMain($(this).attr("data-show-static"), null, ($(this).attr("data-hide-hide-link") != undefined));
   return false;
 }
 
@@ -83,11 +85,13 @@ function updateHandlers() {
     .off("click", updateHandlersBlogContent)
     .on("click", updateHandlersBlogContent);
   //Hide Main Content
-  $("#hide-main-link")
+  $("*[data-hide-main]")
     .off("click", hideMain)
     .on("click", hideMain);
   //Tile Links
-  fadeWork($('.tile-content a'), fadedOutOpacity, true);
+  fadeWork($('a', $('.tile-content').not(".no-link-fade")), fadedOutOpacity, true);
+  //Nano Scroll
+  // $(".nano").nanoScroller();
 }
 
 $(window).load(function() {
@@ -101,7 +105,6 @@ $(window).load(function() {
         var opacity = ($(this).parent().hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
       });
-      // $(".nano").nanoScroller();
     }
   ]);
 
