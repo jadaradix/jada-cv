@@ -24,6 +24,7 @@ function showMainContent(content, callback) {
   var mainTile = $($(".tile", mainRow)[0]);
   var mainTileContent = $($(".content", mainTile)[0]);
   mainTileContent.html(content);
+  updateHandlers();
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
   var scrollTop = mainRow.offset().top + main.scrollTop() - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
@@ -31,7 +32,9 @@ function showMainContent(content, callback) {
     { scrollTop: scrollTop },
     waitTime * 2,
     "swing",
-    function(){ if (callback) callback() }
+    function() {
+      if (callback) callback()
+    }
   );
 }
 
@@ -54,33 +57,47 @@ function hideMain() {
   mainTile.fadeOut(waitTime * 2, function() {
     mainRow.css("display", "none");
   });
+  return false;
+}
+
+function updateHandlersStaticContent() {
+  showMain($(this).attr("data-show-static"));
+  return false;
+}
+
+function updateHandlersBlogContent() {
+  return false;
+}
+
+function updateHandlers() {
+  //Static Content
+  $("*[data-show-static]")
+    .off("click", updateHandlersStaticContent)
+    .on("click", updateHandlersStaticContent);
+  //Blog Content
+  $("*[data-show-blog]")
+    .off("click", updateHandlersBlogContent)
+    .on("click", updateHandlersBlogContent);
+  //Hide Main Content
+  $("#hide-main-link")
+    .off("click", hideMain)
+    .on("click", hideMain);
+  //Tile Links
+  fadeWork($('.tile p a'), fadedOutOpacity, true);
 }
 
 $(window).load(function() {
 
   async.waterfall([
     function(next) {
+      updateHandlers();
       fadeWork($(".tile-content", $(".tile").not(".static")), fadedOutOpacity, false);
       fadeWork($('.tile.me-text .icons a'), fadedOutIconsOpacity, true);
-      fadeWork($('.tile p a'), fadedOutOpacity, true);
       $(".tile-content", $(".tile")).not(".hide").each(function() {
         var opacity = ($(this).parent().hasClass("static") ? 1 : fadedOutOpacity);
         $(this).fadeTo(waitTime * 2, opacity);
       });
-      //Static Content
-      $("*[data-show-static]").click(function() {
-        showMain($(this).attr("data-show-static"));
-        return false;
-      });
-      //Blog Content
-      $("*[data-show-blog]").click(function() {
-        return false;
-      });
-      $("#hide-main-link").click(function() {
-        hideMain();
-        return false;
-      });
-      $(".nano").nanoScroller();
+      // $(".nano").nanoScroller();
     }
   ]);
 
