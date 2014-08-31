@@ -37,23 +37,23 @@ body, input, button {
   @extend .clear-fix;
 }
 
-#Wrapper aside {
+#Wrapper > aside {
   border-radius: $radius;
 }
 
-#Wrapper main {
+#Wrapper > main {
   border-radius: $radius;
 }
 
 @media only screen and (min-width: $r-width-1) {
 
-  #Wrapper aside {
+  #Wrapper > aside {
     position: fixed;
     float: left;
     width: $tile-size;
   }
 
-  #Wrapper main {
+  #Wrapper > main {
     margin-left: $tile-size + $spacing;
   }
 
@@ -96,6 +96,10 @@ ul {
   li {
     margin-bottom: 3px;
   }
+}
+
+ul:after {
+  @extend .clear-fix;
 }
 
 a {

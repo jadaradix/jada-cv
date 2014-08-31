@@ -11,6 +11,9 @@ body {
 
 h1 {
   margin-top: 0;
+}
+
+#Wrapper > h1 {
   margin-bottom: $spacing;
   padding-left: 4px;
   padding-bottom: $spacing / 2;
@@ -35,9 +38,40 @@ section {
     }
   }
   div {
+    width: 100%;
     * {
       color: black;
     }
+    div {
+      margin-bottom: $spacing / 2;
+      aside {
+        h1 {
+          font-size: 100%;
+          color: $grayer;
+        }
+      }
+      div {
+        padding-top: $spacing / 4;
+        ul.icons {
+          margin-left: 0;
+          list-style-type: none;
+          li {
+            line-height: 100%;
+            span.fa {
+              margin-right: $spacing / 4;
+              font-size: 130%;
+              color: $blue;
+            }
+            span:not(.fa) {
+              vertical-align: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+  div:after {
+    @extend .clear-fix;
   }
 }
 
@@ -71,6 +105,26 @@ section:last-child {
   #Wrapper {
     border-radius: $radius;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  section {
+    div {
+      div {
+        aside {
+          float: left;
+          width: 20%;
+          text-align: right;
+          h1 {
+          }
+        }
+        div {
+          float: left;
+          width: auto;
+          padding-top: 0;
+          margin-left: $spacing / 2;
+        }
+      }
+    }
   }
 
 }
