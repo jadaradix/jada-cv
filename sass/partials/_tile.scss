@@ -85,3 +85,50 @@
 .tile.preserve-bottom-padding {
   padding-bottom: $spacing / 2 !important;
 }
+
+@media only screen and (min-width: #{$r-width-1}) {
+
+  .tile-column {
+    margin-bottom: 0;
+  }
+
+}
+
+@media only screen and (min-width: $r-width-2) {
+
+  .tile {
+    float: left;
+    width: 50%;
+  }
+
+  .tile.tile-blank {
+    display: block;
+  }
+
+  .tile-row {
+    .tile {
+      padding: $spacing / 2;
+    }
+    .tile:first-child {
+      padding-left: 0;
+      padding-bottom: $spacing / 2;
+    }
+    .tile:last-child {
+      padding-right: 0;
+      padding-bottom: $spacing / 2;
+    }
+  }
+
+  .tile-row:first-child {
+    .tile {
+      padding-top: 0;
+    }
+  }
+
+  .tile-row:last-child {
+    .tile {
+      padding-bottom: 0;
+    }
+  }
+
+}

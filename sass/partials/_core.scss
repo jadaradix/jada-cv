@@ -30,7 +30,7 @@ body, input, button {
 #Wrapper {
   margin: 0 auto 0 auto;
   padding: $spacing;
-  max-width: $max-width;
+  max-width: $r-max-width;
 }
 
 #Wrapper:after {
@@ -39,12 +39,24 @@ body, input, button {
 
 #Wrapper aside {
   border-radius: $radius;
-  // background-color: red;
 }
 
 #Wrapper main {
   border-radius: $radius;
-  // background-color: yellow;
+}
+
+@media only screen and (min-width: #{$r-width-1}) {
+
+  #Wrapper aside {
+    position: fixed;
+    float: left;
+    width: $tile-size;
+  }
+
+  #Wrapper main {
+    margin-left: $tile-size + $spacing;
+  }
+
 }
 
 #Content {

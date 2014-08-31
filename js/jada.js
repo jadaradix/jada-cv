@@ -19,7 +19,6 @@ function fadeWork(selectorResult, opacity, setInitially) {
 
 function showMainContent(content, callback, hideHideLink) {
   var main = $('main');
-  var mainNanoContent = $(".nano-content", main);
   var mainRow = $("#main");
   var mainTile = $($(".tile", mainRow)[0]);
   var mainTileContent = $($(".content", mainTile)[0]);
@@ -52,7 +51,6 @@ function showMain(id, callback, hideHideLink) {
 
 function hideMain() {
   var main = $('main');
-  var mainNanoContent = $(".nano-content", main);
   var mainRow = $("#main");
   var mainTile = $($(".tile", mainRow)[0]);
   $("body").animate(
@@ -90,8 +88,6 @@ function updateHandlers() {
     .on("click", hideMain);
   //Tile Links
   fadeWork($('a', $('.tile-content').not(".no-link-fade")), fadedOutOpacity, true);
-  //Nano Scroll
-  // $(".nano").nanoScroller();
 }
 
 $(window).load(function() {
