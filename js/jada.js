@@ -104,7 +104,6 @@ $(window).load(function() {
       var i = 0;
       $(".tile-content", $(".tile")).not(".hide").each(function() {
         var el = $(this);
-        console.log(el.css("opacity"));
         setTimeout(function() {
           var opacity = el.parent().hasClass("static") ? 1 : fadedOutOpacity;
           el.fadeTo(waitTime * 2, opacity);
