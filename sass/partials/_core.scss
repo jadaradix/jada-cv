@@ -45,7 +45,7 @@ body, input, button {
   border-radius: $radius;
 }
 
-@media only screen and (min-width: #{$r-width-1}) {
+@media only screen and (min-width: $r-width-1) {
 
   #Wrapper aside {
     position: fixed;
@@ -74,7 +74,7 @@ h1 {
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 28px;
 }
 
 p {

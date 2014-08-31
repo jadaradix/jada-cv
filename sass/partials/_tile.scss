@@ -86,7 +86,7 @@
   padding-bottom: $spacing / 2 !important;
 }
 
-@media only screen and (min-width: #{$r-width-1}) {
+@media only screen and (min-width: $r-width-1) {
 
   .tile-column {
     margin-bottom: 0;
