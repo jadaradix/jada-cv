@@ -23,9 +23,7 @@
 }
 
 .buttons:after {
-  content: "";
-  display: table;
-  clear: both;
+  @extend .clear-fix;
 }
 
 .buttons.at-top {

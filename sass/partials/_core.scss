@@ -5,6 +5,8 @@
 }
 
 .clear-fix {
+  content: "";
+  display: table;
   clear: both;
 }
 
@@ -29,6 +31,10 @@ body, input, button {
   margin: 0 auto 0 auto;
   padding: $spacing;
   max-width: $max-width;
+}
+
+#Wrapper:after {
+  @extend .clear-fix;
 }
 
 #Wrapper aside {
