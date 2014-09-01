@@ -53,30 +53,47 @@ function Server() {
 
   });
 
+  function stringStartsWith(string, startsWith) {
+    return (string.lastIndexOf(startsWith, 0) === 0);
+  }
+
   _self.expressInstance.get("/*", function(eRequest, eResource) {
+
     var requestName = eRequest.params[0];
-    var lastCharacter = requestName.substr(requestName.length - 1);
-    if (lastCharacter == '/') requestName = requestName.substr(0, requestName.length - 1);
-    var fileName = requestName + ".html";
-    console.log("Request: " + fileName);
+
+    // Log
+    console.log("Request: " + requestName);
+
     var serveStatus;
     var serveFileName;
-    if (fs.existsSync(fileName)) {
-      serveStatus = 200;
-      serveFileName = fileName;
-    } else {
-      serveStatus = 404;
+    if (stringStartsWith(requestName, "sites/dsgm")) {
       serveFileName = "404.html";
+      serveStatus = 404;
+    } else {
+      var lastCharacter = requestName.substr(requestName.length - 1);
+      if (lastCharacter == '/') requestName = requestName.substr(0, requestName.length - 1);
+      var fileName = requestName + ".html";
+      if (fs.existsSync(fileName)) {
+        serveFileName = fileName;
+        serveStatus = 200;
+      } else {
+        serveFileName = "404.html";
+        serveStatus = 404;
+      }
     }
+
+    // Log
+    console.log("Served " + serveFileName + " (" + serveStatus + ")");
+
     eResource.status(serveStatus);
     eResource.sendFile(
       serveFileName,
       { root: __dirname }
     );
-    console.log("Served " + serveFileName + " (" + serveStatus + ")");
+
   });
 
-  var port = process.env.PORT || 1024;
+  var port = process.env.PORT || 80;
   _self.expressInstance.listen(port, function() {
     console.log("Hello! I'm listening on port " + port);
   });
