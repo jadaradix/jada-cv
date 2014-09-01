@@ -1,15 +1,16 @@
 .tile.spread
-  .tile-content.bg-light-gray(data-show-static="this-site-content")
-    ul.tags
-      li
-        span.fa.fa-tag
-        span Project
-      li
-        span.fa.fa-tag
-        span Open source
-    h1 This Site
-    p.
-      Hello, World.
+  .tile-content.bg-light-gray
+    a(data-show-static="this-site-content", href="")
+      ul.tags
+        li
+          span.fa.fa-tag
+          span Project
+        li
+          span.fa.fa-tag
+          span Open source
+      h1 This Site
+      p.
+        Hello, World.
   .hide#this-site-content
     p.
       This Site.

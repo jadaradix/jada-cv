@@ -17,7 +17,7 @@ h1 {
   margin-bottom: $spacing;
   padding-left: 4px;
   padding-bottom: $spacing / 2;
-  border-bottom: 2px solid $light-gray;
+  border-bottom: 2px solid $grayer;
   font-size: 48px;
   color: black;
 }
@@ -25,7 +25,6 @@ h1 {
 section {
   margin-bottom: $spacing;
   header {
-    padding-left: $spacing / 2;
     border-top-left-radius: $radius;
     border-top-right-radius: $radius;
     border: 2px solid $grayer;
@@ -45,13 +44,14 @@ section {
     div {
       margin-bottom: $spacing / 2;
       aside {
-        h1 {
+        span {
           font-size: 100%;
-          color: $grayer;
+          color: $grayest;
+          text-transform: lowercase;
         }
       }
       div {
-        padding-top: $spacing / 4;
+        padding-top: $spacing / 2;
         ul.icons {
           margin-left: 0;
           list-style-type: none;
@@ -80,7 +80,7 @@ section.unheadered {
 
 section:not(.unheadered) {
   > * {
-    padding: $spacing / 4;
+    padding: ($spacing / 4) ($spacing / 2) ($spacing / 4) ($spacing / 2);
   }
   div {
     border: 2px solid $grayer;
@@ -114,8 +114,6 @@ section:last-child {
           float: left;
           width: 20%;
           text-align: right;
-          h1 {
-          }
         }
         div {
           float: left;
