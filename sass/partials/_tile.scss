@@ -47,6 +47,11 @@
       z-index: -1;
       border-radius: $radius;
     }
+    > a {
+      width: 100%;
+      height: 100%;
+      @extend .clear-fix;
+    }
     > span {
       text-transform: lowercase;
       opacity: 0.75;

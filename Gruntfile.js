@@ -50,6 +50,11 @@ module.exports = function(grunt) {
     'shell:server',
   ]);
 
+  grunt.registerTask('complete', [
+    'shell:main',
+    'shell:server',
+  ]);
+
   grunt.registerTask('clean', [
     'shell:clean',
   ]);

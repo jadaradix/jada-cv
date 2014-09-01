@@ -69,25 +69,17 @@ function updateHandlersStaticContent() {
   return false;
 }
 
-function updateHandlersBlogContent() {
-  return false;
-}
-
 function updateHandlers() {
   //Static Content
   $("*[data-show-static]")
     .off("click", updateHandlersStaticContent)
     .on("click", updateHandlersStaticContent);
-  //Blog Content
-  $("*[data-show-blog]")
-    .off("click", updateHandlersBlogContent)
-    .on("click", updateHandlersBlogContent);
   //Hide Main Content
   $("*[data-hide-main]")
     .off("click", hideMain)
     .on("click", hideMain);
   //Tile Links
-  fadeWork($('a', $('.tile-content').not(".no-link-fade")), fadedOutOpacity, true);
+  fadeWork($('> * a', $('.tile-content').not(".no-link-fade")), fadedOutOpacity, true);
 }
 
 $(window).load(function() {
