@@ -8,17 +8,37 @@ function Server() {
   var request = require('request');
   var moment = require('moment');
 
-  //Express
-  _self.expressInstance = express();
-  _self.expressInstance.use(express.static(__dirname + '/'));
+  _self.stringStartsWith = function (string, startsWith) {
+    return (string.lastIndexOf(startsWith, 0) === 0);
+  }
 
-  _self.expressInstance.all("/*", function(request, resource, next) {
-    resource.header("Access-Control-Allow-Origin", "*");
-    resource.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-  });
+  _self.serveResource = null;
+  _self.serve = function(serveStatus, serveFileName) {
+    if (!_self.serveResource) return;
+    _self.serveResource.status(serveStatus);
+    _self.serveResource.sendFile(
+      serveFileName,
+      { root: __dirname }
+    );
+    // Log
+    console.log(" => Served '%s' (%s)", serveFileName, serveStatus);
+    console.log("");
+  }
 
-  _self.expressInstance.get("/git", function(eRequest, eResource) {
+  _self.serve200 = function(serveFileName) {
+    _self.serve(200, serveFileName);
+  }
+
+  _self.serve404 = function() {
+    _self.serve(404, "404.html");
+  }
+
+  _self.serveJSON = function(jsonObject) {
+    _self.serveResource.status(200);
+    _self.serveResource.send(jsonObject);
+  }
+
+  _self.getGit = function(callback) {
 
     var today = moment();
     var memberAt;
@@ -33,69 +53,79 @@ function Server() {
     };
 
     request(options, function(error, response, body) {
-      var serveStatus = 200;
-      var serveData;
+      data = {};
       if (!error && response.statusCode == 200) {
         var bodyJson = JSON.parse(body);
         memberAt = moment(bodyJson.created_at);
         memberFor = today.diff(memberAt, "months");
-        serveData = {
+        data = {
           "member_for": memberFor
         }
       } else {
-        serveData = {
+        data = {
           "error": "Something went wrong. Sorry."
         }
       }
-      eResource.status(serveStatus);
-      eResource.send(serveData);
+      callback(data);
     });
-
-  });
-
-  function stringStartsWith(string, startsWith) {
-    return (string.lastIndexOf(startsWith, 0) === 0);
   }
 
-  _self.expressInstance.get("/*", function(eRequest, eResource) {
+  // Express
+  _self.expressInstance = express();
+
+  // Express routing
+  _self.expressInstance.get("/*/", function(eRequest, eResource) {
+
+    _self.serveResource = eResource;
+    _self.serveResource.header("Access-Control-Allow-Origin", "*");
+    _self.serveResource.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     var requestName = eRequest.params[0];
 
-    // Log
-    console.log("Request: " + requestName);
-
-    var serveStatus;
-    var serveFileName;
-    if (stringStartsWith(requestName, "sites/dsgm")) {
-      serveFileName = "404.html";
-      serveStatus = 404;
-    } else {
-      var lastCharacter = requestName.substr(requestName.length - 1);
-      if (lastCharacter == '/') requestName = requestName.substr(0, requestName.length - 1);
-      var fileName = requestName + ".html";
-      if (fs.existsSync(fileName)) {
-        serveFileName = fileName;
-        serveStatus = 200;
-      } else {
-        serveFileName = "404.html";
-        serveStatus = 404;
-      }
+    // Remove ending slash
+    if (requestName.substr(requestName.length - 1) == '/') {
+      requestName = requestName.substr(0, requestName.length - 1);
     }
 
-    // Log
-    console.log("Served " + serveFileName + " (" + serveStatus + ")");
+    // Convert drectory to file
+    if (fs.existsSync(requestName + ".html")) {
+      requestName += ".html";
+    }
 
-    eResource.status(serveStatus);
-    eResource.sendFile(
-      serveFileName,
-      { root: __dirname }
-    );
+    // Index
+    if (requestName.length === 0) requestName = "index.html";
+
+    // Log
+    console.log("Requested '%s'", requestName);
+
+    // Ignore DS Game Maker spam requests
+    if (_self.stringStartsWith(requestName, "sites/dsgm")) {
+      serve404();
+      return;
+    }
+
+    if (fs.existsSync(requestName)) {
+      _self.serve200(requestName);
+      return;
+    }
+
+    if (requestName === "git") {
+      _self.getGit(function(data) {
+        _self.serveJSON(data);
+      });
+      return;
+    }
+
+    _self.serve404();
+    return;
 
   });
 
   var port = process.env.PORT || 80;
   _self.expressInstance.listen(port, function() {
+    console.log("");
     console.log("Hello! I'm listening on port " + port);
+    console.log("");
   });
 
 }

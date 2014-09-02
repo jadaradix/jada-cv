@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass"); do cp -rf $i build/$i ; done',
           'for i in $(find *.jade -type f -maxdepth 0); do cp $i build/$i ; done',
           'cp index.js build/index.js',
-          'jade $(find build/* -type f -maxdepth 0 | grep -viw "partials") --pretty',
+          '$(npm bin)/jade $(find build/* -type f -maxdepth 0 | grep -viw "partials") --pretty',
           'rm -rf build/partials',
           'rm -rf build/*.jade',
           'mkdir build/css',
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       },
       server: {
         command: [
-          'node index.js'
+          'sudo node index.js'
         ].join("&&"),
         options: {
           execOptions: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     'shell:server',
   ]);
 
-  grunt.registerTask('complete', [
+  grunt.registerTask('all', [
     'shell:main',
     'shell:server',
   ]);
