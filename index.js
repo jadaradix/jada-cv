@@ -2,7 +2,7 @@ function Server() {
 
   var _self = this;
 
-  _self.port = 1024;
+  _self.port = 80;
   _self.port = process.env.PORT || _self.port;
 
   var express = require('express');
