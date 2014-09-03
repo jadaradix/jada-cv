@@ -121,7 +121,7 @@ function Server() {
 
   });
 
-  var port = process.env.PORT || 80;
+  var port = process.env.PORT || 1024;
   _self.expressInstance.listen(port, function() {
     console.log("");
     console.log("Hello! I'm listening on port " + port);
