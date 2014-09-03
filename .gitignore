@@ -2,5 +2,4 @@ node_modules/
 sass/cache/
 build/
 .DS_Store
-static/cv.pdf
 partials/_base-href.jade
