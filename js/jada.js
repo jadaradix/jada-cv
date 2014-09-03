@@ -37,7 +37,24 @@ function showMainContent(content, callback, hideHideLink) {
     waitTime * 2,
     "swing",
     function() {
+
+      var mainTileContentDiv = $($(".tile-content > div", mainTile)[0]);
+      console.log(mainTileContentDiv.css("display"));
+      async.waterfall([
+        function(next) {
+          if (mainTileContentDiv.css("display") == "block") {
+            mainTileContentDiv.fadeOut(waitTime, next);
+          } else {
+            next();
+          }
+        },
+        function(next) {
+          mainTileContentDiv.fadeIn(waitTime);
+        }
+      ]);
+
       if (callback) callback()
+
     }
   );
 }
@@ -59,6 +76,8 @@ function hideMain() {
     "swing"
   );
   mainTile.fadeOut(waitTime * 2, function() {
+    var mainTileContentDiv = $($(".tile-content > div", mainTile)[0]);
+    mainTileContentDiv.css("display", "block");
     mainRow.css("display", "none");
   });
   return false;
