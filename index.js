@@ -2,6 +2,9 @@ function Server() {
 
   var _self = this;
 
+  _self.port = 1024;
+  _self.port = process.env.PORT || _self.port;
+
   var express = require('express');
   var path = require('path');
   var fs = require('fs');
@@ -121,10 +124,9 @@ function Server() {
 
   });
 
-  var port = process.env.PORT || 1024;
-  _self.expressInstance.listen(port, function() {
+  _self.expressInstance.listen(_self.port, function() {
     console.log("");
-    console.log("Hello! I'm listening on port " + port);
+    console.log("Hello! I'm listening on port " + _self.port);
     console.log("");
   });
 
