@@ -103,7 +103,7 @@ function Server() {
 
     // Ignore DS Game Maker spam requests
     if (_self.stringStartsWith(requestName, "sites/dsgm")) {
-      serve404();
+      _self.serve404();
       return;
     }
 
