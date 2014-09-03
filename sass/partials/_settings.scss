@@ -10,6 +10,5 @@ $tile-size: 272px;
 $scrollbar-width: 16px;
 
 //Responsive Sizes
-$r-width-1: ($tile-size * 2) + ($spacing * 6);
-$r-width-2: ($tile-size * 3) + ($spacing * 6);
-$r-max-width: ($tile-size * 3) + ($spacing * 3);
+$r-width-1: ($tile-size * 2) + ($spacing * 3);
+$r-width-2: ($tile-size * 3) + ($spacing * 4);
