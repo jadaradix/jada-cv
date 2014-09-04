@@ -20,7 +20,7 @@ function fadeWork(selectorResult, opacity, setInitially) {
 var mainContentShowing = false;
 
 function showMainContent(content, callback, hideHideLink) {
-  var main = $('main');
+  var body = $('body');
   var mainTile = $(".tile-main");
   var mainRow = mainTile.parents(".tile-row");
   var mainTileContentDiv = $(".tile-content > div", mainTile);
@@ -28,14 +28,13 @@ function showMainContent(content, callback, hideHideLink) {
   $(".hide-link", mainTile).css("display", hideHideLink ? "none" : "block");
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  var scrollTop = mainRow.offset().top - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
-  // console.log("NEW:");
-  // console.log("add " + mainRow.offset().top + " [mainRow.offset().top]");
-  // console.log("take away " + main.offset().top + " [main.offset().top]");
-  // console.log("add " + parseInt(mainTile.css("padding-top").substr(0, 1)) + " [parseInt(mainTile.css(\"padding-top\").substr(0, 1))]");
+  var scrollTop = 
+    mainRow.offset().top
+     - body.offset().top
+     - parseInt(mainTile.css("padding-top").substr(0, 1));
   async.waterfall([
     function(next) {
-      $("body").animate(
+      body.animate(
       { scrollTop: scrollTop },
       waitTime * 2,
       "swing",
@@ -68,7 +67,7 @@ function showMain(id, callback, hideHideLink) {
 }
 
 function hideMain() {
-  var main = $('main');
+  var body = $('body');
   var mainTile = $(".tile-main");
   var mainRow = mainTile.parents(".tile-row");
   var mainTileContentDiv = $(".tile-content > div", mainTile);
@@ -78,7 +77,7 @@ function hideMain() {
       mainTileContentDiv.fadeOut(waitTime, next);
     },
     function(next) {
-      $("body").animate(
+      body.animate(
         { scrollTop: 0 },
         waitTime * 2,
         "swing"

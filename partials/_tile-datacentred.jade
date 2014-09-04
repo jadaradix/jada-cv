@@ -7,15 +7,36 @@
           span Project
       h1 Manchester, AngularJS and Ruby on Rails
       p.
-        My time at DataCentred.
+        My time at DataCentred, MediaCityUK.
   .hide#datacentred-content
     .message
       p
         span.fa.fa-info
-          |x
         span
-          |This is a revision of my original post on the DataCentred blog, 
-          a(href="") An Angular Internship
-          |.
+          |This is a cross-post of  
+          a(href="http://datacentred.co.uk/an-agile-internship") An Agile Internship
+          |, which I wrote originally on the 
+          a(href="http://datacentred.co.uk/") DataCentred
+          |  blog.
     p.
-      Hello, World.
+      When I first came accross DataCentred at Lancaster University's SCC (School of Computing and Communications) Careers Fair I thought it unlikely I would spend three subsequent months working there before completing the final year of my degree. In the days prior to starting here I was furthermore unsure what to expect. But three months later it is clear I joined at a very exciting time for DataCentred, its customers and the cloud computing industry as a whole. As I come to the end of my summer internship here, I'd like to reflect on my - indeed, our - achievements of the past few moths.
+
+    p.
+      At our site in Salford Quays, we are developing a next-generation data centre and open source cloud computing services. Like many "Dev Ops" teams, we also practice agile development, which leads to a productive, flexible and goal-orientated way of working. This has been key to the remarkable progress so far, and to us taking customers on board in such a short amount of time. Indeed, these customers, including Lancaster University by coincidence, are now putting our hard work to good use. As more customers approach us with their often bespoke requirements, we have considered the best way to support them; in particular a way for them to identify issues, communicate with us effectively and also still let us practice agile development in this support itself.
+
+    p.
+      Many off-the-shelf products meet these goals in many respects, but there were compelling reasons to build such a support product in house. Firstly, the product can meet any number of our own (and our customers'!) specific requirements. Secondly, the product can be a 'native' part of our existing customer-facing application. Finally, and perhaps most importantly, the product can integrate with JIRA, "the tracker for teams planning and building great products" - our go-to platform for agility. To say the least it is very useful to track customers' issues and standard work requests - and our own platform development work - in the same environment. Thus, it was decided that we'd build our own bespoke, JIRA-powered system for managing Support Tickets inside our existing customer-facing management console.
+
+    p.
+      This customer-facing management console (customer provisioning, billing, user/role management and so forth), for what it's worth, is written in Ruby on Rails. This was my first time writing Ruby (and developing with Ruby on Rails, for that matter) after years of writing PHP for the traditional LAMP stack. Moreover it has been my first experience of the agile way of thinking and writing automatically tested, production quality code in every case. We soon made another major technical decision in that the front-end for the application would be powered by AngularJS, which would allow us to create an expressive, dynamic interface without users having to explicitly "refresh" the page.
+
+    p.
+      The result is an attractive web application for raising support tickets and following their progress until the issue is resolved. This was my main focus whilst working at DataCentred (although I also patched PHPIPAM to support decent LDAP authentication!). The tickets are represented in (and fetched from) our JIRA instance via the JIRA API, whilst the front-end automatically updates via AngularJS as issues are resolved and our team communicates with the customer to whom they belong.
+
+    img(src="images/datacentred-support-tickets.png", alt="DataCentred Support Tickets")
+
+    p.
+      The Support Tickets system supports Markdown and Gravatar display pictures, and is also responsive so it looks and works elegantly on different devices like tablets. Long gone are the days of developing a web application for mobile and desktop as distinctly separate platforms. Users are now also expecting web applications to "refresh automatically" as a standard feature, which is why employing AngularJS was so important.
+
+    p.
+      I've gained valuable experience in Ruby on Rails development, front-end JavaScript development, agile methodologies and pure teamwork in a development context. But what's even more exciting, and of course rewarding, is that there's a real world, customer-facing end product which is both an asset to DataCentred and something for me to look back upon proudly even after I've finished my degree.
