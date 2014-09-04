@@ -75,6 +75,9 @@ function hideMain() {
   var mainTileContent = $(".content", mainTileContentDiv);
   async.waterfall([
     function(next) {
+      mainTileContentDiv.fadeOut(waitTime, next);
+    },
+    function(next) {
       $("body").animate(
         { scrollTop: 0 },
         waitTime * 2,
@@ -83,11 +86,10 @@ function hideMain() {
       mainTile.fadeOut(waitTime * 2, next);
     },
     function(next) {
-      mainContentShowing = false;
       mainRow.css("display", "none");
     }
   ]);
-
+  mainContentShowing = false;
   return false;
 }
 
@@ -120,7 +122,8 @@ $(window).load(function() {
       $(".tile-content", $(".tile")).not(".hide").each(function() {
         var el = $(this);
         setTimeout(function() {
-          var opacity = el.parent().hasClass("static") ? 1 : fadedOutOpacity;
+          opacity = fadedOutOpacity;
+          // var opacity = el.parent().hasClass("static") ? 1 : fadedOutOpacity;
           el.fadeTo(waitTime * 2, opacity);
         }, i * tileFadeDelay);
         i += 1;

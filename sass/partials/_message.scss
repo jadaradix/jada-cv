@@ -1,0 +1,9 @@
+.message {
+  background-color: green;
+  span.fa {
+    color: red;
+  }
+  span:not(.fa) {
+    color: blue;
+  }
+}
