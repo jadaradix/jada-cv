@@ -55,7 +55,7 @@ function showMainContent(content, callback, hideHideLink) {
     },
     function(next) {
       mainContentShowing = true;
-      if (callback) callback() 
+      if (callback) callback();
     }
   ]);
 }
@@ -83,8 +83,6 @@ function hideMain() {
       mainTile.fadeOut(waitTime * 2, next);
     },
     function(next) {
-      // var mainTileContentDiv = $($(".tile-content > div", mainTile)[0]);
-      // mainTileContentDiv.css("display", "block");
       mainContentShowing = false;
       mainRow.css("display", "none");
     }

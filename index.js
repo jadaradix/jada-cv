@@ -32,8 +32,8 @@ function Server() {
     _self.serve(200, serveFileName);
   }
 
-  _self.serve404 = function() {
-    _self.serve(404, "404.html");
+  _self.serveCode = function(code) {
+    _self.serve(code, code.toString() + ".html");
   }
 
   _self.serveJSON = function(jsonObject) {
@@ -103,8 +103,14 @@ function Server() {
 
     // Ignore DS Game Maker spam requests
     if (_self.stringStartsWith(requestName, "sites/dsgm")) {
-      _self.serve404();
+      _self.serveCode(404);
       return;
+    }
+
+    // Directory
+    if (fs.existsSync(requestName + "/")) {
+      _self.serveCode(403);
+      return
     }
 
     if (fs.existsSync(requestName)) {
@@ -119,7 +125,7 @@ function Server() {
       return;
     }
 
-    _self.serve404();
+    _self.serveCode(404);
     return;
 
   });

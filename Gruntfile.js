@@ -23,7 +23,7 @@ module.exports = function(grunt) {
           'mkdir build/css',
           'cd sass',
           'for i in $(find *.scss -maxdepth 0); do sass $i:../build/css/$i.css --cache-location "cache" --style compressed ; done',
-          'cd ..',
+          'cd ..'
         ].join("&&")
       },
       server: {
@@ -35,6 +35,9 @@ module.exports = function(grunt) {
             cwd: 'build'
           }
         }
+      },
+      basehref: {
+        command: "echo '- var baseHref = \"http://localhost/\";' > partials/_base-href.jade"
       }
     }
 
@@ -43,11 +46,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('default', [
-    'shell:main',
+    'shell:main'
   ]);
 
   grunt.registerTask('server', [
-    'shell:server',
+    'shell:server'
   ]);
 
   grunt.registerTask('all', [
@@ -56,7 +59,11 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('clean', [
-    'shell:clean',
+    'shell:clean'
+  ]);
+
+  grunt.registerTask('basehref', [
+    'shell:basehref'
   ]);
 
 };
