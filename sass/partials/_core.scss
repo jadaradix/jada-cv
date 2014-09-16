@@ -24,7 +24,7 @@ body {
 }
 
 body, input, button {
-  font: $font-size $font-family;
+  font: 15px $font-body;
 }
 
 #Wrapper {
@@ -65,6 +65,7 @@ body, input, button {
 
 h1, h2, h3 {
   text-transform: lowercase;
+  font-family: $font-heading;
   font-weight: normal;
 }
 
