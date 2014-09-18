@@ -17,46 +17,46 @@ function fadeWork(selectorResult, opacity, setInitially) {
   );
 }
 
+var mainContentShowing = false;
+
 function showMainContent(content, callback, hideHideLink) {
-  var main = $('main');
-  var mainRow = $("#main");
-  var mainTile = $($(".tile", mainRow)[0]);
-  var mainTileContent = $($(".content", mainTile)[0]);
-  mainTileContent.html(content);
-  updateHandlers();
+  var body = $('body');
+  var mainTile = $(".tile-main");
+  var mainRow = mainTile.parents(".tile-row");
+  var mainTileContentDiv = $(".tile-content > div", mainTile);
+  var mainTileContent = $(".content", mainTileContentDiv);
   $(".hide-link", mainTile).css("display", hideHideLink ? "none" : "block");
   mainRow.css("display", "block");
   mainTile.fadeIn(waitTime * 2);
-  var scrollTop = mainRow.offset().top - main.offset().top + parseInt(mainTile.css("padding-top").substr(0, 1));
-  // console.log("NEW:")
-  // console.log("add " + mainRow.offset().top + " [mainRow.offset().top]");
-  // console.log("take away " + main.offset().top + " [main.offset().top]");
-  // console.log("add " + parseInt(mainTile.css("padding-top").substr(0, 1)) + " [parseInt(mainTile.css(\"padding-top\").substr(0, 1))]");
-  $("body").animate(
-    { scrollTop: scrollTop },
-    waitTime * 2,
-    "swing",
-    function() {
-
-      var mainTileContentDiv = $($(".tile-content > div", mainTile)[0]);
-      console.log(mainTileContentDiv.css("display"));
-      async.waterfall([
-        function(next) {
-          if (mainTileContentDiv.css("display") == "block") {
-            mainTileContentDiv.fadeOut(waitTime, next);
-          } else {
-            next();
-          }
-        },
-        function(next) {
-          mainTileContentDiv.fadeIn(waitTime);
-        }
-      ]);
-
-      if (callback) callback()
-
+  var scrollTop = 
+    mainRow.offset().top
+     - body.offset().top
+     - parseInt(mainTile.css("padding-top").substr(0, 1));
+  async.waterfall([
+    function(next) {
+      body.animate(
+      { scrollTop: scrollTop },
+      waitTime * 2,
+      "swing",
+      next);
+    },
+    function(next) {
+      if (mainContentShowing) {
+        mainTileContentDiv.fadeOut(waitTime, next);
+      } else {
+        next();
+      }
+    },
+    function(next) {
+      mainTileContent.html(content);
+      updateHandlers();
+      mainTileContentDiv.fadeIn(waitTime, next);
+    },
+    function(next) {
+      mainContentShowing = true;
+      if (callback) callback();
     }
-  );
+  ]);
 }
 
 function showMain(id, callback, hideHideLink) {
@@ -67,19 +67,28 @@ function showMain(id, callback, hideHideLink) {
 }
 
 function hideMain() {
-  var main = $('main');
-  var mainRow = $("#main");
-  var mainTile = $($(".tile", mainRow)[0]);
-  $("body").animate(
-    { scrollTop: 0 },
-    waitTime * 2,
-    "swing"
-  );
-  mainTile.fadeOut(waitTime * 2, function() {
-    var mainTileContentDiv = $($(".tile-content > div", mainTile)[0]);
-    mainTileContentDiv.css("display", "block");
-    mainRow.css("display", "none");
-  });
+  var body = $('body');
+  var mainTile = $(".tile-main");
+  var mainRow = mainTile.parents(".tile-row");
+  var mainTileContentDiv = $(".tile-content > div", mainTile);
+  var mainTileContent = $(".content", mainTileContentDiv);
+  async.waterfall([
+    function(next) {
+      mainTileContentDiv.fadeOut(waitTime, next);
+    },
+    function(next) {
+      body.animate(
+        { scrollTop: 0 },
+        waitTime * 2,
+        "swing"
+      );
+      mainTile.fadeOut(waitTime * 2, next);
+    },
+    function(next) {
+      mainRow.css("display", "none");
+    }
+  ]);
+  mainContentShowing = false;
   return false;
 }
 
@@ -112,7 +121,8 @@ $(window).load(function() {
       $(".tile-content", $(".tile")).not(".hide").each(function() {
         var el = $(this);
         setTimeout(function() {
-          var opacity = el.parent().hasClass("static") ? 1 : fadedOutOpacity;
+          opacity = fadedOutOpacity;
+          // var opacity = el.parent().hasClass("static") ? 1 : fadedOutOpacity;
           el.fadeTo(waitTime * 2, opacity);
         }, i * tileFadeDelay);
         i += 1;

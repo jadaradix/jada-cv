@@ -24,13 +24,13 @@ body {
 }
 
 body, input, button {
-  font: $font-size $font-family;
+  font: 15px $font-body;
 }
 
 #Wrapper {
   margin: 0 auto 0 auto;
   padding: $spacing;
-  max-width: $r-max-width;
+  max-width: $r-width-2;
 }
 
 #Wrapper:after {
@@ -65,6 +65,7 @@ body, input, button {
 
 h1, h2, h3 {
   text-transform: lowercase;
+  font-family: $font-heading;
   font-weight: normal;
 }
 

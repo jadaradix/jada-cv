@@ -1,0 +1,27 @@
+.message {
+  background-color: $light-gray;
+  border-radius: $radius;
+  padding: $spacing;
+  span {
+    display: block;
+  }
+  span.fa {
+    float: left;
+    width: $spacing * 3;
+    padding-right: $spacing;
+    opacity: 0.5;
+    text-align: right;
+    font-size: 150%;
+  }
+  span:not(.fa) {
+    margin-left: $spacing * 3;
+  }
+}
+
+.message.info {
+  background-color: $blue;
+}
+
+.message.error {
+  background-color: $red;
+}
