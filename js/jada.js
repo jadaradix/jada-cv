@@ -118,11 +118,10 @@ $(window).load(function() {
       fadeWork($(".tile-content", $(".tile").not(".static")), fadedOutOpacity, false);
       fadeWork($('.tile.tile-me-text .icons a'), fadedOutIconsOpacity, true);
       var i = 0;
-      $(".tile-content", $(".tile")).not(".hide").each(function() {
+      $(".fade").each(function() {
         var el = $(this);
         setTimeout(function() {
           opacity = fadedOutOpacity;
-          // var opacity = el.parent().hasClass("static") ? 1 : fadedOutOpacity;
           el.fadeTo(waitTime * 2, opacity);
         }, i * tileFadeDelay);
         i += 1;
