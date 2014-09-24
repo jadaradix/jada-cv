@@ -114,6 +114,37 @@ $(window).load(function() {
 
   async.waterfall([
     function(next) {
+
+      var blogUrl = "api/blog";
+
+      function blogSuccess(blogPosts) {
+        blogDone(blogPosts);
+      }
+
+      function blogFail(error) {
+        console.log(error);
+        blogDone([]);
+      }
+
+      function blogDone(blogPosts) {
+        console.log(blogPosts);
+        next();
+      }
+
+      var ajaxRequest = $.ajax(blogUrl);
+      ajaxRequest.done(function(response) {
+        if (!response['error']) {
+          blogSuccess(response);
+        } else {
+          blogFail(response['error']);
+        }
+      });
+      ajaxRequest.fail(function(response) {
+        blogFail("I couldn't reach '" + blogUrl + "'");
+      });
+
+    },
+    function(next) {
       updateHandlers();
       fadeWork($(".tile-content", $(".tile").not(".static")), fadedOutOpacity, false);
       fadeWork($('.tile.tile-me-text .icons a'), fadedOutIconsOpacity, true);
