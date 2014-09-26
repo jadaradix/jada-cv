@@ -1,4 +1,4 @@
-- var js = ["jada", "blog"]
+- var js = ["jada", "angular-instance"]
 - var css = ["jada"]
 - var title = "James Garner"
 doctype html
@@ -28,7 +28,7 @@ html
           .tile-row(ng-repeat="tileRow in tileRows")
             .tile(ng-repeat="tile in tileRow")
               .tile-content(ng-class="'bg-{{tile.color}}'").fade
-                a(data-show-static="blog-{{$parent.$index}}-{{$index}}-content", href="")
+                a(data-show-static="blog-{{tile.id}}-content", href="")
                   ul.tags
                     li(ng-repeat="tag in tile.tags")
                       span.fa.fa-tag
@@ -36,4 +36,4 @@ html
                   h1 {{tile.title}}
                   p(ng-show="tile.subtitle").
                     {{tile.subtitle}}
-              .hide(id="blog-{{$parent.$index}}-{{$index}}-content", ng-bind-html="tile.content")
+              .hide(id="blog-{{tile.id}}-content", ng-bind-html="tile.content")
