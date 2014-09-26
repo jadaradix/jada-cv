@@ -1,5 +1,7 @@
 {
+  "id": "df",
   "title": "Dark Flow",
   "tags": ["Project"],
-  "color": "purple"
+  "color": "purple",
+  "hide": true
 }

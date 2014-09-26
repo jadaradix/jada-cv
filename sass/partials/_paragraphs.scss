@@ -1,0 +1,13 @@
+p {
+  margin: ($spacing / 2) 0 ($spacing / 2) 0;
+  padding: 0;
+  text-align: justify;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}

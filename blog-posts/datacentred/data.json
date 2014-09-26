@@ -1,5 +1,7 @@
 {
+  "id": "dc",
   "title": "Manchester, AngularJS and Ruby on Rails",
   "subtitle": "My time at DataCentred, MediaCityUK.",
-  "color": "green"
+  "color": "green",
+  "hide": true
 }

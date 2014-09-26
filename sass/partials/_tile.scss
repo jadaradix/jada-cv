@@ -30,9 +30,6 @@
   overflow: auto;
   padding-top: $spacing / 2;
   padding-bottom: $spacing / 2;
-  .fade {
-    opacity: 0;
-  }
   > div {
     > :not(.no-padding) {
       padding: $spacing;

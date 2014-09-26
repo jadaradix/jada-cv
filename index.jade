@@ -1,11 +1,11 @@
-- var js = ["jada"]
+- var js = ["jada", "blog"]
 - var css = ["jada"]
 - var title = "James Garner"
 doctype html
-html(ng-app="jadaSite")
+html
   head
     include partials/_head.jade
-  body
+  body(ng-app="jadaSite")
     #Wrapper
       aside.tile-column
         .tile-row
@@ -14,14 +14,25 @@ html(ng-app="jadaSite")
           include partials/_tile-me-text.jade
       main.tile-column
         .tile-row
+          include partials/_tile-intro.jade
+        .tile-row
           include partials/_tile-projects.jade
           include partials/_tile-cv.jade
         .tile-row
-          include partials/_tile-about-me.jade
+          include partials/_tile-real-time.jade
         .tile-row.spread-tall.hide#main
           include partials/_tile-main.jade
-        .tile-row
-          include partials/_tile-single.jade
-          include partials/_tile-single.jade
-        .tile-row
-          include partials/_tile-double.jade
+        div(ng-controller="blogController", ng-show="hasTileRows()")
+          h1.fade Blog
+          .tile-row(ng-repeat="tileRow in tileRows")
+            .tile(ng-repeat="tile in tileRow")
+              .tile-content(ng-class="'bg-{{tile.color}}'").fade
+                a(data-show-static="blog-{{$parent.$index}}-{{$index}}-content", href="")
+                  ul.tags
+                    li(ng-repeat="tag in tile.tags")
+                      span.fa.fa-tag
+                      span {{tag}}
+                  h1 {{tile.title}}
+                  p(ng-show="tile.subtitle").
+                    {{tile.subtitle}}
+              .hide(id="blog-{{$parent.$index}}-{{$index}}-content", ng-bind-html="tile.content")
