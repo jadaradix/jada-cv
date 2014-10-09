@@ -28,7 +28,7 @@ async.waterfall([
       });
       _.each(contentFiles, function(contentFile) {
         var contentFileKey = contentFile.substr(0, contentFile.length - (contentFileExtension).length);
-        data[contentFileKey] = fs.readFileSync(path + "/" + contentFile).toString().substring(1);
+        data[contentFileKey] = fs.readFileSync(path + "/" + contentFile).toString();
       });
       tiles.push(data);
     });

@@ -6,7 +6,10 @@ module.exports = function(grunt) {
 
     shell: {
       clean: {
-        command: 'rm -rf build'
+        command: [
+          'rm -rf build',
+          'mkdir build'
+        ].join("&&"),
       },
       main: {
         command: [
@@ -24,9 +27,9 @@ module.exports = function(grunt) {
       },
       tiles: {
         command: [
-          // 'for i in $(find tiles/* -type d -maxdepth 0); do echo "Tile: $i"; cd $i; $(npm bin)/jade content.jade --pretty; cd ../..; done',
-          'node tiles.js'
-          // 'rm -rf tiles/*/*.html'
+          'for i in $(find tiles/* -type d -maxdepth 0); do echo "Tile: $i"; cd $i; $(npm bin)/jade *.jade; cd ../..; done',
+          'node tiles.js',
+          'rm -rf tiles/*/*.html'
         ].join("&&")
       },
       basehref: {
