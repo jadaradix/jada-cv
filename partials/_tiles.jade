@@ -1,5 +1,5 @@
-div(ng-controller="tilesController", ng-show="hasTileRows('#{tileGroup}')")
-  .tile-row(ng-repeat="tileRow in getTileRows('#{tileGroup}')")
+div(ng-show="groupHasTileRows('#{tileGroup}')")
+  .tile-row(ng-repeat="tileRow in groupGetTileRows('#{tileGroup}')")
     .tile(ng-repeat="tile in tileRow")
       .tile-content(ng-class="'bg-{{tile.color}}'").fade
         a(data-show-static="tile-{{tile.id}}-content", href="")

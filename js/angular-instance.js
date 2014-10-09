@@ -40,26 +40,37 @@ function easyAjax(url, callback) {
 
 }
 
+function getTilesMakeRows(data, tiles) {
+  tiles = $.map(tiles, function(tile, index) {
+    return data[tile];
+  });
+  var r = [];
+  $.each(tiles, function(index, tile) {
+    if ((index + 1) % 2) r.push([]);
+    r[r.length - 1].push(tile);
+  });
+  return r;
+}
 
 jadaSite.controller('tilesController', function ($scope) {
 
-  $scope.tileRows = [];
-
-  $scope.hasTileRows = function() {
-    return ($scope.tileRows.length > 0); 
-  };
-
+  $scope.tileGroupRows = {};
   easyAjax("api/tiles", function(data) {
     if (!data) return;
-    var r = [];
-    $.each(data, function(index, blogPost) {
-      if ((index + 1) % 2) r.push([]);
-      r[r.length - 1].push(blogPost);
-    });
     $scope.$apply(function() {
-      $scope.tileRows = r;
-      console.log(r);
+      $scope.tileGroupRows["side"] = getTilesMakeRows(data, ["me", "me-text"]);
+      $scope.tileGroupRows["main"] = getTilesMakeRows(data, ["intro", "projects", "cv", "github", "real-time"]);
+      $scope.tileGroupRows["blog"] = getTilesMakeRows(data, ["blog-datacentred"]);
+      console.log($scope.tileGroupRows);
     });
   });
+
+  $scope.groupHasTileRows = function(group) {
+    return $scope.tileGroupRows.hasOwnProperty(group);
+  };
+
+  $scope.groupGetTileRows = function(group) {
+    return $scope.tileGroupRows[group];
+  }
 
 });

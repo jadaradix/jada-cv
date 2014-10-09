@@ -18,7 +18,7 @@ async.waterfall([
 
   //Collect Tiles from Directories
   function(tileDirectories, next) {
-    var tiles = [];
+    var tiles = {};
     _.each(tileDirectories, function(tileDirectory) {
       var path = tilesPath + "/" + tileDirectory;
       var data = JSON.parse(fs.readFileSync(path + "/data.json"));
@@ -26,11 +26,13 @@ async.waterfall([
       var contentFiles = _.filter(fs.readdirSync(path), function(contentFile) {
         return (_.str.endsWith(contentFile, contentFileExtension));
       });
+      data["id"] = tileDirectory;
+      data["contentPreview"] = "";
       _.each(contentFiles, function(contentFile) {
         var contentFileKey = contentFile.substr(0, contentFile.length - (contentFileExtension).length);
         data[contentFileKey] = fs.readFileSync(path + "/" + contentFile).toString();
       });
-      tiles.push(data);
+      tiles[tileDirectory] = data;
     });
     next(null, tiles);
   },

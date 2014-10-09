@@ -7,10 +7,14 @@ html
   head
     include partials/_head.jade
   body(ng-app="jadaSite")
-    #Wrapper
+    #Wrapper(ng-controller="tilesController")
       aside.tile-column
-      - tileGroup = "side"
-      include partials/_tiles.jade
-      main.tile-column
         - tileGroup = "side"
+        include partials/_tiles.jade
+      main.tile-column
+        - tileGroup = "main"
+        include partials/_tiles.jade
+        h1.
+          Blog
+        - tileGroup = "blog"
         include partials/_tiles.jade

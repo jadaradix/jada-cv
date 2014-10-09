@@ -8,15 +8,15 @@ module.exports = function(grunt) {
       clean: {
         command: [
           'rm -rf build',
-          'mkdir build'
+          'mkdir -p build'
         ].join("&&"),
       },
       main: {
         command: [
           'mkdir -p build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles"); do cp -rf $i build/$i ; done',
+          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles"); do rm -rf build/$i && cp -rf $i build/$i; done',
           'for i in $(find *.jade -type f -maxdepth 0); do cp $i build/$i ; done',
-          '$(npm bin)/jade $(find build/* -type f -maxdepth 0 | grep -viw "partials") --pretty',
+          '$(npm bin)/jade $(find build/* -type f -maxdepth 0 | grep -viw "partials")',
           'rm -rf build/partials',
           'rm -rf build/*.jade',
           'mkdir -p build/css',
