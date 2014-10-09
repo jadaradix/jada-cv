@@ -8,6 +8,8 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-shell": "^0.7.0",
-    "jade": "^1.5.0"
+    "jade": "^1.5.0",
+    "underscore": "^1.7.0",
+    "underscore.string": "^2.3.3"
   }
 }

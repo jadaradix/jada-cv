@@ -41,7 +41,7 @@ function easyAjax(url, callback) {
 }
 
 
-jadaSite.controller('blogController', function ($scope) {
+jadaSite.controller('tilesController', function ($scope) {
 
   $scope.tileRows = [];
 
@@ -49,7 +49,7 @@ jadaSite.controller('blogController', function ($scope) {
     return ($scope.tileRows.length > 0); 
   };
 
-  easyAjax("api/blog", function(data) {
+  easyAjax("api/tiles", function(data) {
     if (!data) return;
     var r = [];
     $.each(data, function(index, blogPost) {
@@ -58,14 +58,8 @@ jadaSite.controller('blogController', function ($scope) {
     });
     $scope.$apply(function() {
       $scope.tileRows = r;
+      console.log(r);
     });
   });
-
-});
-
-
-jadaSite.controller('gitController', function ($scope) {
-
-  $scope.gitData = {};
 
 });

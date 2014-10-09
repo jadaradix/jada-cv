@@ -1,0 +1,13 @@
+div(ng-controller="tilesController", ng-show="hasTileRows('#{tileGroup}')")
+  .tile-row(ng-repeat="tileRow in getTileRows('#{tileGroup}')")
+    .tile(ng-repeat="tile in tileRow")
+      .tile-content(ng-class="'bg-{{tile.color}}'").fade
+        a(data-show-static="tile-{{tile.id}}-content", href="")
+          ul.tags
+            li(ng-repeat="tag in tile.tags")
+              span.fa.fa-tag
+              span {{tag}}
+          h1 {{tile.title}}
+          p(ng-show="tile.subtitle").
+            {{tile.subtitle}}
+      .hide(id="tile-{{tile.id}}-content", ng-bind-html="tile.content")

@@ -6,26 +6,27 @@ module.exports = function(grunt) {
 
     shell: {
       clean: {
-        command: [
-          'rm -rf build'
-        ].join("&&")
+        command: 'rm -rf build'
       },
       main: {
         command: [
-          'rm -rf build',
-          'mkdir build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|blog-posts"); do cp -rf $i build/$i ; done',
+          'mkdir -p build',
+          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles"); do cp -rf $i build/$i ; done',
           'for i in $(find *.jade -type f -maxdepth 0); do cp $i build/$i ; done',
           '$(npm bin)/jade $(find build/* -type f -maxdepth 0 | grep -viw "partials") --pretty',
-          'for i in $(find blog-posts/* -type d -maxdepth 0); do echo "Blog Post: $i"; cd $i; $(npm bin)/jade content.jade --pretty; cd ../..; done',
-          'node blog.js',
-          'rm -rf blog-posts/*/*.html',
           'rm -rf build/partials',
           'rm -rf build/*.jade',
-          'mkdir build/css',
+          'mkdir -p build/css',
           'cd sass',
           'for i in $(find *.scss -maxdepth 0); do sass $i:../build/css/$i.css --cache-location "cache" --style compressed ; done',
           'cd ..'
+        ].join("&&")
+      },
+      tiles: {
+        command: [
+          // 'for i in $(find tiles/* -type d -maxdepth 0); do echo "Tile: $i"; cd $i; $(npm bin)/jade content.jade --pretty; cd ../..; done',
+          'node tiles.js'
+          // 'rm -rf tiles/*/*.html'
         ].join("&&")
       },
       basehref: {
@@ -39,6 +40,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'shell:main'
+  ]);
+
+  grunt.registerTask('tiles', [
+    'shell:tiles'
   ]);
 
   grunt.registerTask('clean', [
