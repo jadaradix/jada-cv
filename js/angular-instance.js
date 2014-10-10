@@ -40,15 +40,22 @@ function easyAjax(url, callback) {
 
 }
 
-function getTilesMakeRows(data, tiles) {
+function getTilesMakeRows(data, tiles, isSingleColumn) {
   tiles = $.map(tiles, function(tile, index) {
     return data[tile];
   });
   var r = [];
-  $.each(tiles, function(index, tile) {
-    if ((index + 1) % 2) r.push([]);
-    r[r.length - 1].push(tile);
-  });
+  if (isSingleColumn) {
+    $.each(tiles, function(index, tile) {
+      r.push([]);
+      r[r.length - 1].push(tile);
+    });
+  } else {
+    $.each(tiles, function(index, tile) {
+      if ((index + 1) % 2) r.push([]);
+      r[r.length - 1].push(tile);
+    });
+  }
   return r;
 }
 
@@ -58,7 +65,7 @@ jadaSite.controller('tilesController', function ($scope) {
   easyAjax("api/tiles", function(data) {
     if (!data) return;
     $scope.$apply(function() {
-      $scope.tileGroupRows["side"] = getTilesMakeRows(data, ["me", "me-text"]);
+      $scope.tileGroupRows["side"] = getTilesMakeRows(data, ["me", "me-text"], true);
       $scope.tileGroupRows["main"] = getTilesMakeRows(data, ["intro", "projects", "cv", "github", "real-time"]);
       $scope.tileGroupRows["blog"] = getTilesMakeRows(data, ["blog-datacentred"]);
       console.log($scope.tileGroupRows);
