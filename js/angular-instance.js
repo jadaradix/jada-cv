@@ -1,3 +1,20 @@
+var waitTime = 250;
+var fadedOutOpacity = 0.9;
+var fadedOutIconsOpacity = 0.5;
+var tileFadeDelay = 75;
+
+function fadeAll() {
+  var i = 0;
+  $(".fade").each(function() {
+    var el = $(this);
+    setTimeout(function() {
+      opacity = fadedOutOpacity;
+      el.fadeTo(waitTime * 2, opacity);
+    }, i * tileFadeDelay);
+    i += 1;
+  });
+}
+
 var jadaSite = angular.module('jadaSite', []).config(function($sceProvider) {
   $sceProvider.enabled(false);
 });
@@ -42,16 +59,19 @@ function easyAjax(url, callback) {
 jadaSite.controller('tilesController', function ($scope) {
 
   $scope.tileGroups = {
-    side: {
-      rows: []
-    },
-    main: {
-      rows: []
-    },
-    blog: {
-      rows: []
-    }
+    "side": { rows: [] },
+    "40x-side": { rows: [] },
+    "403-main": { rows: [] },
+    "404-main": { rows: [] },
+    "main": { rows: [] },
+    "blog": { rows: [] }
   };
+
+  $scope.currentTile = null;
+
+  $scope.setCurrentTile = function(tile) {
+    $scope.currentTile = tile;
+  }
 
   easyAjax("api/tiles", function(data) {
     if (!data) return;
@@ -61,20 +81,51 @@ jadaSite.controller('tilesController', function ($scope) {
         [data["me"]],
         [data["me-text"]]
       ];
+      $scope.tileGroups["40x-side"].rows = [
+        [data["me"]],
+        [data["error-40x-label"]]
+      ];
+      $scope.tileGroups["403-main"].rows = [
+        [data["error-403-content"], data["blank"]],
+        [data["blank"], data["error-40x-image"]]
+      ];
+      $scope.tileGroups["404-main"].rows = [
+        [data["error-404-content"], data["blank"]],
+        [data["blank"], data["error-40x-image"]]
+      ];
       $scope.tileGroups["main"].rows = [
         [data["intro"]],
-        [data["projects"], data["cv"]],
-        [data["github"], data["real-time"]],
+        [data["projects"], data["cv"]]
+        // [data["github"], data["real-time"]],
       ];
       $scope.tileGroups["blog"].rows = [
-        [data["blog-datacentred"]],
+        [data["blog-datacentred"], data["blog-unix"]],
       ];
 
     });
   });
 
-  $scope.updateHandlers = function() {
-    fadeWork($('> * a', $('.tile-content').not(".no-link-fade")), fadedOutOpacity, true);
+  $scope.getClasses = function(tile, mode) {
+    r = [];
+    switch(mode) {
+      case "tile":
+        if (tile.hide) r.push("hide");
+        if (tile.static) r.push("static");
+        if (tile.spread) r.push("spread");
+        if (tile.hide) r.push("hide");
+        if (tile.preserveBottomPadding) r.push("preserve-bottom-padding");
+        if (tile.customClasses) r = r.concat(tile.customClasses);
+        break;
+      case "tileContent":
+        if (tile.noOverflow) r.push("no-overflow");
+        if (tile.noLinkFade) r.push("no-link-fade");
+        r.push("bg-" + tile.color);
+        break;
+      case "innerDiv":
+        if (tile.noPadding) r.push("no-padding");
+        break;
+    }
+    return r;
   }
 
   $scope.groupHasTileRows = function(group) {

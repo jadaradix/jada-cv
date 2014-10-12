@@ -97,6 +97,10 @@
   width: 100%;
 }
 
+.tile.filler {
+  display: none;
+}
+
 .tile.preserve-bottom-padding {
   padding-bottom: $spacing / 2 !important;
 }
@@ -120,7 +124,7 @@
     width: 50%;
   }
 
-  .tile.tile-blank {
+  .tile.filler {
     display: block;
   }
 

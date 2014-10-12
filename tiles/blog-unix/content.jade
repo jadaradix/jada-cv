@@ -1,0 +1,48 @@
+p.
+  Two weeks ago I got my hands on the book "UNIX System Administration" from 1986 (David Fiedler, Bruce H. Hunter). I've been pleasantly surprised so far at how much still works on OS X, but one thing that caught my intention was how Apple approached what I'll call "the problem of root". The 1986 book describes booting into either single- or multi- user mode - single-user mode to perform system administration tasks (checking the file system), as root, and multi-user mode for otherwise normal operation afterwards. This is a real blast from the past. Specifically, though, it talks about using <code>su</code>. This command takes one argument - whom to become - and without this argument, you become root (the default value for the argument). <code>su</code> asks for the password for the &lsquo;new user&rsquo; (the root password if there's no argument, of course). But on Mac OS X you don't log on as root; in fact, it seems that there's no root account at all (like on Windows). Of course there's a root account - you can see it via Terminal:
+
+code.
+  cd /private/etc && ls -all | head
+  drwxr-xr-x  96 root  wheel    3264  6 Oct 12:32 .
+  drwxr-xr-x@  6 root  wheel     204 28 Jun 09:36 ..
+  -rw-r--r--   1 root  wheel     515 28 Jun 09:34 afpovertcp.cfg
+  lrwxr-xr-x   1 root  wheel      15 28 Jun 09:35 aliases -> postfix/aliases
+  -rw-r-----   1 root  wheel   16384 28 Jun 09:35 aliases.db
+  drwxr-xr-x   9 root  wheel     306 11 Dec  2013 apache2
+  drwxr-xr-x  18 root  wheel     612 28 Jun 09:35 asl
+  -rw-r--r--   1 root  wheel     975 28 Jun 09:35 asl.conf
+  -rw-r--r--   1 root  wheel     149 28 Jun 09:35 auto_home
+
+p.
+  So why can't you just run <code>su</code> on OS X? It asks for a password but the password you use for <code>sudo</code> doesn't work. It turns out Apple turned off the password for the root account (in fact, "The root user in Mac OS X is disabled by default" according to Apple), so you'd become root right away. This is obviously (very) bad behaviour, so you have to do this to make <code>su</code> work:
+
+code.
+  sudo su
+
+p.
+  It's confusing, but it leads me to explore exactly what sudo does and why this is necessary: Because root has no password, OS X decides whether you can become root or not via the privileges of your own user account, which is why <code>sudo</code> is necessary (contrary to popular belief, <code>sudo</code> does not by definition really just run the following command with root privileges, although this is often the outcome. It adds you to a list of users with root privileges for future commands called by the first, and it's also why you don't need a password right after when you run <code>sudo</code> again).
+
+p.
+  To summarise, you have to run <code>sudo su</code> because root doesn't have a password, so there's no way to know with just <code>su</code> whether you should be allowed root access or not. <code>sudo</code> gives you temporary escalation (enough to run <code>su</code>), and subsequently <code>su</code> gives you a root shell.
+
+h1 Hiding root
+
+p.
+  If we run <code>users</code> on OS X it doesn't print root; it's hidden! <code>users</code> only prints "james" for me. This gives more success, though:
+
+code.
+  dscl . list /Users | grep -v '^_'
+  daemon
+  Guest
+  james
+  nobody
+  root
+
+p.
+  That's more like it. Now let's set a password for root via the <code>passwd</code> command:
+
+code
+  passwd root
+
+p.
+  On OS X this enables the root account too. You can test it by logging out of OS X. You'll see a new option (exciting, right?), "Other User"! You can now log on as root and never need <code>sudo</code> altogether.

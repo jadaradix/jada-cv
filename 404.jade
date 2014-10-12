@@ -1,6 +1,6 @@
 - var js = ["angular-instance"]
 - var css = ["jada"]
-- var title = "James Garner"
+- var title = "404"
 - var tileGroup = null
 doctype html
 html
@@ -9,13 +9,8 @@ html
   body(ng-app="jadaSite")
     #Wrapper(ng-controller="tilesController")
       aside.tile-column
-        - tileGroup = "side"
+        - tileGroup = "40x-side"
         include partials/_tiles.jade
       main.tile-column
-        - tileGroup = "main"
-        include partials/_tiles.jade
-        div.fade
-          h1.
-            Blog
-        - tileGroup = "blog"
+        - tileGroup = "404-main"
         include partials/_tiles.jade
