@@ -1,5 +1,8 @@
 {
   "title": "James Garner",
   "color": "navy",
-  "hide": false
+  "static": true,
+  "spread": true,
+  "preserveBottomPadding": true,
+  "noLinkFade": true
 }

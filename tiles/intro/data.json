@@ -1,5 +1,6 @@
 {
   "title": "Oh. Hi there!",
   "color": "navy",
-  "hide": false
+  "static": true,
+  "spread": true
 }

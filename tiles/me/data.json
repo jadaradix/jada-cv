@@ -1,5 +1,7 @@
 {
-  "title": "Me",
   "color": "navy",
-  "hide": false
+  "static": true,
+  "spread": true,
+  "noOverflow": true,
+  "noPadding": true
 }

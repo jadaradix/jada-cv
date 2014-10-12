@@ -1,13 +1,11 @@
 div(ng-show="groupHasTileRows('#{tileGroup}')")
   .tile-row(ng-repeat="tileRow in groupGetTileRows('#{tileGroup}')")
-    .tile(ng-repeat="tile in tileRow")
-      .tile-content(ng-class="'bg-{{tile.color}}'").fade
-        a(data-show-static="tile-{{tile.id}}-content", href="")
+    .tile(ng-repeat="tile in tileRow", ng-attr-id="tile-{{tile.id}}", ng-class="{hide: tile.hide, static: tile.static, spread: tile.spread, 'preserve-bottom-padding': tile.preserveBottomPadding}")
+      .tile-content(ng-class="{'bg-{{tile.color}}': true, 'no-overflow': tile.noOverflow, 'no-link-fade': tile.noLinkFade}").fade
+        a(ng-click="showTile(tile.id)", href="{{tile.link || ''}}", ng-class="{'no-padding': tile.noPadding}")
           ul.tags
             li(ng-repeat="tag in tile.tags")
               span.fa.fa-tag
               span {{tag}}
-          h1 {{tile.title}}
-          p(ng-show="tile.subtitle").
-            {{tile.subtitle}}
-      .hide(id="tile-{{tile.id}}-content", ng-bind-html="tile.content")
+          h1(ng-show="tile.title") {{tile.title}}
+          p(ng-bind-html="tile.contentPreview")

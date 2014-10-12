@@ -2,7 +2,6 @@ var jadaSite = angular.module('jadaSite', []).config(function($sceProvider) {
   $sceProvider.enabled(false);
 });
 
-
 var ajaxRequestCount = 0;
 var ajaxRequestTotal = 1;
 function easyAjax(url, callback) {
@@ -40,44 +39,50 @@ function easyAjax(url, callback) {
 
 }
 
-function getTilesMakeRows(data, tiles, isSingleColumn) {
-  tiles = $.map(tiles, function(tile, index) {
-    return data[tile];
-  });
-  var r = [];
-  if (isSingleColumn) {
-    $.each(tiles, function(index, tile) {
-      r.push([]);
-      r[r.length - 1].push(tile);
-    });
-  } else {
-    $.each(tiles, function(index, tile) {
-      if ((index + 1) % 2) r.push([]);
-      r[r.length - 1].push(tile);
-    });
-  }
-  return r;
-}
-
 jadaSite.controller('tilesController', function ($scope) {
 
-  $scope.tileGroupRows = {};
+  $scope.tileGroups = {
+    side: {
+      rows: []
+    },
+    main: {
+      rows: []
+    },
+    blog: {
+      rows: []
+    }
+  };
+
   easyAjax("api/tiles", function(data) {
     if (!data) return;
     $scope.$apply(function() {
-      $scope.tileGroupRows["side"] = getTilesMakeRows(data, ["me", "me-text"], true);
-      $scope.tileGroupRows["main"] = getTilesMakeRows(data, ["intro", "projects", "cv", "github", "real-time"]);
-      $scope.tileGroupRows["blog"] = getTilesMakeRows(data, ["blog-datacentred"]);
-      console.log($scope.tileGroupRows);
+
+      $scope.tileGroups["side"].rows = [
+        [data["me"]],
+        [data["me-text"]]
+      ];
+      $scope.tileGroups["main"].rows = [
+        [data["intro"]],
+        [data["projects"], data["cv"]],
+        [data["github"], data["real-time"]],
+      ];
+      $scope.tileGroups["blog"].rows = [
+        [data["blog-datacentred"]],
+      ];
+
     });
   });
 
+  $scope.updateHandlers = function() {
+    fadeWork($('> * a', $('.tile-content').not(".no-link-fade")), fadedOutOpacity, true);
+  }
+
   $scope.groupHasTileRows = function(group) {
-    return $scope.tileGroupRows.hasOwnProperty(group);
+    return $scope.tileGroups.hasOwnProperty(group);
   };
 
   $scope.groupGetTileRows = function(group) {
-    return $scope.tileGroupRows[group];
+    return $scope.tileGroups[group].rows;
   }
 
 });

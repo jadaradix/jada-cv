@@ -1,5 +1,5 @@
 {
   "title": "Projects",
   "color": "turquoise",
-  "hide": false
+  "static": true
 }

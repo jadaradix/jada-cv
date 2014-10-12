@@ -1,5 +1,4 @@
 {
-  "title": "Real Time",
   "color": "yellow",
-  "hide": true
+  "static": true
 }

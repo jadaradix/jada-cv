@@ -1,15 +1,13 @@
-.tile.tile-me-text {
-  h1 {
-    opacity: 1;
-  }
-  p.subtitle {
+#tile-me-text {
+  p.subtitle, .icons {
     opacity: 0.5;
   }
   .icons {
     font-size: 225%;
     a {
-      margin-right: ($spacing / 2);
+      margin-right: ($spacing / 4);
       color: $fg;
+      background-color: transparent;
     }
   }
 }
