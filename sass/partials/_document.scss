@@ -9,12 +9,19 @@ body {
   background-color: white;
 }
 
-h1 {
-  margin-top: 0;
+h2 {
+  font-size: 20px;
+  color: $grayest;
+}
+
+h2.subtitle {
+  margin-top: $spacing / 4;
+  margin-bottom: $spacing * 1.5;
 }
 
 #Wrapper > div > h1 {
-  margin-bottom: $spacing;
+  margin-top: 0;
+  margin-bottom: 0;
   padding-left: 4px;
   border-bottom: 2px solid $grayer;
   font-size: 48px;
@@ -28,11 +35,10 @@ section {
     border-top-right-radius: $radius;
     border: 2px solid $grayer;
     border-bottom: 0;
-    // background-color: $grayest;
     background-color: $grayer;
     h2 {
-      color: white;
       font-size: 24px;
+      color: white;
     }
   }
   div {
@@ -44,9 +50,10 @@ section {
       margin-bottom: $spacing / 2;
       aside {
         span {
+          font-family: $font-heading;
           font-size: 100%;
           color: $grayest;
-          text-transform: lowercase;
+          text-transform: uppercase;
         }
       }
       div {
@@ -59,7 +66,7 @@ section {
             span.fa {
               margin-right: $spacing / 4;
               font-size: 130%;
-              color: $blue;
+              color: $turquoise;
             }
             span:not(.fa) {
               vertical-align: 2px;
@@ -97,7 +104,7 @@ section:last-child {
 @media only screen and (min-width: $r-width-1) {
 
   body {
-    background-color: $light-gray;
+    background-color: $navy;
     padding: $spacing;
   }
 
