@@ -8,4 +8,9 @@ div(ng-show="groupHasTileRows('#{tileGroup}')")
               span.fa.fa-tag
               span {{tag}}
           h1(ng-show="tile.title") {{tile.title}}
-          p(ng-bind-html="tile.contentPreview")
+          div(ng-bind-html="tile.contentPreview")
+  - if (tileGroup == "main")
+    .tile-row.spread-tall
+      .tile(ng-click="debug()").spread.static
+        .tile-content.bg-navy.fade
+          div(ng-bind-html="currentTile.content")

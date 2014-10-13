@@ -67,7 +67,9 @@ jadaSite.controller('tilesController', function ($scope) {
     "blog": { rows: [] }
   };
 
-  $scope.currentTile = null;
+  $scope.currentTile = {
+    "content": ""
+  };
 
   $scope.setCurrentTile = function(tile) {
     $scope.currentTile = tile;
@@ -104,6 +106,10 @@ jadaSite.controller('tilesController', function ($scope) {
 
     });
   });
+
+  $scope.debug = function() {
+    console.log($scope.currentTile.content);
+  }
 
   $scope.getClasses = function(tile, mode) {
     r = [];
