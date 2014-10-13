@@ -41,14 +41,14 @@ section {
       color: white;
     }
   }
-  div {
+  > div {
     width: 100%;
     * {
       color: black;
     }
     > div {
       margin-top: $spacing / 4;
-      margin-bottom: $spacing / 4;
+      margin-bottom: $spacing / 2;
       > aside {
         span {
           font-family: $font-heading;
