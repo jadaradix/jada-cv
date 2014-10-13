@@ -1,60 +1,6 @@
-var waitTime = 250;
-var fadedOutOpacity = 0.9;
-var fadedOutIconsOpacity = 0.5;
-var tileFadeDelay = 75;
-
-function fadeAll() {
-  var i = 0;
-  $(".fade").each(function() {
-    var el = $(this);
-    setTimeout(function() {
-      opacity = fadedOutOpacity;
-      el.fadeTo(waitTime * 2, opacity);
-    }, i * tileFadeDelay);
-    i += 1;
-  });
-}
-
 var jadaSite = angular.module('jadaSite', []).config(function($sceProvider) {
   $sceProvider.enabled(false);
 });
-
-var ajaxRequestCount = 0;
-var ajaxRequestTotal = 1;
-function easyAjax(url, callback) {
-
-  function ajaxDone() {
-    ajaxRequestCount += 1;
-    if (ajaxRequestCount == ajaxRequestTotal) {
-      fadeAll();
-      ajaxRequestCount = 0;
-    }
-  }
-
-  function ajaxSuccess(data) {
-    callback(data);
-    ajaxDone();
-  }
-
-  function ajaxFail(error) {
-    console.log(error);
-    callback(null);
-    ajaxDone();
-  }
-
-  var ajaxRequest = $.ajax(url);
-  ajaxRequest.done(function(response) {
-    if (!response['error']) {
-      ajaxSuccess(response);
-    } else {
-      ajaxFail(response['error']);
-    }
-  });
-  ajaxRequest.fail(function(response) {
-    ajaxFail("I couldn't reach '" + url + "'");
-  });
-
-}
 
 jadaSite.controller('tilesController', function ($scope) {
 
@@ -71,7 +17,7 @@ jadaSite.controller('tilesController', function ($scope) {
     "content": ""
   };
 
-  $scope.setCurrentTile = function(tile) {
+  $scope.tileClick = function(tile) {
     $scope.currentTile = tile;
   }
 
@@ -108,10 +54,6 @@ jadaSite.controller('tilesController', function ($scope) {
     });
   });
 
-  $scope.debug = function() {
-    console.log($scope.currentTile.content);
-  }
-
   $scope.getClasses = function(tile, mode) {
     r = [];
     switch(mode) {
@@ -143,4 +85,18 @@ jadaSite.controller('tilesController', function ($scope) {
     return $scope.tileGroups[group].rows;
   }
 
+});
+
+jadaSite.directive('tileMouse', function() {
+  return function(scope, element) {
+    if (!scope.tile.static) {
+      element.hover(
+        function() {
+          element.stop().fadeTo(waitTime, 1);
+        },
+        function() {
+          element.stop().fadeTo(waitTime, opacity);
+      });
+    }
+  };
 });
