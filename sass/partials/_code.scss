@@ -1,0 +1,17 @@
+code {
+  @extend .fg-green;
+  @extend .shadowBackground;
+  span {
+    display: block;
+  }
+  span.output {
+    @extend .fg-blue;
+  }
+  span.hint {
+    @extend .fg-yellow;
+  }
+}
+
+code.block {
+  display: block;
+}

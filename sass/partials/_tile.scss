@@ -77,10 +77,8 @@
       @include text-shadow(rgba(0, 0, 0, 0.25));
     }
     p a, ul a {
-      background-color: rgba(0, 0, 0, 0.15);
-      padding: 0 3px 0 3px;
-      margin: 0 2px 0 1px;
-      border-radius: $radius;
+      @extend .shadowBackground;
+      margin-left: 1px;
     }
     p a:first-child, ul a:first-child {
       margin-left: 0;
