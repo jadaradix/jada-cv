@@ -3,6 +3,7 @@ $grayest: lighten($light-gray, 5%);
 
 body {
   background-color: white;
+  color: black;
 }
 
 #Wrapper {
@@ -43,9 +44,6 @@ section {
   }
   > div {
     width: 100%;
-    * {
-      color: black;
-    }
     > div {
       margin-top: $spacing / 4;
       margin-bottom: $spacing / 2;
