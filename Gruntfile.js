@@ -22,7 +22,12 @@ module.exports = function(grunt) {
           'mkdir -p build/css',
           'cd sass',
           'for i in $(find *.scss -maxdepth 0); do sass $i:../build/css/$i.css --cache-location "cache" --style compressed ; done',
-          'cd ..'
+          'cd ..',
+          'cp $(npm root)/angular/angular.min.js build/js/angular.min.js',
+          'cp $(npm root)/angular/angular.min.js.map build/js/angular.min.js.map',
+          'cp $(npm root)/jquery/dist/jquery.min.js build/js/jquery.min.js',
+          'cp $(npm root)/jquery/dist/jquery.min.map build/js/jquery.min.map',
+          'cp $(npm root)/async/lib/async.js build/js/async.js'
         ].join("&&")
       },
       tiles: {
@@ -46,6 +51,11 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('tiles', [
+    'shell:tiles'
+  ]);
+
+  grunt.registerTask('all', [
+    'shell:main',
     'shell:tiles'
   ]);
 

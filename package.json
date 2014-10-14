@@ -6,10 +6,12 @@
     "url": "https://github.com/jadaradix/jadaSite.git"
   },
   "dependencies": {
+    "angular": "^1.3.0",
     "async": "^0.9.0",
     "grunt": "^0.4.5",
     "grunt-shell": "^0.7.0",
     "jade": "^1.5.0",
+    "jquery": "^2.1.1",
     "underscore": "^1.7.0",
     "underscore.string": "^2.3.3"
   }
