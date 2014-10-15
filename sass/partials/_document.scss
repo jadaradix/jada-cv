@@ -20,12 +20,17 @@ h2 {
 
 h2.subtitle {
   margin-top: $spacing / 4;
-  margin-bottom: $spacing;
+  margin-bottom: $spacing * 1.5;
   color: $grayest;
   text-align: center;
   span.fa:not(:first-child) {
     margin-left: $spacing * 1.25;
   }
+}
+
+.highlight {
+  @extend .fg-turquoise;
+  font-weight: bold;
 }
 
 #Wrapper > div > h1 {
@@ -87,6 +92,10 @@ section {
             }
             span.fa:not(:first-child) {
               margin-left: $spacing / 2;
+            }
+            > span:first-child:not(.fa) {
+              display: block;
+              text-align: justify;
             }
           }
         }
