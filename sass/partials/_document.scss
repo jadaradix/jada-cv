@@ -1,6 +1,10 @@
 $grayer: lighten($light-gray, 15%);
 $grayest: lighten($light-gray, 5%);
 
+.lineHeight {
+  line-height: 20px;
+}
+
 body {
   background-color: white;
   color: black;
@@ -53,6 +57,7 @@ section {
           font-size: 100%;
           color: $grayest;
           text-transform: uppercase;
+          @extend .lineHeight;
         }
       }
       > div {
@@ -62,12 +67,15 @@ section {
           list-style-type: none;
           li {
             line-height: 100%;
-            span.fa {
+            > span {
+              @extend .lineHeight;
+            }
+            > span.fa {
               margin-right: $spacing / 4;
               font-size: 130%;
               color: $turquoise;
             }
-            span:not(.fa) {
+            > span:not(.fa) {
               vertical-align: 2px;
             }
           }
@@ -100,6 +108,17 @@ section:last-child {
   margin-bottom: 0;
 }
 
+p {
+  margin-bottom: $spacing;
+}
+
+hr {
+  border: 0;
+  margin-bottom: ($spacing / 1.5);
+  border-top: 2px solid $grayer;
+  opacity: 0.5;
+}
+
 @media only screen and (min-width: $r-width-1) {
 
   body {
@@ -118,13 +137,13 @@ section:last-child {
         aside {
           float: left;
           width: 20%;
+          padding-right: $spacing / 2;
           text-align: right;
         }
         > div {
           float: left;
-          width: auto;
+          width: 80%;
           padding-top: 0;
-          margin-left: $spacing / 2;
         }
       }
     }
