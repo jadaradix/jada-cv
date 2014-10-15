@@ -12,12 +12,12 @@ body {
 
 h2 {
   font-size: 20px;
-  color: $grayest;
 }
 
 h2.subtitle {
   margin-top: $spacing / 4;
   margin-bottom: $spacing * 1.5;
+  color: $grayest;
 }
 
 #Wrapper > div > h1 {

@@ -1,3 +1,3 @@
 $(window).load(function() {
-  fadeAll();
+  fadeAll(1.0);
 });
