@@ -5,6 +5,10 @@ $grayest: lighten($light-gray, 5%);
   line-height: 20px;
 }
 
+* {
+  -webkit-print-color-adjust: exact;
+}
+
 body {
   background-color: white;
   color: black;
@@ -45,6 +49,7 @@ h2.subtitle {
 }
 
 section {
+  page-break-inside: avoid;
   margin-bottom: $spacing;
   header {
     border-top-left-radius: $radius;
