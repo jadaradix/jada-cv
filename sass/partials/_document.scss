@@ -1,12 +1,9 @@
 $grayer: lighten($light-gray, 15%);
 $grayest: lighten($light-gray, 5%);
+$heading-size: 20px;
 
 .lineHeight {
   line-height: 20px;
-}
-
-* {
-  -webkit-print-color-adjust: exact;
 }
 
 body {
@@ -19,22 +16,32 @@ body {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: $heading-size;
 }
 
 h2.subtitle {
   margin-top: $spacing / 4;
-  margin-bottom: $spacing * 1.5;
+  line-height: $heading-size * 1.75;
   color: $grayest;
   text-align: center;
-  span.fa:not(:first-child) {
+  > span {
+    display: inline-block;
+  }
+  > span:not(:first-child) {
     margin-left: $spacing * 1.25;
+  }
+  span.fa {
+    margin-right: $spacing / 3;
   }
 }
 
 .highlight {
   @extend .fg-turquoise;
   font-weight: bold;
+}
+
+.optional {
+  display: none;
 }
 
 #Wrapper > div > h1 {
@@ -49,15 +56,14 @@ h2.subtitle {
 }
 
 section {
-  page-break-inside: avoid;
   margin-bottom: $spacing;
   header {
-    border-top-left-radius: $radius;
-    border-top-right-radius: $radius;
+    border-radius: $radius;
     border: 2px solid $grayer;
     border-bottom: 0;
     background-color: $grayer;
     h2 {
+      padding: ($spacing / 4) ($spacing / 2) ($spacing / 4) ($spacing / 2);
       font-size: 24px;
       text-align: center;
       color: white;
@@ -65,6 +71,13 @@ section {
   }
   > div {
     width: 100%;
+    padding-top: ($spacing / 1.5);
+    h2 {
+      margin-bottom: ($spacing / 1.5);
+    }
+    h2:not(:first-child) {
+      margin-top: ($spacing / 4);
+    }
     > div {
       margin-top: $spacing / 4;
       margin-bottom: $spacing / 2;
@@ -116,15 +129,7 @@ section.unheadered {
 }
 
 section:not(.unheadered) {
-  > * {
-    padding: ($spacing / 4) ($spacing / 2) ($spacing / 4) ($spacing / 2);
-  }
   > div {
-    border: 2px solid $grayer;
-    border-top: 0;
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
-    background-color: white;
   }
 }
 
@@ -132,12 +137,14 @@ section:last-child {
   margin-bottom: 0;
 }
 
-p {
-  margin-bottom: $spacing * 2;
+p.prose {
+  margin-top: $spacing;
+  margin-bottom: $spacing * 1.75;
 }
 
 hr {
   border: 0;
+  margin-top: ($spacing / 1.5);
   margin-bottom: ($spacing / 1.5);
   border-top: 2px solid $grayer;
   opacity: 0.5;
@@ -146,7 +153,7 @@ hr {
 @media only screen and (min-width: $r-width-1) {
 
   body {
-    background-color: $navy;
+    background-color: $bg;
     padding: $spacing;
   }
 
@@ -155,13 +162,18 @@ hr {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
+  p.prose {
+    margin-left: 9.5%;
+    margin-right: 9.5%;
+  }
+
   section {
     div {
       > div {
         aside {
           float: left;
           width: 20%;
-          padding-right: $spacing / 2;
+          padding-right: $spacing;
           text-align: right;
         }
         > div {

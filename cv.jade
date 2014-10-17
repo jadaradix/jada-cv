@@ -6,11 +6,12 @@ html
   head
     include partials/_head.jade
   body
-    #Wrapper
-      include partials/_cv-head.jade
-      include partials/_cv-details.jade
-      include partials/_cv-education.jade
+    include partials/_bar.jade
+    #Wrapper(class="wrapper")
+      include partials/_cv-intro.jade
       include partials/_cv-employment-history.jade
       include partials/_cv-personal-development-skills.jade
+      include partials/_cv-education.jade
       include partials/_cv-professional-development.jade
       include partials/_cv-references.jade
+    include partials/_bar.jade

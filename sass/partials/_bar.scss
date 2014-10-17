@@ -1,0 +1,20 @@
+.bar {
+  background-color: $bg;
+  padding: ($spacing / 4) ($spacing / 2) ($spacing / 4) ($spacing / 2);
+  p {
+    color: $fg;
+    text-align: center;
+    letter-spacing: 0.5px;
+    line-height: $spacing * 1.5;
+    > * {
+      display: inline-block;
+      text-transform: uppercase;
+      span.fa {
+        margin-right: $spacing / 3;
+      }
+    }
+    > *:not(:first-child) {
+      margin-left: $spacing * 1.5;
+    }
+  }
+}

@@ -2,8 +2,6 @@
   text-shadow: 0 1px 1px darken($color, 15%)
 }
 
-$fg: white;
-
 $turquoise: #1ABC9C;
 .bg-turquoise { background-color: $turquoise; }
 .fg-turquoise { color: $turquoise; }
@@ -58,3 +56,6 @@ $white: white;
 .bg-white { background-color: white; }
 .fg-white { color: $white; }
 .ts-white { @include text-shadow($white); }
+
+$fg: $white;
+$bg: darken($navy, 14%);

@@ -22,6 +22,10 @@
   overflow: hidden !important;
 }
 
+.no-split {
+  white-space: nowrap;
+}
+
 .shadowBackground {
   background-color: rgba(0, 0, 0, 0.15);
   padding: 0 3px 0 3px;
@@ -40,7 +44,7 @@ sub {
 }
 
 body {
-  background-color: darken($navy, 14%);
+  background-color: $bg;
   color: $fg;
 }
 
@@ -48,14 +52,17 @@ body, input, button {
   font: 15px $font-body;
 }
 
-#Wrapper {
+.wrapper {
   margin: 0 auto 0 auto;
-  padding: $spacing;
   max-width: $r-width-2;
 }
 
-#Wrapper:after {
+.wrapper:after {
   @extend .clear-fix;
+}
+
+#Wrapper {
+  padding: $spacing;
 }
 
 #Wrapper > aside {

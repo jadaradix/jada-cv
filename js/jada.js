@@ -7,8 +7,9 @@ function fadeAll(opacity) {
   var i = 0;
   $(".fade").each(function() {
     var el = $(this);
+    var localOpacity = (el.attr("data-custom-fade") ? parseFloat(el.attr("data-custom-fade")) : opacity);
     setTimeout(function() {
-      el.fadeTo(waitTime * 2, opacity);
+      el.fadeTo(waitTime * 2, localOpacity);
     }, i * tileFadeDelay);
     i += 1;
   });

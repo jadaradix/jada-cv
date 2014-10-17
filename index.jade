@@ -7,7 +7,7 @@ html
   head
     include partials/_head.jade
   body(ng-app="jadaSite")
-    #Wrapper(ng-controller="tilesController")
+    #Wrapper(class="wrapper", ng-controller="tilesController")
       aside.tile-column
         - tileGroup = "side"
         include partials/_tiles.jade
