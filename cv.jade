@@ -7,7 +7,9 @@ html
     include partials/_head.jade
   body
     include partials/_bar.jade
-    #Wrapper(class="wrapper")
+    div.wrapper.pane
+      include partials/_send-message.jade
+    #Wrapper.wrapper.pane
       include partials/_cv-intro.jade
       include partials/_cv-employment-history.jade
       include partials/_cv-personal-development-skills.jade

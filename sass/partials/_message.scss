@@ -1,27 +1,30 @@
 .message {
+  margin-bottom: $spacing !important;
+  padding: $spacing;
+  line-height: $spacing;
   background-color: $light-gray;
   border-radius: $radius;
-  padding: $spacing;
+  color: white;
+  p {
+    text-align: center;
+  }
   span {
-    display: block;
+    vertical-align: middle;
   }
   span.fa {
-    float: left;
-    width: $spacing * 3;
-    padding-right: $spacing;
-    opacity: 0.5;
-    text-align: right;
     font-size: 150%;
+    margin-right: $spacing / 2;
   }
-  span:not(.fa) {
-    margin-left: $spacing * 3;
-  }
+}
+
+.message.good {
+  background-color: $green;
+}
+
+.message.bad {
+  background-color: $red;
 }
 
 .message.info {
   background-color: $blue;
-}
-
-.message.error {
-  background-color: $red;
 }

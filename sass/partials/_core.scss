@@ -46,10 +46,7 @@ sub {
 body {
   background-color: $bg;
   color: $fg;
-}
-
-body, input, button {
-  font: 15px $font-body;
+  font: $font-body-size $font-body;
 }
 
 .wrapper {
@@ -61,7 +58,7 @@ body, input, button {
   @extend .clear-fix;
 }
 
-#Wrapper {
+.pane {
   padding: $spacing;
 }
 
