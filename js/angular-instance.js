@@ -87,16 +87,16 @@ jadaSite.controller('tilesController', function ($scope) {
 
 });
 
-jadaSite.directive('tileMouse', function() {
-  return function(scope, element) {
-    if (!scope.tile.static) {
-      element.hover(
-        function() {
-          element.stop().fadeTo(waitTime, 1);
-        },
-        function() {
-          element.stop().fadeTo(waitTime, opacity);
-      });
-    }
-  };
-});
+// jadaSite.directive('tileMouse', function() {
+//   return function(scope, element) {
+//     if (!scope.tile.static) {
+//       element.hover(
+//         function() {
+//           element.stop().fadeTo(waitTime, 1);
+//         },
+//         function() {
+//           element.stop().fadeTo(waitTime, opacity);
+//       });
+//     }
+//   };
+// });

@@ -1,7 +1,7 @@
-div(ng-show="groupHasTileRows('#{tileGroup}')")
+div.tile-group(ng-show="groupHasTileRows('#{tileGroup}')")
   .tile-row(ng-repeat="tileRow in groupGetTileRows('#{tileGroup}')")
     .tile(ng-repeat="tile in tileRow", ng-attr-id="tile-{{tile.id}}", ng-class="getClasses(tile, 'tile')")
-      .tile-content(ng-class="getClasses(tile, 'tileContent')", ng-click="tileClick(tile)", tile-mouse="x").fade
+      .tile-content(ng-class="getClasses(tile, 'tileContent')", ng-click="tileClick(tile)").fade
         div(ng-class="getClasses(tile, 'innerDiv')")
           ul.tags
             li(ng-repeat="tag in tile.tags")
@@ -9,8 +9,9 @@ div(ng-show="groupHasTileRows('#{tileGroup}')")
               span {{tag}}
           h1(ng-show="tile.title") {{tile.title}}
           div(ng-bind-html="tile.contentPreview")
-  - if (tileGroup == "main")
-    .tile-row.spread-tall
-      .tile(ng-click="debug()").spread.static
-        .tile-content.bg-navy.fade
-          div(ng-bind-html="currentTile.content")
+- if (tileGroup == "main")
+div.tile-group
+  .tile-row.spread-tall.hide
+    .tile(ng-click="debug()").spread.static
+      .tile-content.bg-navy.fade
+        div(ng-bind-html="currentTile.content")

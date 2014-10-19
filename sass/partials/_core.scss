@@ -52,14 +52,11 @@ body {
 .wrapper {
   margin: 0 auto 0 auto;
   max-width: $r-width-2;
+  padding: $spacing;
 }
 
 .wrapper:after {
   @extend .clear-fix;
-}
-
-.pane {
-  padding: $spacing;
 }
 
 #Wrapper > aside {
