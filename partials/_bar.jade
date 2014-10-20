@@ -1,14 +1,14 @@
-div.wrapper.bar.no-print
+div.wrapper.bar.no-print.fade(data-custom-fade="0.5")
   p
 
-    a(href="#{baseHref}", data-custom-fade="0.5").fade#go-home
+    a(href="#{baseHref}")#go-home
       span.fa.fa-home
       span Go Home
 
-    a(href="x", data-custom-fade="0.5").fade#send-message
-      span.fa.fa-envelope
-      span Send Me a Message
+    //- a(href="x")#send-message
+    //-   span.fa.fa-envelope
+    //-   span Send Me a Message
 
-    a(href="https://github.com/jadaradix/jadaSite", data-custom-fade="0.5").fade#fork-github
+    a(href="https://github.com/jadaradix/jadaSite")#fork-github
       span.fa.fa-github-alt
       span Fork this on GitHub

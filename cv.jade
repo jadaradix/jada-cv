@@ -7,13 +7,13 @@ html
     include partials/_head.jade
   body
     include partials/_bar.jade
-    div.wrapper.pane
-      include partials/_send-message.jade
+    div.wrapper.pane.hide
+      include partials/_cv-send-message.jade
     #Wrapper.wrapper.pane
       include partials/_cv-intro.jade
       include partials/_cv-employment-history.jade
       include partials/_cv-personal-development-skills.jade
-      include partials/_cv-education.jade
       include partials/_cv-professional-development.jade
+      include partials/_cv-education.jade
       include partials/_cv-references.jade
     include partials/_bar.jade

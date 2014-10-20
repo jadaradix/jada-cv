@@ -45,6 +45,8 @@ sub {
 
 body {
   background-color: $bg;
+  background-image: url('../images/bg.png');
+  background-attachment: fixed;
   color: $fg;
   font: $font-body-size $font-body;
 }
@@ -99,6 +101,7 @@ ul:after {
 a {
   text-decoration: none;
   color: $fg;
+  @extend .no-split;
 }
 
 @import "_headers.scss";

@@ -18,6 +18,7 @@ async.waterfall([
 
   //Collect Tiles from Directories
   function(tileDirectories, next) {
+    var moment = require('moment');
     var tiles = {};
     _.each(tileDirectories, function(tileDirectory) {
       var path = tilesPath + "/" + tileDirectory;
@@ -26,8 +27,11 @@ async.waterfall([
       var contentFiles = _.filter(fs.readdirSync(path), function(contentFile) {
         return (_.str.endsWith(contentFile, contentFileExtension));
       });
-      data["id"] = tileDirectory;
-      data["contentPreview"] = "";
+      data.id = tileDirectory;
+      data.contentPreview = "";
+      if (data["tags"] && data["tags"]["when"]) {
+        data.tags.when.text = moment.unix(data.tags.when.text).format("MMM D[,] ‘YY");
+      }
       _.each(contentFiles, function(contentFile) {
         var contentFileKey = contentFile.substr(0, contentFile.length - (contentFileExtension).length);
         data[contentFileKey] = fs.readFileSync(path + "/" + contentFile).toString();

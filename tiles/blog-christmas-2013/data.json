@@ -1,5 +1,14 @@
 {
-  "title": "Christmas Message 2013",
+  "title": "Christmas Message ‘13",
   "color": "red",
-  "when": 1388287200
+  "tags": {
+    "when": {
+      "text": 1388287200,
+      "class": "fa-clock-o"
+    },
+    "where": {
+      "text": "Brighouse, UK",
+      "class": "fa-map-marker"
+    }
+  }
 }

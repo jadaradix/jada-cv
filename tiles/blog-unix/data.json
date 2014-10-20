@@ -1,4 +1,14 @@
 {
   "title": "Su, Sudo, Root & OS X",
-  "color": "purple"
+  "color": "purple",
+  "tags": {
+    "when": {
+      "text": 1413144000,
+      "class": "fa-clock-o"
+    },
+    "where": {
+      "text": "Lancaster, UK",
+      "class": "fa-map-marker"
+    }
+  }
 }

@@ -1,4 +1,14 @@
 {
   "title": "AngularJS, Agility & Ruby on Rails",
-  "color": "green"
+  "color": "green",
+  "tags": {
+    "when": {
+      "text": 1409842800,
+      "class": "fa-clock-o"
+    },
+    "where": {
+      "text": "Manchester, UK",
+      "class": "fa-map-marker"
+    }
+  }
 }

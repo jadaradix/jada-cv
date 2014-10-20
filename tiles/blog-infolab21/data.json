@@ -1,5 +1,14 @@
 {
   "title": "InfoLab21 Showcase",
   "color": "yellow",
-  "when": 1396551600
+  "tags": {
+    "when": {
+      "text": 1396551600,
+      "class": "fa-clock-o"
+    },
+    "where": {
+      "text": "Lancaster, UK",
+      "class": "fa-map-marker"
+    }
+  }
 }

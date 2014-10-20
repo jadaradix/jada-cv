@@ -5,6 +5,15 @@
 
 @media print {
 
+  body {
+    background-color: white !important;
+  }
+
+  .pane {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
   * {
     -webkit-print-color-adjust: exact;
   }
@@ -15,6 +24,10 @@
 
   .no-break {
     page-break-inside: avoid;
+  }
+
+  .break-before {
+      page-break-before: always;
   }
 
 }

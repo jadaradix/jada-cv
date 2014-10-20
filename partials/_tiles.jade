@@ -3,12 +3,12 @@ div.tile-group(ng-show="groupHasTileRows('#{tileGroup}')")
     .tile(ng-repeat="tile in tileRow", ng-attr-id="tile-{{tile.id}}", ng-class="getClasses(tile, 'tile')")
       .tile-content(ng-class="getClasses(tile, 'tileContent')", ng-click="tileClick(tile)").fade
         div(ng-class="getClasses(tile, 'innerDiv')")
-          ul.tags
-            li(ng-repeat="tag in tile.tags")
-              span.fa.fa-tag
-              span {{tag}}
           h1(ng-show="tile.title") {{tile.title}}
           div(ng-bind-html="tile.contentPreview")
+          ul.tags
+            li(ng-repeat="tag in tile.tags")
+              span.fa(ng-class="tag.class")
+              span {{tag.text}}
 - if (tileGroup == "main")
 div.tile-group
   .tile-row.spread-tall.hide
