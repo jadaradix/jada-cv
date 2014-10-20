@@ -78,7 +78,16 @@
   display: none;
 }
 
-@media only screen and (min-width: $r-width-1) and (max-width: $r-width-2) {
+.tile:not(.static) .tile-content {
+  transition: opacity 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.tile:not(.static) .tile-content:hover {
+  opacity: 1 !important;
+}
+
+@media only screen and (min-width: $r-width-1) and (max-width: $r-width-2 - 1) {
 
   .preserve-bottom-padding {
     padding-bottom: $spacing / 2 !important;
@@ -86,7 +95,7 @@
 
 }
 
-@media only screen and (max-width: $r-width-2) {
+@media only screen and (max-width: $r-width-2 - 1) {
 
   .tile-row, .tile {
     padding-top: $spacing / 2;

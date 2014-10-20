@@ -5,9 +5,10 @@
   .icons {
     font-size: 225%;
     a {
-      margin-right: ($spacing / 2);
       color: $fg;
-      background-color: transparent;
+    }
+    a:not(:last-child) {
+      margin-right: ($spacing / 1.5);
     }
   }
 }

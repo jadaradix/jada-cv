@@ -27,7 +27,7 @@ jadaSite.controller('tilesController', function ($scope) {
 
       $scope.tileGroups["side"].rows = [
         [data["me"]],
-        [data["me-text"]]
+        [data["stats"]]
       ];
       $scope.tileGroups["40x-side"].rows = [
         [data["me"]],
@@ -43,7 +43,7 @@ jadaSite.controller('tilesController', function ($scope) {
       ];
       $scope.tileGroups["main"].rows = [
         [data["intro"]],
-        [data["projects"], data["cv"]]
+        [data["projects"], data["resume"]]
         // [data["github"], data["real-time"]],
       ];
       $scope.tileGroups["blog"].rows = [
