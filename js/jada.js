@@ -1,9 +1,7 @@
-var waitTime = 250;
-var fadedOutOpacity = 0.9;
-var fadedOutIconsOpacity = 0.5;
-var tileFadeDelay = 75;
-
 function fadeAll(opacity) {
+  if (!opacity) opacity = 0.85;
+  var waitTime = 250;
+  var tileFadeDelay = 75;
   var i = 0;
   $(".fade").each(function() {
     var el = $(this);
@@ -22,7 +20,7 @@ function easyAjax(url, callback) {
   function ajaxDone() {
     ajaxRequestCount += 1;
     if (ajaxRequestCount == ajaxRequestTotal) {
-      fadeAll(fadedOutOpacity);
+      fadeAll();
       ajaxRequestCount = 0;
     }
   }
