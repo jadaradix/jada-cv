@@ -4,7 +4,7 @@ div.tile-group(ng-show="groupHasTileRows('#{tileGroup}')")
       .tile-content(ng-class="getClasses(tile, 'tileContent')", ng-click="tileClick(tile)").fade
         div(ng-class="getClasses(tile, 'innerDiv')")
           h1(ng-show="tile.title") {{tile.title}}
-          div(ng-bind-html="tile.contentPreview")
+          div(remote-bind="tile.contentPreview")
           ul.tags
             li(ng-repeat="tag in tile.tags")
               span.fa(ng-class="tag.class")
@@ -14,4 +14,4 @@ div.tile-group
   .tile-row.spread-tall.hide
     .tile(ng-click="debug()").spread.static
       .tile-content.bg-navy.fade
-        div(ng-bind-html="currentTile.content")
+        div(remote-bind="currentTile.content")

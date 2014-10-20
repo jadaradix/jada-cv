@@ -2,7 +2,7 @@ var jadaSite = angular.module('jadaSite', []).config(function($sceProvider) {
   $sceProvider.enabled(false);
 });
 
-jadaSite.controller('tilesController', function ($scope) {
+jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, $compile) {
 
   $scope.tileGroups = {
     "side": { rows: [] },
@@ -16,10 +16,6 @@ jadaSite.controller('tilesController', function ($scope) {
   $scope.currentTile = {
     "content": ""
   };
-
-  $scope.tileClick = function(tile) {
-    $scope.currentTile = tile;
-  }
 
   easyAjax("api/tiles", function(data) {
     if (!data) return;
@@ -44,7 +40,6 @@ jadaSite.controller('tilesController', function ($scope) {
       $scope.tileGroups["main"].rows = [
         [data["intro"]],
         [data["projects"], data["resume"]]
-        // [data["github"], data["real-time"]],
       ];
       $scope.tileGroups["blog"].rows = [
         [data["blog-unix"], data["blog-datacentred"]],
@@ -85,18 +80,26 @@ jadaSite.controller('tilesController', function ($scope) {
     return $scope.tileGroups[group].rows;
   }
 
+}]);
+
+jadaSite.directive('tileClick', function() {
+  return function(scope, element) {
+    if (scope.tile.static) return;
+    $scope.currentTile = tile;
+  };
 });
 
-// jadaSite.directive('tileMouse', function() {
-//   return function(scope, element) {
-//     if (!scope.tile.static) {
-//       element.hover(
-//         function() {
-//           element.stop().fadeTo(waitTime, 1);
-//         },
-//         function() {
-//           element.stop().fadeTo(waitTime, opacity);
-//       });
-//     }
-//   };
-// });
+jadaSite.directive('remoteBind', ['$compile', function ($compile) {
+  return function(scope, element, attrs) {
+    var ensureCompileRunsOnce = scope.$watch(
+      function(scope) {
+        return scope.$eval(attrs.remoteBind);
+      },
+      function(value) {
+        element.html(value);
+        $compile(element.contents())(scope);
+        ensureCompileRunsOnce();
+      }
+    );
+  };
+}]);
