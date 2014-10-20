@@ -2,8 +2,15 @@
   margin-bottom: $spacing;
 }
 
-.tile-row {
+.tile-group:not(:first-child) {
+  margin-top: $spacing;
+}
+
+.tile-row:not(.flexible) {
   min-height: $tile-size;
+  .tile {
+    height: $tile-size;
+  }
 }
 
 .tile-row.spread-tall {
@@ -13,9 +20,15 @@
   }
 }
 
+.tile-row.spread-wide {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  .tile {
+    float: none;
+  }
+}
+
 .tile {
-  height: $tile-size;
-  overflow: auto;
   > .tile-content {
     > :not(.no-padding) {
       padding: $spacing;
@@ -25,7 +38,6 @@
     height: 100%;
     z-index: 0;
     border-radius: $radius;
-    overflow: auto;
     img {
       width: 100%;
       border-radius: $radius;

@@ -10,8 +10,8 @@ div.tile-group(ng-show="groupHasTileRows('#{tileGroup}')")
               span.fa(ng-class="tag.class")
               span {{tag.text}}
 - if (tileGroup == "main")
-div.tile-group
-  .tile-row.spread-tall.hide
-    .tile(ng-click="debug()").spread.static
-      .tile-content.bg-navy.fade
-        div(remote-bind="currentTile.content")
+  div.tile-group.hide
+    .tile-row.spread-wide.flexible
+      .tile.spread.static
+        .tile-content.bg-navy.fade
+          div(remote-bind="currentTile.content")
