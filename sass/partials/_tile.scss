@@ -30,14 +30,14 @@
 
 .tile {
   > .tile-content {
-    > :not(.no-padding) {
-      padding: $spacing;
-    }
     position: relative;
     width: 100%;
     height: 100%;
     z-index: 0;
     border-radius: $radius;
+    > :not(.no-padding) {
+      padding: $spacing;
+    }
     img {
       width: 100%;
       border-radius: $radius;
@@ -91,11 +91,14 @@
 }
 
 .tile:not(.static) .tile-content {
-  transition: opacity 0.5s ease-in-out;
   cursor: pointer;
 }
 
-.tile:not(.static) .tile-content:hover {
+.tile:not(.static) .tile-content:not(.fade) {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.tile:not(.static) .tile-content:not(.fade):hover {
   opacity: 1 !important;
 }
 

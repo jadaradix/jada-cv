@@ -1,14 +1,14 @@
-function fadeAll(opacity) {
-  if (!opacity) opacity = 0.85;
-  var waitTime = 250;
-  var tileFadeDelay = 75;
+function fadeAll(fromClass, toClass, delay) {
+  if (!delay) delay = 150;
   var i = 0;
-  $(".fade").each(function() {
-    var el = $(this);
-    var localOpacity = (el.attr("data-custom-fade") ? parseFloat(el.attr("data-custom-fade")) : opacity);
+  $("." + fromClass).each(function(index, element) {
+    console.log(element);
     setTimeout(function() {
-      el.fadeTo(waitTime * 2, localOpacity);
-    }, i * tileFadeDelay);
+      $(element).addClass(toClass);
+      setTimeout(function() {
+        $(element).removeClass(fromClass);
+      }, 1 * 1000 * 1.1);
+    }, i * delay);
     i += 1;
   });
 }
@@ -20,7 +20,6 @@ function easyAjax(url, callback) {
   function ajaxDone() {
     ajaxRequestCount += 1;
     if (ajaxRequestCount == ajaxRequestTotal) {
-      fadeAll();
       ajaxRequestCount = 0;
     }
   }

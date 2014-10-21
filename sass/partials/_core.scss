@@ -16,6 +16,15 @@
 
 .fade {
   opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.do-fade {
+  opacity: 1 !important;
+}
+
+.do-fade-weak {
+  opacity: 0.9 !important;
 }
 
 .no-overflow {

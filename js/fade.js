@@ -1,3 +1,5 @@
 $(window).load(function() {
-  fadeAll(1);
+  setTimeout(function() {
+    fadeAll("fade", "do-fade", 100);
+  }, 0);
 });

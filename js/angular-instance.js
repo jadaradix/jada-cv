@@ -13,9 +13,16 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
     "blog": { rows: [] }
   };
 
-  $scope.currentTile = {
-    "content": ""
-  };
+  $scope.currentTile = null;
+
+  $scope.showTile = function(tile) {
+    if (tile.hasOwnProperty("link")) {
+      window.location = tile.link;
+      return;
+    } else {
+      $scope.currentTile = tile;
+    }
+  }
 
   easyAjax("api/tiles", function(data) {
     if (!data) return;
@@ -46,7 +53,12 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
         [data["blog-infolab21"], data["blog-christmas-2013"]]
       ];
 
+      setTimeout(function() {
+        fadeAll("fade", "do-fade-weak");
+      }, 0);
+
     });
+
   });
 
   $scope.getClasses = function(tile, mode) {
@@ -82,23 +94,15 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
 
 }]);
 
-jadaSite.directive('tileClick', function() {
-  return function(scope, element) {
-    if (scope.tile.static) return;
-    $scope.currentTile = tile;
-  };
-});
-
 jadaSite.directive('remoteBind', ['$compile', function ($compile) {
   return function(scope, element, attrs) {
-    var ensureCompileRunsOnce = scope.$watch(
+    scope.$watch(
       function(scope) {
         return scope.$eval(attrs.remoteBind);
       },
       function(value) {
         element.html(value);
         $compile(element.contents())(scope);
-        ensureCompileRunsOnce();
       }
     );
   };

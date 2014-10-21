@@ -6,6 +6,8 @@ $heading-size: 20px;
 
 body {
   color: black;
+  padding-top: $spacing;
+  padding-bottom: $spacing;
 }
 
 .pane {
