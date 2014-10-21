@@ -2,7 +2,6 @@ function fadeAll(fromClass, toClass, delay) {
   if (!delay) delay = 150;
   var i = 0;
   $("." + fromClass).each(function(index, element) {
-    console.log(element);
     setTimeout(function() {
       $(element).addClass(toClass);
       setTimeout(function() {

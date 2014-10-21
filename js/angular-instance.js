@@ -16,6 +16,7 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
   $scope.currentTile = null;
 
   $scope.showTile = function(tile) {
+    if (tile.static) return;
     if (tile.hasOwnProperty("link")) {
       window.location = tile.link;
       return;
