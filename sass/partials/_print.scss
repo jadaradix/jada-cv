@@ -6,7 +6,9 @@
 @media print {
 
   body {
+    padding: 0;
     background-color: white !important;
+    background-image: none;
   }
 
   .pane {
