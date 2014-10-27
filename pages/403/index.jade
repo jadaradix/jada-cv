@@ -1,4 +1,4 @@
-- var js = ["angular-instance"]
+- var js = ["jada", "angular-instance"]
 - var css = ["jada"]
 - var title = "403"
 - var tileGroup = null
@@ -7,9 +7,9 @@ html
   head
     include ../_head.jade
   body(ng-app="jadaSite")
-    #Wrapper(ng-controller="tilesController")
+    #Wrapper.wrapper(ng-controller="tilesController")
       aside.tile-column
-        - tileGroup = "40x-side"
+        - tileGroup = "side"
         include ../_tiles.jade
       main.tile-column
         - tileGroup = "403-main"

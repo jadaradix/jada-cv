@@ -1,4 +1,4 @@
 {
   "color": "white",
-  "customClasses": ["filler"]
+  "static": true
 }

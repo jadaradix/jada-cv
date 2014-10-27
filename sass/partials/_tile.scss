@@ -86,10 +86,6 @@
   width: 100%;
 }
 
-.tile.filler {
-  display: none;
-}
-
 .tile:not(.static) .tile-content {
   cursor: pointer;
 }
@@ -132,10 +128,6 @@
   .tile {
     float: left;
     width: 50%;
-  }
-
-  .tile.filler {
-    display: block;
   }
 
   .tile-group > div {

@@ -11,17 +11,29 @@ module.exports = function(grunt) {
           'mkdir -p build'
         ].join("&&"),
       },
-      main: {
+      generic: {
         command: [
           'mkdir -p build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles\\|pages"); do rm -rf build/$i && cp -rf $i build/$i; done',
+          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles\\|pages"); do rm -rf build/$i && cp -rf $i build/$i; done'
+        ].join("&&")
+      },
+      pages: {
+        command: [
           'cd pages',
           'for i in $(find * -type d -maxdepth 0); do $(npm bin)/jade $i/index.jade && mv $i/index.html ../build/$i.html; done',
-          'cd ..',
+          'cd ..'
+        ].join("&&")
+      },
+      sass: {
+        command: [
           'mkdir -p build/css',
           'cd sass',
           'for i in $(find *.scss -maxdepth 0); do sass $i:../build/css/$i.css --cache-location "cache" --style compressed ; done',
-          'cd ..',
+          'cd ..'
+        ].join("&&")
+      },
+      js: {
+        command: [
           'cp $(npm root)/angular/angular.min.js build/js/angular.min.js',
           'cp $(npm root)/angular/angular.min.js.map build/js/angular.min.js.map',
           'cp $(npm root)/jquery/dist/jquery.min.js build/js/jquery.min.js',
@@ -46,15 +58,29 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('default', [
-    'shell:main'
-  ]);
-
-  grunt.registerTask('tiles', [
-    'shell:tiles'
+    'shell:generic',
+    'shell:pages',
+    'shell:sass',
+    'shell:js'
   ]);
 
   grunt.registerTask('all', [
-    'shell:main',
+    'shell:generic',
+    'shell:pages',
+    'shell:sass',
+    'shell:js',
+    'shell:tiles'
+  ]);
+
+  grunt.registerTask('pages', [
+    'shell:pages'
+  ]);
+
+  grunt.registerTask('sass', [
+    'shell:sass'
+  ]);
+
+  grunt.registerTask('tiles', [
     'shell:tiles'
   ]);
 

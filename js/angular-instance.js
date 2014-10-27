@@ -33,10 +33,6 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
         [data["me"]],
         [data["stats"]]
       ];
-      $scope.tileGroups["40x-side"].rows = [
-        [data["me"]],
-        [data["error-40x-label"]]
-      ];
       $scope.tileGroups["403-main"].rows = [
         [data["error-403-content"], data["blank"]],
         [data["blank"], data["error-40x-image"]]
