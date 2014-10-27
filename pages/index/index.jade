@@ -5,17 +5,17 @@
 doctype html
 html
   head
-    include partials/_head.jade
+    include ../_head.jade
   body(ng-app="jadaSite")
     #Wrapper.wrapper(ng-controller="tilesController")
       aside.tile-column
         - tileGroup = "side"
-        include partials/_tiles.jade
+        include ../_tiles.jade
       main.tile-column
         - tileGroup = "main"
-        include partials/_tiles.jade
+        include ../_tiles.jade
         div.fade
           h1.
             Blog
         - tileGroup = "blog"
-        include partials/_tiles.jade
+        include ../_tiles.jade

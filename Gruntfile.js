@@ -14,11 +14,10 @@ module.exports = function(grunt) {
       main: {
         command: [
           'mkdir -p build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles"); do rm -rf build/$i && cp -rf $i build/$i; done',
-          'for i in $(find *.jade -type f -maxdepth 0); do cp $i build/$i ; done',
-          '$(npm bin)/jade $(find build/* -type f -maxdepth 0 | grep -viw "partials")',
-          'rm -rf build/partials',
-          'rm -rf build/*.jade',
+          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles\\|pages"); do rm -rf build/$i && cp -rf $i build/$i; done',
+          'cd pages',
+          'for i in $(find * -type d -maxdepth 0); do $(npm bin)/jade $i/index.jade && mv $i/index.html ../build/$i.html; done',
+          'cd ..',
           'mkdir -p build/css',
           'cd sass',
           'for i in $(find *.scss -maxdepth 0); do sass $i:../build/css/$i.css --cache-location "cache" --style compressed ; done',

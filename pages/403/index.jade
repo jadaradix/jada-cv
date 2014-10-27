@@ -5,12 +5,12 @@
 doctype html
 html
   head
-    include partials/_head.jade
+    include ../_head.jade
   body(ng-app="jadaSite")
     #Wrapper(ng-controller="tilesController")
       aside.tile-column
         - tileGroup = "40x-side"
-        include partials/_tiles.jade
+        include ../_tiles.jade
       main.tile-column
         - tileGroup = "403-main"
-        include partials/_tiles.jade
+        include ../_tiles.jade
