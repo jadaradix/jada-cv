@@ -83,6 +83,11 @@ section {
     padding-top: ($spacing / 1.5);
     h2 {
       margin-bottom: ($spacing / 1.5);
+      padding-top: $spacing / 3;
+      padding-bottom: $spacing / 3;
+      text-align: center;
+      border: 2px solid $grayer;
+      border-radius: $radius;
     }
     h2:not(:first-child) {
       margin-top: ($spacing / 4);
@@ -117,7 +122,7 @@ section {
               color: $turquoise;
             }
             span.fa:not(:first-child) {
-              margin-left: $spacing / 2;
+              margin-left: $spacing / 1.5;
             }
             > span:first-child:not(.fa) {
               display: block;
