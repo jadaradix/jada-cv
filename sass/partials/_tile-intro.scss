@@ -1,0 +1,12 @@
+#tile-intro {
+  .icons {
+    a {
+      font-size: 240%;
+      border-bottom: 0;
+      opacity: 0.75;
+    }
+    a:not(:first-child) {
+      margin-left: $spacing / 1.5;
+    }
+  }
+}

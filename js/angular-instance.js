@@ -46,8 +46,9 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
         [data["projects"], data["resume"]]
       ];
       $scope.tileGroups["blog"].rows = [
-        [data["blog-unix"], data["blog-datacentred"]],
-        [data["blog-infolab21"], data["blog-christmas-2013"]]
+        // [data["blog-unix"], data["blog-datacentred"]],
+        // [data["blog-infolab21"], data["blog-christmas-2013"]]
+        [data["blog-unix"], data["blog-christmas-2013"]]
       ];
 
       setTimeout(function() {
@@ -72,6 +73,7 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
       case "tileContent":
         if (tile.noOverflow) r.push("no-overflow");
         if (tile.noLinkFade) r.push("no-link-fade");
+        if (tile.central) r.push("central");
         r.push("bg-" + tile.color);
         break;
       case "innerDiv":

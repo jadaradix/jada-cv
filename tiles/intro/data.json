@@ -2,5 +2,6 @@
   "title": "Hi! I'm James, AKA ‘Jada’.",
   "color": "navy",
   "static": true,
-  "spread": true
+  "spread": true,
+  "central": true
 }
