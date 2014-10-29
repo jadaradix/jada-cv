@@ -2,5 +2,6 @@ node_modules/
 sass/cache/
 build/
 .DS_Store
+Thumbs.db
 partials/_base-href.jade
 vw.jade
