@@ -10,6 +10,10 @@ body {
   background-image: none;
 }
 
+a {
+  color: black;
+}
+
 .pane {
   margin-bottom: $spacing;
   border-radius: $radius;
@@ -112,7 +116,7 @@ section {
           list-style-type: none;
           li {
             line-height: 100%;
-            > span {
+            > * {
               @extend .lineHeight;
               display: inline-block;
               span:last-child {
