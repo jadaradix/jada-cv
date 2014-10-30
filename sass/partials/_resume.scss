@@ -5,7 +5,7 @@
     margin: 0 auto 0 auto;
     width: 192px;
     border: 4px solid white;
-    box-shadow: 0 0 4px $turquoise;
+    box-shadow: 0 0 6px $light-gray;
     border-radius: 50%;
   }
 }
@@ -14,5 +14,10 @@
   margin-bottom: $spacing * 2;
   > div > div > div ul.icons li > span {
     margin-bottom: $spacing / 4;
+  }
+  > div > div > div {
+    padding-right: 0;
+    width: 100%;
+    text-align: center;
   }
 }
