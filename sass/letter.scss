@@ -1,14 +1,13 @@
 @import "partials/_settings.scss";
 @import "partials/_colors.scss";
-$bg: $navy;
 
 @import "partials/_core.scss";
-@import "partials/_bar.scss";
 @import "partials/_print.scss";
 
 @import "partials/_fonts.scss";
 @import "partials/_font-awesome.scss";
 
 @import "partials/_document.scss";
-@import "partials/_letter.scss";
 @import "partials/_forms.scss";
+
+@import "partials/_letter.scss";

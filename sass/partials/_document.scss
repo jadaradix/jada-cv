@@ -6,8 +6,6 @@ $heading-size: 20px;
 
 body {
   color: black;
-  padding-top: $spacing;
-  padding-bottom: $spacing;
 }
 
 .pane {
@@ -33,6 +31,7 @@ h2 {
 
 h2.subtitle {
   margin-top: $spacing / 4;
+  margin-bottom: $spacing;
   line-height: $heading-size * 1.75;
   color: $grayest;
   text-align: center;
@@ -112,21 +111,18 @@ section {
             line-height: 100%;
             > span {
               @extend .lineHeight;
-            }
-            > span:not(.fa) {
-              vertical-align: 2px;
+              display: inline-block;
+              span:last-child {
+                margin-right: $spacing / 1.5;
+              }
             }
             span.fa {
               margin-right: $spacing / 4;
               font-size: 130%;
               color: $turquoise;
             }
-            span.fa:not(:first-child) {
-              margin-left: $spacing / 1.5;
-            }
-            > span:first-child:not(.fa) {
-              display: block;
-              text-align: justify;
+            span:not(.fa) {
+              vertical-align: 2px;
             }
           }
         }
@@ -167,6 +163,10 @@ hr {
 }
 
 @media (min-width: $r-width-1) {
+
+  body {
+    padding: $spacing;
+  }
 
   .pane {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -214,4 +214,29 @@ hr {
     }
   }
 
+}
+
+@media (min-width: $r-width-2) {
+
+}
+
+.bar {
+  padding: ($spacing / 4) ($spacing / 2) ($spacing / 4) ($spacing / 2);
+  p {
+    color: $fg;
+    text-align: center;
+    letter-spacing: 0.5px;
+    line-height: $spacing * 1.5;
+    > * {
+      display: inline-block;
+      opacity: 0.5;
+      text-transform: uppercase;
+      span.fa {
+        margin-right: $spacing / 3;
+      }
+    }
+    > *:not(:first-child) {
+      margin-left: $spacing * 1.5;
+    }
+  }
 }
