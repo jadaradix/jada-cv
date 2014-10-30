@@ -29,6 +29,7 @@ body {
 
 h2 {
   font-size: $heading-size;
+  opacity: 1;
 }
 
 h2.subtitle {
@@ -87,8 +88,8 @@ section {
       padding-top: $spacing / 3;
       padding-bottom: $spacing / 3;
       text-align: center;
-      border: 2px solid $grayer;
-      border-radius: $radius;
+      border-bottom: 2px solid $grayer;
+      color: $grayest;
     }
     h2:not(:first-child) {
       margin-top: ($spacing / 4);
