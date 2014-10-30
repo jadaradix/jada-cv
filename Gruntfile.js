@@ -14,7 +14,7 @@ module.exports = function(grunt) {
       generic: {
         command: [
           'mkdir -p build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles\\|pages"); do rm -rf build/$i && cp -rf $i build/$i; done'
+          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles\\|pages\\|js"); do rm -rf build/$i && cp -rf $i build/$i; done'
         ].join("&&")
       },
       pages: {
@@ -34,11 +34,15 @@ module.exports = function(grunt) {
       },
       js: {
         command: [
+          'rm -rf build/js && cp -rf js build/js',
           'cp $(npm root)/angular/angular.min.js build/js/angular.min.js',
           'cp $(npm root)/angular/angular.min.js.map build/js/angular.min.js.map',
           'cp $(npm root)/jquery/dist/jquery.min.js build/js/jquery.min.js',
           'cp $(npm root)/jquery/dist/jquery.min.map build/js/jquery.min.map',
-          'cp $(npm root)/async/lib/async.js build/js/async.js'
+          'cp $(npm root)/async/lib/async.js build/js/async.js',
+          'cp $(npm root)/moment/min/moment.min.js build/js/moment.min.js',
+          'cp $(npm root)/angular-moment/angular-moment.min.js build/js/angular-moment.min.js',
+          'cp $(npm root)/angular-moment/angular-moment.min.js.map build/js/angular-moment.min.js.map'
         ].join("&&")
       },
       tiles: {
@@ -78,6 +82,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('sass', [
     'shell:sass'
+  ]);
+
+  grunt.registerTask('js', [
+    'shell:js'
   ]);
 
   grunt.registerTask('tiles', [

@@ -1,0 +1,9 @@
+div(ng-controller="statsController")
+  img.bg(ng-show="nowPlayingSong.image", ng-src="{{nowPlayingSong.image}}")
+  ul.fa-ul
+    li(ng-repeat="song in songs")
+      span.fa-li.fa.fa-play(ng-show="song.nowPlaying")
+      span.fa-li.fa.fa-music(ng-hide="song.nowPlaying")
+      span {{song.name}} 
+      span.opaque(ng-show="song.nowPlaying") Now Playing
+      span.opaque(ng-hide="song.nowPlaying", am-time-ago="song.when")

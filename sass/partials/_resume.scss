@@ -11,6 +11,9 @@
 }
 
 #details {
+  a {
+    color: black;
+  }
   margin-bottom: $spacing * 2;
   > div > div > div ul.icons li > span {
     margin-bottom: $spacing / 4;

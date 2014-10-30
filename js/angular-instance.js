@@ -1,6 +1,7 @@
-var jadaSite = angular.module('jadaSite', []).config(function($sceProvider) {
+var jadaSite = angular.module('jadaSite', ['angularMoment']).config(function($sceProvider) {
   $sceProvider.enabled(false);
 });
+
 
 jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, $compile) {
 
@@ -92,6 +93,45 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
   }
 
 }]);
+
+
+jadaSite.controller('statsController', ['$scope', '$compile', function ($scope, $compile) {
+
+  $scope.songs = [
+    {
+      "name": "Defying Gravity - Original Cast Recording 2003",
+      "artist": "Kristin Chenoweth",
+      "album": "Wicked",
+      "url": "http:\/\/www.last.fm\/music\/Kristin+Chenoweth\/_\/Defying+Gravity+-+Original+Cast+Recording%2F2003",
+      "image": "http:\/\/userserve-ak.last.fm\/serve\/300x300\/45065045.png",
+      "when": moment.unix(1414692295),
+      "nowPlaying": true
+    },
+    {
+      "name": "Jump",
+      "artist": "Girls Aloud",
+      "album": "The Sound of Girls Aloud",
+      "url": "http:\/\/www.last.fm\/music\/Girls+Aloud\/_\/Jump",
+      "image": "http:\/\/userserve-ak.last.fm\/serve\/300x300\/83233187.png",
+      "when": moment.unix(1414678737)
+    },
+    {
+      "name": "Fight For This Love - Cahill Club Mix",
+      "artist": "Cheryl Cole",
+      "album": "The Ultimate Workout Collection: Keep On Running",
+      "url": "http:\/\/www.last.fm\/music\/Cheryl+Cole\/_\/Fight+For+This+Love+-+Cahill+Club+Mix",
+      "image": null,
+      "when": moment.unix(1414673981)
+    },
+
+  ];
+
+  $scope.nowPlayingSong = $.grep($scope.songs, function(song, index) {
+    return (song.nowPlaying);
+  })[0];
+
+}]);
+
 
 jadaSite.directive('remoteBind', ['$compile', function ($compile) {
   return function(scope, element, attrs) {
