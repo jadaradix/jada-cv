@@ -98,8 +98,8 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
 jadaSite.controller('statsController', ['$scope', '$compile', function ($scope, $compile) {
 
   $scope.songs = [];
-  $scope.commits = [];
   $scope.nowPlayingSong = null;
+  $scope.commits = [];
 
   $scope.hasSongs = function() {
     return ($scope.songs.length > 0);
@@ -117,10 +117,10 @@ jadaSite.controller('statsController', ['$scope', '$compile', function ($scope, 
           song["when"] = moment.unix(song["when"]);
           return song;
         }).splice(0, 3);
-        $scope.commits = data["commits"];
         $scope.nowPlayingSong = $.grep($scope.songs, function(song, index) {
           return (song.nowPlaying);
         })[0];
+        // $scope.commits = data["commits"];
         if (callback) callback();
       });
     });
