@@ -12,26 +12,15 @@ function fadeAll(fromClass, toClass, delay) {
   });
 }
 
-var ajaxRequestCount = 0;
-var ajaxRequestTotal = 1;
 function easyAjax(url, callback) {
-
-  function ajaxDone() {
-    ajaxRequestCount += 1;
-    if (ajaxRequestCount == ajaxRequestTotal) {
-      ajaxRequestCount = 0;
-    }
-  }
 
   function ajaxSuccess(data) {
     callback(data);
-    ajaxDone();
   }
 
   function ajaxFail(error) {
     console.log(error);
     callback(null);
-    ajaxDone();
   }
 
   var ajaxRequest = $.ajax(url);
