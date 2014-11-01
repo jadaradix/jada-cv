@@ -98,7 +98,6 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
 jadaSite.controller('statsController', ['$scope', '$compile', function ($scope, $compile) {
 
   $scope.songs = [];
-  $scope.nowPlayingSong = null;
   $scope.commits = [];
 
   $scope.hasSongs = function() {
@@ -117,10 +116,6 @@ jadaSite.controller('statsController', ['$scope', '$compile', function ($scope, 
           song["when"] = moment.unix(song["when"]);
           return song;
         }).splice(0, 3);
-        $scope.nowPlayingSong = $.grep($scope.songs, function(song, index) {
-          return (song.nowPlaying);
-        })[0];
-        // $scope.commits = data["commits"];
         if (callback) callback();
       });
     });
@@ -132,7 +127,7 @@ jadaSite.controller('statsController', ['$scope', '$compile', function ($scope, 
         $scope.refreshStats();
       }, 5000);
     });
-  }, 1000); // nginx will fix this... FML :(
+  }, 1000); // nginx will fix this
 
 }]);
 
