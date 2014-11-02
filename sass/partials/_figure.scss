@@ -1,0 +1,9 @@
+figure {
+  margin: ($spacing / 2) 0 ($spacing / 2) 0;
+  border-radius: $radius;
+  figcaption {
+    text-align: center;
+    padding-bottom: $spacing / 2;
+    opacity: 0.8;
+  }
+}

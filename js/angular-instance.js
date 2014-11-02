@@ -47,9 +47,8 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
         [data["projects"], data["resume"]]
       ];
       $scope.tileGroups["blog"].rows = [
-        // [data["blog-unix"], data["blog-datacentred"]],
-        // [data["blog-infolab21"], data["blog-christmas-2013"]]
-        [data["blog-unix"], data["blog-christmas-2013"]]
+        [data["blog-unix"], data["blog-datacentred"]],
+        [data["blog-infolab21"], data["blog-christmas-2013"]]
       ];
 
       setTimeout(function() {

@@ -12,6 +12,11 @@ div.tile-group(ng-show="groupHasTileRows('#{tileGroup}')")
 - if (tileGroup == "main")
   div.tile-group(ng-show="currentTile")
     .tile-row.spread-wide.flexible
-      .tile.spread.static
+      .tile.spread.static#tile-main
         .tile-content.bg-navy
+          h1(ng-show="currentTile.title") {{currentTile.title}}
+          ul.tags
+            li(ng-repeat="tag in currentTile.tags")
+              span.fa(ng-class="tag.class")
+              span {{tag.text}}
           div(remote-bind="currentTile.content")
