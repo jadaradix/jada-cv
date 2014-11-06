@@ -25,19 +25,15 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
       window.location = tile.link;
       return;
     } else {
+
       $scope.currentTile = tile;
 
       var body = $("body");
       var mainTile = $("#tile-main");
       var mainGroup = mainTile.parents(".tile-group");
       var mainTileContentDiv = $(".tile-content", mainTile);
-      var mainTileContent = $(".content", mainTileContentDiv);
-
+      var scrollTop = mainGroup.offset().top - parseInt(mainGroup.css("margin-top").substr(0, 2));
       mainTileContentDiv.css("opacity", "1");
-      var scrollTop = 
-        mainGroup.offset().top
-         - body.offset().top
-         - parseInt(mainGroup.css("margin-top").substr(0, 2));
       body.animate(
         { scrollTop: scrollTop },
         1000,

@@ -10,9 +10,9 @@ div.tile-group(ng-show="groupHasTileRows('#{tileGroup}')")
               span.fa(ng-class="tag.class")
               span {{tag.text}}
 - if (tileGroup == "main")
-  div.tile-group(ng-show="currentTile")
+  div.tile-group
     .tile-row.spread-wide.flexible
-      .tile.spread.static#tile-main
+      .tile.spread.static#tile-main(ng-show="currentTile")
         .tile-content.bg-navy
           h1(ng-show="currentTile.title") {{currentTile.title}}
           ul.tags
