@@ -9,8 +9,13 @@
 }
 
 #tile-stats-inner {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   align-items: flex-end;
+  display: -webkit-flex;
+  -webkit-align-items: flex-end;
   > div {
     height: auto;
   }

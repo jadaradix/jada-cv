@@ -39,6 +39,7 @@
     overflow: hidden;
     > :not(.no-padding) {
       padding: $spacing;
+      width: 100%; /* Stupid Safari */
     }
     img {
       width: 100%;
@@ -89,9 +90,15 @@
 }
 
 .tile-content.central {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
   * {
     text-align: center;
   }
