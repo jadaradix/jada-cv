@@ -26,6 +26,24 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
       return;
     } else {
       $scope.currentTile = tile;
+
+      var body = $("body");
+      var mainTile = $("#tile-main");
+      var mainGroup = mainTile.parents(".tile-group");
+      var mainTileContentDiv = $(".tile-content", mainTile);
+      var mainTileContent = $(".content", mainTileContentDiv);
+
+      mainTileContentDiv.css("opacity", "1");
+      var scrollTop = 
+        mainGroup.offset().top
+         - body.offset().top
+         - parseInt(mainGroup.css("margin-top").substr(0, 2));
+      body.animate(
+        { scrollTop: scrollTop },
+        1000,
+        "swing"
+      );
+
     }
   }
 
@@ -106,11 +124,8 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
 
   $scope.songs = [];
 
-  $scope.refreshSongs = function() {
+  $scope.refreshSongs = function(firstCallback) {
     var tile = $scope.tileGroups["side"].rows[1][0];
-    // $scope.$apply(function() {
-    //   $scope.songs = [];
-    // });
     setTimeout(function() {
       easyAjax("api/stats", function(data) {
         if (!data) return;
@@ -121,11 +136,9 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
           }).splice(0, 3);
         });
         setTimeout(function() {
-          fadeAll("fade", "do-fade-weak");
-        }, 0);
-        setTimeout(function() {
           setTimeout($scope.refreshSongs, 0);
         }, 5000 + 1100);
+        if (firstCallback) firstCallback();
       });
     }, 1100);
   }
@@ -134,7 +147,13 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
     return ($scope.songs.length > 0);
   }
 
-  setTimeout($scope.refreshSongs, 1000);
+  setTimeout(function() {
+    $scope.refreshSongs(function() {
+      setTimeout(function() {
+        fadeAll("fade", "do-fade-weak");
+      }, 0);
+    });
+  }, 1000);
 
 }]);
 
