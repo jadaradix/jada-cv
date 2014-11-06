@@ -5,6 +5,10 @@ var jadaSite = angular.module('jadaSite', ['angularMoment']).config(function($sc
 
 jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, $compile) {
 
+  //
+  // TILES
+  //
+
   $scope.tileGroups = {
     "side": { rows: [] },
     "40x-side": { rows: [] },
@@ -13,7 +17,6 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
     "main": { rows: [] },
     "blog": { rows: [] }
   };
-
   $scope.currentTile = null;
 
   $scope.showTile = function(tile) {
@@ -24,6 +27,44 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
     } else {
       $scope.currentTile = tile;
     }
+  }
+
+  $scope.getClasses = function(tile, mode) {
+    r = [];
+    switch(mode) {
+      case "tile":
+        if (tile.hidden) r.push("hidden");
+        if (tile.static) r.push("static");
+        if (tile.spread) r.push("spread");
+        if (tile.preserveBottomPadding) r.push("preserve-bottom-padding");
+        if (tile.customClasses) r = r.concat(tile.customClasses);
+        break;
+      case "tileContent":
+        if (tile.noOverflow) r.push("no-overflow");
+        if (tile.noLinkFade) r.push("no-link-fade");
+        if (tile.central) r.push("central");
+        if (tile.id == "stats") {
+          if ($scope.hasSongs()) {
+            r.push("fade");
+          }
+        } else {
+          r.push("fade");
+        }
+        r.push("bg-" + tile.color);
+        break;
+      case "innerDiv":
+        if (tile.noPadding) r.push("no-padding");
+        break;
+    }
+    return r;
+  }
+
+  $scope.groupHasTileRows = function(group) {
+    return $scope.tileGroups.hasOwnProperty(group);
+  };
+
+  $scope.groupGetTileRows = function(group) {
+    return $scope.tileGroups[group].rows;
   }
 
   easyAjax("api/tiles", function(data) {
@@ -51,82 +92,49 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
         [data["blog-infolab21"], data["blog-christmas-2013"]]
       ];
 
-      setTimeout(function() {
-        fadeAll("fade", "do-fade-weak");
-      }, 0);
-
     });
+
+    setTimeout(function() {
+      fadeAll("fade", "do-fade-weak");
+    }, 0);
 
   });
 
-  $scope.getClasses = function(tile, mode) {
-    r = [];
-    switch(mode) {
-      case "tile":
-        if (tile.hide) r.push("hide");
-        if (tile.static) r.push("static");
-        if (tile.spread) r.push("spread");
-        if (tile.hide) r.push("hide");
-        if (tile.preserveBottomPadding) r.push("preserve-bottom-padding");
-        if (tile.customClasses) r = r.concat(tile.customClasses);
-        break;
-      case "tileContent":
-        if (tile.noOverflow) r.push("no-overflow");
-        if (tile.noLinkFade) r.push("no-link-fade");
-        if (tile.central) r.push("central");
-        r.push("bg-" + tile.color);
-        break;
-      case "innerDiv":
-        if (tile.noPadding) r.push("no-padding");
-        break;
-    }
-    return r;
-  }
-
-  $scope.groupHasTileRows = function(group) {
-    return $scope.tileGroups.hasOwnProperty(group);
-  };
-
-  $scope.groupGetTileRows = function(group) {
-    return $scope.tileGroups[group].rows;
-  }
-
-}]);
-
-
-jadaSite.controller('statsController', ['$scope', '$compile', function ($scope, $compile) {
+  //
+  // SONGS
+  //
 
   $scope.songs = [];
-  $scope.commits = [];
+
+  $scope.refreshSongs = function() {
+    var tile = $scope.tileGroups["side"].rows[1][0];
+    // $scope.$apply(function() {
+    //   $scope.songs = [];
+    // });
+    setTimeout(function() {
+      easyAjax("api/stats", function(data) {
+        if (!data) return;
+        $scope.$apply(function() {
+          $scope.songs = $.map(data["songs"], function(song, index) {
+            song["when"] = moment.unix(song["when"]);
+            return song;
+          }).splice(0, 3);
+        });
+        setTimeout(function() {
+          fadeAll("fade", "do-fade-weak");
+        }, 0);
+        setTimeout(function() {
+          setTimeout($scope.refreshSongs, 0);
+        }, 5000 + 1100);
+      });
+    }, 1100);
+  }
 
   $scope.hasSongs = function() {
     return ($scope.songs.length > 0);
   }
 
-  $scope.hasCommits = function() {
-    return ($scope.commits.length > 0);
-  }
-
-  $scope.refreshStats = function(callback) {
-    easyAjax("api/stats", function(data) {
-      if (!data) return;
-      $scope.$apply(function() {
-        $scope.songs = $.map(data["songs"], function(song, index) {
-          song["when"] = moment.unix(song["when"]);
-          return song;
-        }).splice(0, 3);
-        if (callback) callback();
-      });
-    });
-  }
-
-  setTimeout(function() {
-    $scope.refreshStats(function() {
-      setInterval(function() {
-        $scope.refreshStats();
-      }, 5000);
-    });
-  }, 1000); // nginx will fix this
+  setTimeout($scope.refreshSongs, 1000);
 
 }]);
 

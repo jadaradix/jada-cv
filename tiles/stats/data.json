@@ -2,5 +2,6 @@
   "color": "navy",
   "static": true,
   "spread": true,
-  "preserveBottomPadding": true
+  "preserveBottomPadding": true,
+  "hidden": true
 }

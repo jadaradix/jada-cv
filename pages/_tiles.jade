@@ -1,7 +1,7 @@
 div.tile-group(ng-show="groupHasTileRows('#{tileGroup}')")
   .tile-row(ng-repeat="tileRow in groupGetTileRows('#{tileGroup}')")
     .tile(ng-repeat="tile in tileRow", ng-attr-id="tile-{{tile.id}}", ng-class="getClasses(tile, 'tile')")
-      .tile-content(ng-class="getClasses(tile, 'tileContent')", ng-click="showTile(tile)").fade
+      .tile-content(ng-class="getClasses(tile, 'tileContent')", ng-click="showTile(tile)")
         div(ng-class="getClasses(tile, 'innerDiv')")
           h1(ng-show="tile.title") {{tile.title}}
           div(remote-bind="tile.contentPreview")

@@ -58,6 +58,6 @@ $white: white;
 .ts-white { @include text-shadow($white); }
 
 $fg: $white;
-$bg: darken($navy, 12%);
+$bg: darken($navy, 7%);
 $grayer: lighten($light-gray, 15%);
 $grayest: lighten($light-gray, 5%);
