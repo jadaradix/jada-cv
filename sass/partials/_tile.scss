@@ -1,3 +1,7 @@
+.tile-column {
+  display: inline-block;
+}
+
 .tile-column:first-child {
   margin-bottom: $spacing;
 }
