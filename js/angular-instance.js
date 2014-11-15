@@ -57,16 +57,17 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
         if (tile.noOverflow) r.push("no-overflow");
         if (tile.noLinkFade) r.push("no-link-fade");
         if (tile.central) r.push("central");
-        r.push("fade");
-        r.push("bg-" + tile.color);
-        break;
-      case "innerDiv":
-        if (tile.noPadding) r.push("no-padding");
         if (tile.id == "stats") {
           if ($scope.hasSongs()) {
             r.push("fade");
           }
+        } else {
+          r.push("fade");
         }
+        r.push("bg-" + tile.color);
+        break;
+      case "innerDiv":
+        if (tile.noPadding) r.push("no-padding");
         break;
     }
     return r;

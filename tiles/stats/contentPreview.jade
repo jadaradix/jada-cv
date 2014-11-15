@@ -1,6 +1,6 @@
 img.bg(ng-show="songs[0].image", ng-src="{{songs[0].image}}")
-div(id="tile-stats-inner")
-  div(ng-show="hasSongs()")
+div(ng-show="hasSongs()", id="tile-stats-inner")
+  div
     ul.fa-ul
       li(ng-repeat="song in songs")
         span.fa-li.fa.fa-play(ng-show="song.nowPlaying")
