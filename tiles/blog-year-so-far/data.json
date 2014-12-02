@@ -1,13 +1,13 @@
 {
-  "title": "Dundee and the Nintendo DS",
-  "color": "light-gray",
+  "title": "The Year So Far",
+  "color": "red",
   "tags": {
     "when": {
       "text": 1417539591,
       "class": "fa-clock-o"
     },
     "where": {
-      "text": "Dundee, Scotland",
+      "text": "New York, USA",
       "class": "fa-map-marker"
     }
   }

@@ -1,13 +1,13 @@
 {
-  "title": "Dundee and the Nintendo DS",
-  "color": "light-gray",
+  "title": "Birthday - Best Practice PHP",
+  "color": "yellow",
   "tags": {
     "when": {
       "text": 1417539591,
       "class": "fa-clock-o"
     },
     "where": {
-      "text": "Dundee, Scotland",
+      "text": "London, UK",
       "class": "fa-map-marker"
     }
   }
