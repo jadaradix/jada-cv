@@ -4,16 +4,109 @@ p.
 p.
   PHP is (unfortunately) still popular, and be it good or not companies have invested talent, time and money in it as a language and ecosystem.
 
-p.
-  It's so easy to start writing PHP - it just works. This comes at peril of code quality, of course. PHP code so quickly ends up being a horrible mess of every bit of MVC all at the same time. For example, I wouldn't be surprised to find some lines which output HTML after an inline SQL query to get the data for them. Certainly PHPIPAM is a good (bad!) example of this. Messy.
+p
+  |It's so easy to start writing PHP - it just works - but at the peril of code quality. PHP code so quickly ends up being a horrible mess of every bit of MVC all at the same time. For example, I'm never surprised to find some lines which output HTML straight after an inline SQL query to get the data for them. This is the case even in larger scale PHP projects like PHPIPAM. Messy. Even worse, PHP is a security nightmare. 
+  a(href="http://sourceforge.net/projects/phpipam/?stars=2#reviews-n-ratings") This is a review for PHPIPAM
+  |  from SourceForge:
+
+blockquote
+  p.
+    For example, in functions-common.php, the get_menu_html() function reads in "subnetId" directly from the REQUEST, which gets passed to getAllParents(), which calls getSubnetDetailsById() in functions-network.php, which appears to drop the raw subnetId data right into a querystring executed at normal phpipam DB permissions. [...] The application also encourages IT admins to put "domain admin" credentials in clear text into the adLDAP.php file for optional AD/LDAP integration.
 
 p.
-  You'll always struggle to separate presentation and logic as concerns in PHP. But is it possible to write good PHP code that is actually quite elegant? I think so. You just have to be extremely strict with yourself. This is because PHP is just begging you to write bad procedural code all the time. You have to fight it.
+  This project is rated 4.9/5 on SourceForge and it's been downloaded 378 times this week. Panic!
 
 p.
-  (This is a general problem with old languages and ecosystems that undergo some change or improvement. A lot of bad example code is still left over in tutorials, forums and of course in production (the worst place). It's good that PHP changed and brought in the OO paradigm, but I would've forked the whole project since it's such a huge proposition.)
+  Anyway. You'll always struggle to separate presentation and logic as concerns in PHP. But is it possible to write good PHP code that is actually quite elegant? I think so. You just have to be extremely strict with yourself. This is because PHP is just begging you to write bad procedural code all the time. You have to fight it.
 
-p.
+p
+  |(This is a general problem with old languages and ecosystems that undergo some change or improvement. A lot of bad example code is still left over in tutorials, forums and of course in production (the worst place). It's good that PHP changed and brought in the OO paradigm, but I would've forked the whole project since it's such a huge proposition.)
+
+p
   |My &ldquo;best practices&rdquo; PHP code is called &ldquo;Birthday&rdquo; &mdash; it's available 
   a(href="https://github.com/jadaradix/birthday") right here on GitHub
   |.
+
+p.
+  I had two goals. The first is above - to write some really nice code. The second is to have some fun with birthday data itself (whether the code is nice or not!). I started with the proposition that there is a link between my romantic compatibility and the star sign of the person with whom that is. This isn't too hard to work out manually but automation is always a goal (and besides, a programmer would rather spend 8 hours writing code than doing 1 hour of calculation). This all started when I sent an unusually high number of birthday cards in the same month. I wanted to prove this wasn't a coincidence. This is what it looks like:
+
+figure
+  img(src="https://camo.githubusercontent.com/b4feae790ca734de457654f94f465dfcfa05a1ef/687474703a2f2f73382e706f7374696d672e6f72672f386c676f6b6a66676c2f62697274686461792e706e67", alt="Birthday on Windows")
+  figcaption.
+    A few lines of CSS go a long way as well
+
+p.
+  I tried to follow the SOLID principles, of which these are the key three:
+
+ul
+  li.
+    Single Responsibility (one class does one job)
+  li.
+    Liskov Substitution (you can switch a one job class with another)
+  li.
+    Open/Closed (allow class extension but not modification)
+
+p
+  |The highlights are as follows. First, we need to make a list of 
+  code Person
+  |  classes. According to the principles the 
+  code Person
+  |  class should do only one job and be easily substituted for another implementation. Not a problem. It takes an identifier (name) and birthday. The class has a static method for generating PHP 
+  code DateTime
+  |  objects from a year, month and day:
+
+code.block.
+  $people = array(
+    // new Person("James", Person::makeDate(1993, 11, 12)),
+    new Person("AL", Person::makeDate(1991, 6, 4)),
+    new Person("VW", Person::makeDate(1992, 5, 23)),
+    new Person("CM", Person::makeDate(1991, 3, 28)),
+    new Person("MW", Person::makeDate(1991, 4, 13)),
+    new Person("FS", Person::makeDate(1993, 6, 7)),
+    new Person("LA", Person::makeDate(1995, 8, 20))
+  );
+
+p
+  |The 
+  code Person
+  |  class has two methods which we care about (whether I like people older than I is another metric which I wanted to test):
+
+ul
+  li
+    code $person->getStarSign()
+  li
+    code $person->getAge()
+
+p
+  |In addition to that, let's introduce the 
+  code Table
+  |  class. This takes a hierarchical array of the data to present in some format (like HTML). We need to generate this array from the array of 
+  code Person
+  |  classes:
+
+code.block.
+  $peopleData = array();
+  foreach($people as $person) {
+    // Array push-esque
+    $peopleData[$person->name] = array(
+      "Person" => $person->name,
+      "Star Sign" => $person->getStarSign(),
+      "Age" => $person->getAge()
+    );
+  }
+
+p
+  |Finally we need to instantiate the 
+  code Table
+  |  class with the data and get it to output HTML:
+
+code.block.
+  // Make a Table class with the key based array
+  $peopleTable = new Table($peopleData);
+  // The Table class generates markup, so show it
+  echo $peopleTable->output("html", "     ");
+
+p
+  |Check out the 
+  a(href="https://github.com/jadaradix/birthday") individual files on GitHub
+  |  to see the nice OO design behind these classes &mdash; and drop me an e-mail if you think star sign statistics are a load of hot air.

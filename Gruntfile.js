@@ -76,6 +76,10 @@ module.exports = function(grunt) {
     'shell:tiles'
   ]);
 
+  grunt.registerTask('generic', [
+    'shell:generic'
+  ]);
+
   grunt.registerTask('pages', [
     'shell:pages'
   ]);

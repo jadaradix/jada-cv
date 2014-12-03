@@ -1,4 +1,4 @@
-.message {
+.message, blockquote {
   margin-bottom: $spacing !important;
   padding: $spacing;
   line-height: $spacing;
@@ -14,14 +14,14 @@
   }
 }
 
-.message.good {
+.message.good, blockquote.good {
   background-color: $green;
 }
 
-.message.bad {
+.message.bad, blockquote.good {
   background-color: $red;
 }
 
-.message.info {
+.message.info, blockquote.good {
   background-color: $blue;
 }
