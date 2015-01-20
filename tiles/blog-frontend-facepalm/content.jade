@@ -20,10 +20,13 @@ p
   a(href="https://github.com/kof/node-xpkg/blob/master/bin/xpkg.js") someone has even come up with an "npm hack"
   |  - an abstraction above these JSON files - a JSON file to generate JSON files for each dependency manager! This is crazy (and also lame).
 
-p
-  |It's lame because you can no longer use npm or Bower CLI commands - these will update the generated files but not the x- file from which they originate. Also, the x- file just isn't a good solution. It's like putting a plaster on a broken elbow - sure, it looks alright, but you haven't really solved the actual problem - it doesn't feel alright. A further problem is also that whilst super popular libraries like jQuery and underscore are present by running just:
-  code.block bower install jquery
-  |  lesser known libraries just aren't as easy to get. This problem gets worse and worse the more dependency managers arrive on the scene. Already the readme for async lists lines for bower, component, jam, spm, and you can get it through npm like I do too. Wow.
+p.
+  It's lame because you can no longer use npm or Bower CLI commands - these will update the generated files but not the x- file from which they originate. Also, the x- file just isn't a good solution. It's like putting a plaster on a broken elbow - sure, it looks alright, but you haven't really solved the actual problem - it doesn't feel alright. A further problem is also that whilst super popular libraries like jQuery and underscore are present by running just:
+
+code.block bower install jquery
+
+p.
+  lesser known libraries just aren't as easy to get. This problem gets worse and worse the more dependency managers arrive on the scene. Already the readme for async lists lines for bower, component, jam, spm, and you can get it through npm like I do too. Wow.
 
 p.
   However, I decided I would stick with Bower and not give up (although introducing more complexity and tools doesn't always fix the problem - it probably makes it worse).
