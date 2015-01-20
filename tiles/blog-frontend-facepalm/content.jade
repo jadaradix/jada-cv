@@ -1,0 +1,60 @@
+p.
+  This afternoon I started a new web project. With every new web project I like to improve my build process and try out new (better) technology. In any case, I got to the point of needing jQuery and a few other libraries in my frontend so I Googled "jquery google" intending to find a line to fetch jQuery from Google Hosted Libraries. And so this afternoon's cluster fuck of a journey began.
+
+p
+  |I want to use the latest version of jQuery, but I don't want to be locked to this specific version when I choose it (I know this might break compatibility in the future, but I don't use jQuery for much more than binding and iterating). Basically, I want a line to include the "latest version of jQuery, no matter what". Unfortunately Google demands that I provide a version number in the URL, and 
+  a(href="http://blog.jquery.com/2014/07/03/dont-use-jquery-latest-js/") I accept that I should
+  |. However, I don't want to provide the version number in the frontend markup - that would be nasty! I would have to change the markup itself to get a newer version (by manually finding the new version number on-line), when other projects can be upgraded in a second on the CLI. So, I am going to have to get jQuery with a dependency manager.
+
+p
+  |This is no problem. I've got jQuery using npm before and used Grunt to copy it from node_modules to somewhere I'd like to serve it from. This is fair enough; it works, but 
+  a(href="http://bower.io") Bower
+  |  came to mind - I've never tried it. I thought, "let's use Bower to manage frontend dependencies this time".
+
+p
+  |It turns out using Bower is a bit of a step backwards if you are already using npm. Bower wants you to use another JSON file (
+  a(href="https://github.com/bower/bower.json-spec") bower.json
+  |) to store dependencies (not 
+  a(href="https://docs.npmjs.com/files/package.json") package.json
+  |), which is okay(ish), only this JSON file must also be used to store basically the same information as package.json as well. So, I would be specifying a name, description, licence and so on in two almost identical files! This is lame side effect of using two package managers. Just as I am about to remove Bower from my work flow, hope is not lost. It seems I'm not the only one frowning at this. In fact, 
+  a(href="https://github.com/kof/node-xpkg/blob/master/bin/xpkg.js") someone has even come up with an "npm hack"
+  |  - an abstraction above these JSON files - a JSON file to generate JSON files for each dependency manager! This is crazy (and also lame).
+
+p
+  |It's lame because you can no longer use npm or Bower CLI commands - these will update the generated files but not the x- file from which they originate. Also, the x- file just isn't a good solution. It's like putting a plaster on a broken elbow - sure, it looks alright, but you haven't really solved the actual problem - it doesn't feel alright. A further problem is also that whilst super popular libraries like jQuery and underscore are present by running just:
+  code.block bower install jquery
+  |  lesser known libraries just aren't as easy to get. This problem gets worse and worse the more dependency managers arrive on the scene. Already the readme for async lists lines for bower, component, jam, spm, and you can get it through npm like I do too. Wow.
+
+p.
+  However, I decided I would stick with Bower and not give up (although introducing more complexity and tools doesn't always fix the problem - it probably makes it worse).
+
+h2 My Solution
+
+p.
+  I have a bower.json file with the absolute minimum metadata (package.json has the rest):
+
+code.block.
+  {
+    "name": "(...)",
+    "private": true,
+    "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components"
+    ],
+    "dependencies": {
+      "jquery": "~2.1.3"
+    }
+  }
+
+p.
+  I use Grunt to copy files from bower_components to a directory I'd like to serve them from:
+
+code.block.
+  command: [
+    'cp bower_components/jquery/dist/jquery.min.js js/bower/jquery.min.js',
+    'cp bower_components/jquery/dist/jquery.min.map js/bower/jquery.min.map',
+  ].join("&&")
+
+p.
+  And it works pretty well.

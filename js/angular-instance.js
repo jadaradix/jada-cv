@@ -102,7 +102,8 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
         [data["projects"], data["resume"]]
       ];
       $scope.tileGroups["blog"].rows = [
-        [data["blog-stack-smashing-exploits"], data["blog-new-year-2014"]],
+        // [data["blog-stack-smashing-exploits"], data["blog-new-year-2014"]],
+        [data["blog-frontend-facepalm"], data["blog-new-year-2014"]],
         [data["blog-birthday"], data["blog-repcoin"]],
         [data["blog-unix"], data["blog-datacentred"]],
         [data["blog-infolab21"], data["blog-christmas-2013"]]

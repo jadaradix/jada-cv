@@ -2,7 +2,7 @@ code {
   @extend .fg-green;
   span {
     display: block;
-    white-space: pre;
+    white-space: pre-wrap;
   }
   span.output {
     @extend .fg-blue;
