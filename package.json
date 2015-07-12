@@ -1,10 +1,22 @@
 {
   "name": "jadaSite",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "description": "My AngularJS API driven node.js website. Pretty, but 2014-tech (too much was learnt since). You can see my awful taste in music!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jadaradix/jadaSite.git"
   },
+  "keywords": [],
+  "author": "James Garner <j@jada.io> (http://jada.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jadaradix/jadaSite/issues"
+  },
+  "homepage": "https://github.com/jadaradix/jadaSite",
   "dependencies": {
     "angular": "^1.3.0",
     "angular-moment": "^0.8.2",
