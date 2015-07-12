@@ -53,7 +53,7 @@ module.exports = function(grunt) {
         ].join("&&")
       },
       basehref: {
-        command: "echo '- var baseHref = \"http://jada.io/\";' > partials/_base-href.jade"
+        command: "echo '- var baseHref = \"http://jada.io:1024/\";' > pages/_base-href.jade"
       }
     }
 
