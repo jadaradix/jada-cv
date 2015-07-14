@@ -19,8 +19,9 @@ module.exports = function(grunt) {
       },
       pages: {
         command: [
+          'mkdir -p build/pages',
           'cd pages',
-          'for i in $(find * -type d -maxdepth 0); do $(npm bin)/jade $i/index.jade && mv $i/index.html ../build/$i.html; done',
+          'for i in $(find * -type d -maxdepth 0); do $(npm bin)/jade $i/index.jade && mv $i/index.html ../build/pages/$i.html; done',
           'cd ..'
         ].join("&&")
       },
@@ -34,15 +35,17 @@ module.exports = function(grunt) {
       },
       js: {
         command: [
-          'rm -rf build/js && cp -rf js build/js',
-          'cp $(npm root)/angular/angular.min.js build/js/angular.min.js',
-          'cp $(npm root)/angular/angular.min.js.map build/js/angular.min.js.map',
-          'cp $(npm root)/jquery/dist/jquery.min.js build/js/jquery.min.js',
-          'cp $(npm root)/jquery/dist/jquery.min.map build/js/jquery.min.map',
-          'cp $(npm root)/async/lib/async.js build/js/async.js',
-          'cp $(npm root)/moment/min/moment.min.js build/js/moment.min.js',
-          'cp $(npm root)/angular-moment/angular-moment.min.js build/js/angular-moment.min.js',
-          'cp $(npm root)/angular-moment/angular-moment.min.js.map build/js/angular-moment.min.js.map'
+          'rm -rf build/js && mkdir -p build/js/ext && cp -rf js build',
+          'cp index.js build',
+          'mkdir -p build/node_modules && cp -rf node_modules/yans build/node_modules',
+          'cp $(npm root)/angular/angular.min.js build/js/ext/angular.min.js',
+          'cp $(npm root)/angular/angular.min.js.map build/js/ext/angular.min.js.map',
+          'cp $(npm root)/jquery/dist/jquery.min.js build/js/ext/jquery.min.js',
+          'cp $(npm root)/jquery/dist/jquery.min.map build/js/ext/jquery.min.map',
+          'cp $(npm root)/async/lib/async.js build/js/ext/async.js',
+          'cp $(npm root)/moment/min/moment.min.js build/js/ext/moment.min.js',
+          'cp $(npm root)/angular-moment/angular-moment.min.js build/js/ext/angular-moment.min.js',
+          'cp $(npm root)/angular-moment/angular-moment.min.js.map build/js/ext/angular-moment.min.js.map'
         ].join("&&")
       },
       tiles: {
