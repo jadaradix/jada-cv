@@ -86,8 +86,8 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
     $scope.$apply(function() {
 
       $scope.tileGroups["side"].rows = [
-        [data["me"]],
-        [data["stats"]]
+        [data["me"]]
+        // [data["stats"]]
       ];
       $scope.tileGroups["403-main"].rows = [
         [data["error-403-content"], data["blank"]],
@@ -124,34 +124,40 @@ jadaSite.controller('tilesController', ['$scope', '$compile', function ($scope, 
   $scope.songs = [];
 
   $scope.refreshSongs = function(firstCallback) {
-    var tile = $scope.tileGroups["side"].rows[1][0];
-    setTimeout(function() {
-      easyAjax("api/stats", function(data) {
-        if (!data) return;
-        $scope.$apply(function() {
-          $scope.songs = $.map(data["songs"], function(song, index) {
-            song["when"] = moment.unix(song["when"]);
-            return song;
-          }).splice(0, 3);
-        });
-        setTimeout(function() {
-          setTimeout($scope.refreshSongs, 0);
-        }, 5000 + 1100);
-        if (firstCallback) firstCallback();
-      });
-    }, 1100);
+    // var tile = $scope.tileGroups["side"].rows[1][0];
+    // setTimeout(function() {
+    //   easyAjax("api/stats", function(data) {
+    //     if (!data) return;
+    //     $scope.$apply(function() {
+    //       $scope.songs = $.map(data["songs"], function(song, index) {
+    //         song["when"] = moment.unix(song["when"]);
+    //         return song;
+    //       }).splice(0, 3);
+    //     });
+    //     setTimeout(function() {
+    //       // setTimeout($scope.refreshSongs, 0);
+    //     }, 5000 + 1100);
+    //     if (firstCallback) firstCallback();
+    //   });
+    // }, 1100);
   }
 
   $scope.hasSongs = function() {
     return ($scope.songs.length > 0);
   }
 
+  // setTimeout(function() {
+  //   $scope.refreshSongs(function() {
+  //     setTimeout(function() {
+  //       fadeAll("fade", "do-fade-weak");
+  //     }, 0);
+  //   });
+  // }, 1000);
+
   setTimeout(function() {
-    $scope.refreshSongs(function() {
-      setTimeout(function() {
-        fadeAll("fade", "do-fade-weak");
-      }, 0);
-    });
+    setTimeout(function() {
+      fadeAll("fade", "do-fade-weak");
+    }, 0);
   }, 1000);
 
 }]);

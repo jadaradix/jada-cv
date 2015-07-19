@@ -23,6 +23,10 @@ server.app.get("/api/tiles", function(req, res) {
   res.sendFile(__dirname + "/tiles.json");
 });
 
+server.app.get("/api/songs", function(req, res) {
+  res.sendFile([]);
+});
+
 server.app.get("/*/", function(req, res) {
   var urlBit = req.params[0];
   if (urlBit.length == 0) urlBit = "index";

@@ -68,13 +68,6 @@ module.exports = function(grunt) {
     'shell:generic',
     'shell:pages',
     'shell:sass',
-    'shell:js'
-  ]);
-
-  grunt.registerTask('all', [
-    'shell:generic',
-    'shell:pages',
-    'shell:sass',
     'shell:js',
     'shell:tiles'
   ]);
