@@ -1,38 +1,38 @@
-var tilesPath = "tiles";
-var outputPath = "build/tiles.json"
+var async = require("async");
+var _s = require("underscore.string");
+var moment = require("moment");
+var fs = require("fs");
+var path = require("path");
 
-var async = require('async');
-var fs = require('fs');
-var _ = require('underscore')._;
-_.str = require('underscore.string');
+var tilesPath = "tiles";
+var outputPath = path.join("build", "tiles.json");
 
 async.waterfall([
 
   //Collect Tile Directories
-  function(next) {
-    var tileDirectories = _.filter(fs.readdirSync(tilesPath), function(tileDirectory) {
-      return (tileDirectory != ".DS_Store");
+  function (next) {
+    var tileDirectories = fs.readdirSync(tilesPath).filter(function (tileDirectory) {
+      return (tileDirectory !== ".DS_Store");
     });
-    next(null, tileDirectories);
+    return next(null, tileDirectories);
   },
 
   //Collect Tiles from Directories
-  function(tileDirectories, next) {
-    var moment = require('moment');
+  function (tileDirectories, next) {
     var tiles = {};
-    _.each(tileDirectories, function(tileDirectory) {
+    tileDirectories.forEach(function(tileDirectory) {
       var path = tilesPath + "/" + tileDirectory;
       var data = JSON.parse(fs.readFileSync(path + "/data.json"));
       var contentFileExtension = ".html";
-      var contentFiles = _.filter(fs.readdirSync(path), function(contentFile) {
-        return (_.str.endsWith(contentFile, contentFileExtension));
+      var contentFiles = fs.readdirSync(path).filter(function (contentFile) {
+        return (_s.endsWith(contentFile, contentFileExtension));
       });
       data.id = tileDirectory;
       data.contentPreview = "";
       if (data["tags"] && data["tags"]["when"]) {
         data.tags.when.text = moment.unix(data.tags.when.text).format("MMM D[,] ‘YY");
       }
-      _.each(contentFiles, function(contentFile) {
+      contentFiles.forEach(function (contentFile) {
         var contentFileKey = contentFile.substr(0, contentFile.length - (contentFileExtension).length);
         data[contentFileKey] = fs.readFileSync(path + "/" + contentFile).toString();
       });
@@ -42,7 +42,7 @@ async.waterfall([
   },
 
   //Write Tiles to Output Path
-  function(tiles, next) {
+  function (tiles, next) {
     fs.writeFileSync(outputPath, JSON.stringify(tiles));
   }
 
