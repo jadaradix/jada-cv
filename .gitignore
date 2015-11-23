@@ -1,6 +1,5 @@
-node_modules/
-sass/cache/
-build/
 .DS_Store
 Thumbs.db
-pages/_base-href.jade
+node_modules
+sass/cache
+build
