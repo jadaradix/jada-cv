@@ -1,3 +1,5 @@
+"use strict";
+
 var async = require("async");
 var _s = require("underscore.string");
 var moment = require("moment");
@@ -29,7 +31,7 @@ async.waterfall([
       });
       data.id = tileDirectory;
       data.contentPreview = "";
-      if (data["tags"] && data["tags"]["when"]) {
+      if (data.tags && data.tags.when) {
         data.tags.when.text = moment.unix(data.tags.when.text).format("MMM D[,] ‘YY");
       }
       contentFiles.forEach(function (contentFile) {
@@ -42,7 +44,7 @@ async.waterfall([
   },
 
   //Write Tiles to Output Path
-  function (tiles, next) {
+  function (tiles) {
     fs.writeFileSync(outputPath, JSON.stringify(tiles));
   }
 
