@@ -54,9 +54,6 @@ module.exports = function(grunt) {
           'node tiles.js',
           'rm -rf tiles/*/*.html'
         ].join("&&")
-      },
-      basehref: {
-        command: "echo '- var baseHref = \"http://jada.io:1024/\";' > pages/_base-href.jade"
       }
     }
 
@@ -70,6 +67,10 @@ module.exports = function(grunt) {
     'shell:sass',
     'shell:js',
     'shell:tiles'
+  ]);
+
+  grunt.registerTask('clean', [
+    'shell:clean'
   ]);
 
   grunt.registerTask('generic', [
@@ -90,14 +91,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('tiles', [
     'shell:tiles'
-  ]);
-
-  grunt.registerTask('clean', [
-    'shell:clean'
-  ]);
-
-  grunt.registerTask('basehref', [
-    'shell:basehref'
   ]);
 
 };
