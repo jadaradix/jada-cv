@@ -1,21 +1,19 @@
-- var js = ["angular-instance", "jada"];
-- var css = ["jada"];
-- var title = "James Garner";
-- var tileGroup = null;
+- var js = ["angular-instance", "jada", "fade"];
+- var css = ["resume"];
+- var title = "Résumé - James Garner";
 doctype html
 html
   head
     include ../_head.jade
-  body(ng-app="jadaSite")
-    #Wrapper.wrapper(ng-controller="tilesController")
-      aside.tile-column
-        - tileGroup = "side"
-        include ../_tiles.jade
-      main.tile-column
-        - tileGroup = "main"
-        include ../_tiles.jade
-        div.fade
-          h1.
-            Blog
-        - tileGroup = "blog"
-        include ../_tiles.jade
+  body
+    div.wrapper.pane.hide
+      include _send-message.jade
+    #Wrapper.wrapper.pane
+      include _avatar.jade
+      include _intro.jade
+      include _details.jade
+      include _employment-history.jade
+      include _experience-skills.jade
+      include _education.jade
+      include _professional-development.jade
+    include _bar.jade

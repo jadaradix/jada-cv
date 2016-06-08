@@ -14,7 +14,7 @@ module.exports = function(grunt) {
       generic: {
         command: [
           'mkdir -p build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|tiles\\|pages\\|js"); do rm -rf build/$i && cp -rf $i build/$i; done'
+          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|pages\\|js"); do rm -rf build/$i && cp -rf $i build/$i; done'
         ].join("&&")
       },
       pages: {
@@ -38,21 +38,9 @@ module.exports = function(grunt) {
           'rm -rf build/js && mkdir -p build/js/ext && cp -rf js build',
           'cp index.js build',
           'mkdir -p build/node_modules && cp -rf node_modules/yans build/node_modules',
-          'cp $(npm root)/angular/angular.min.js build/js/ext/angular.min.js',
-          'cp $(npm root)/angular/angular.min.js.map build/js/ext/angular.min.js.map',
           'cp $(npm root)/jquery/dist/jquery.min.js build/js/ext/jquery.min.js',
           'cp $(npm root)/jquery/dist/jquery.min.map build/js/ext/jquery.min.map',
-          'cp $(npm root)/async/lib/async.js build/js/ext/async.js',
-          'cp $(npm root)/moment/min/moment.min.js build/js/ext/moment.min.js',
-          'cp $(npm root)/angular-moment/angular-moment.min.js build/js/ext/angular-moment.min.js',
-          'cp $(npm root)/angular-moment/angular-moment.min.js.map build/js/ext/angular-moment.min.js.map'
-        ].join("&&")
-      },
-      tiles: {
-        command: [
-          'for i in $(find tiles/* -type d -maxdepth 0); do echo "Tile: $i"; cd $i; $(npm bin)/jade *.jade; cd ../..; done',
-          'node tiles.js',
-          'rm -rf tiles/*/*.html'
+          'cp $(npm root)/async/dist/async.min.js build/js/ext/async.js',
         ].join("&&")
       }
     }
@@ -66,7 +54,6 @@ module.exports = function(grunt) {
     'shell:pages',
     'shell:sass',
     'shell:js',
-    'shell:tiles'
   ]);
 
   grunt.registerTask('clean', [
@@ -87,10 +74,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('js', [
     'shell:js'
-  ]);
-
-  grunt.registerTask('tiles', [
-    'shell:tiles'
   ]);
 
 };
