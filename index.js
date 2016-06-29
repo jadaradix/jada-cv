@@ -24,7 +24,7 @@ server.app.get("/*/", function (req, res) {
   if (urlBit.length == 0) urlBit = "index";
   if (urlBit[urlBit.length - 1] === "/") urlBit = urlBit.substring(0, urlBit.length - 1);
   fs.readFile(__dirname + "/pages/" + urlBit + ".html", function (err, data) {
-    if (err) urlBit = "404";
+    if (err) urlBit = "index";
     return res.sendFile(__dirname + "/pages/" + urlBit + ".html");
   });
 });
