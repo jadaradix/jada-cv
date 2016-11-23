@@ -96,16 +96,34 @@ section {
     > div {
       margin-top: $spacing / 4;
       > aside {
-        span {
+        > span {
           font-family: $font-heading;
           font-size: 100%;
           color: $grayest;
           text-transform: uppercase;
           @extend .lineHeight;
+          display: block;
+        }
+        // span.stars, span.stars span {
+        //   display: inline !important;
+        // }
+        span.look-at-me {
+          color: black;
         }
       }
       > div {
         padding-top: $spacing / 4;
+        ul {
+          li {
+            text-align: justify;
+          }
+        }
+        ul:not(.icons) {
+          li {
+            margin-left: 30px;
+            line-height: 110%;
+          }
+        }
         ul.icons {
           margin-left: 0;
           list-style-type: none;
