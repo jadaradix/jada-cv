@@ -5,12 +5,6 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     shell: {
-      clean: {
-        command: [
-          'rm -rf build',
-          'mkdir -p build'
-        ].join("&&"),
-      },
       generic: {
         command: [
           'mkdir -p build',
@@ -44,10 +38,6 @@ module.exports = function(grunt) {
     'shell:generic',
     'shell:pages',
     'shell:sass',
-  ]);
-
-  grunt.registerTask('clean', [
-    'shell:clean'
   ]);
 
   grunt.registerTask('generic', [
