@@ -1,10 +1,12 @@
-- var js = [];
-- var css = ["resume"];
-- var title = "James Garner";
 doctype html
 html
   head
-    include ../_head.jade
+    base(href="http://jada.io/")
+    link(rel='stylesheet', href='css/resume.scss.css')
+    title James Garner
+    meta(charset='UTF-8')
+    meta(name='robots', content='INDEX, FOLLOW')
+    meta(name='viewport',content='width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
   body
     #Wrapper.wrapper.pane
       include _avatar.jade
