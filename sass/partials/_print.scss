@@ -1,6 +1,6 @@
 @page {
   size: auto;
-  margin: 32mm 18mm 18mm 18mm;
+  margin: 18mm 18mm 18mm 18mm;
 }
 
 @media print {
@@ -11,6 +11,10 @@
     background-image: none;
   }
 
+  #Wrapper {
+    padding: 0;
+  }
+
   .pane {
     border-radius: 0 !important;
     box-shadow: none !important;
@@ -18,6 +22,10 @@
 
   * {
     -webkit-print-color-adjust: exact;
+  }
+
+  section.margin-top {
+    margin-top: 64px;
   }
 
   .no-print {

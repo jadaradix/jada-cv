@@ -11,13 +11,26 @@
 }
 
 #details {
+  li {
+    float: left;
+  }
+  li.go-right {
+    float: right;
+  }
   a {
     color: black;
   }
-  ul li {
-    text-align: center !important; // no fucks given today
+  .name {
+    margin-top: 2px;
+    font-family: $font-heading;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 140%;
   }
   margin-bottom: $spacing * 2;
+  > div {
+    padding-top: 0;
+  }
   > div > div > div ul.icons li > span {
     margin-bottom: $spacing / 4;
   }
