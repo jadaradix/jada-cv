@@ -119,16 +119,11 @@ ul:after {
   @extend .clear-fix;
 }
 
-li.link {
-  margin-left: 0 !important;
-  list-style-type: none;
-  margin-top: 2px;
-  margin-bottom: 4px;
-}
-
-li.link a, a.link {
+a.link {
   font-weight: bold;
   color: $turquoise;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 a {
