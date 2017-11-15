@@ -1,9 +1,10 @@
 {
   "name": "jadaSite",
   "version": "1.1.0",
-  "description": "My website, dragged into 2016 by deleting code.",
+  "description": "My website, dragged into 2017 by deleting code.",
   "main": "index.js",
   "scripts": {
+    "build": "grunt",
     "start": "cd build; node index.js"
   },
   "repository": {
