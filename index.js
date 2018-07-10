@@ -2,7 +2,7 @@ var fs = require("fs");
 var yans = require("yans");
 
 var server = new yans({
-  "port": 1024,
+  "port": 1025,
   "directory": __dirname,
   "viewPath": "build",
   "logging": true,
