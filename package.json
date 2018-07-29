@@ -21,7 +21,6 @@
   "dependencies": {
     "grunt": "^1.0.1",
     "grunt-shell": "^1.3.0",
-    "jade": "^1.11.0",
-    "yans": "^4.7.0"
+    "pug-cli": "^1.0.0-alpha6"
   }
 }

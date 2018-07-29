@@ -15,7 +15,7 @@ module.exports = grunt => {
         command: [
           'mkdir -p build',
           'cd content',
-          '$(npm bin)/jade index.jade && mv index.html ../build/index.html',
+          '$(npm bin)/pug index.jade && mv index.html ../build/index.html',
           'cd ..'
         ].join("&&")
       },
