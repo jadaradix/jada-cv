@@ -1,7 +1,7 @@
 {
   "name": "jadaSite",
-  "version": "1.1.0",
-  "description": "My website, dragged into 2017 by deleting code.",
+  "version": "2.0.0",
+  "description": "My personal website.",
   "main": "index.js",
   "scripts": {
     "build": "grunt",
@@ -12,7 +12,7 @@
     "url": "https://github.com/jadaradix/jadaSite.git"
   },
   "keywords": [],
-  "author": "James Garner <j@jada.io> (http://jada.io/)",
+  "author": "James Garner <j@jada.io>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jadaradix/jadaSite/issues"

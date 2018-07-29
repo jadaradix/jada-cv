@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = grunt => {
 
   grunt.initConfig({
 
@@ -8,15 +8,14 @@ module.exports = function(grunt) {
       generic: {
         command: [
           'mkdir -p build',
-          'for i in $(find * -type d -maxdepth 0 | grep -viw "node_modules\\|build\\|sass\\|pages"); do rm -rf build/$i && cp -rf $i build/$i; done',
-          'cp index.js build/index.js'
+          'cp -r static build/static'
         ].join("&&")
       },
-      pages: {
+      content: {
         command: [
-          'mkdir -p build/pages',
-          'cd pages',
-          'for i in $(find * -type d -maxdepth 0); do $(npm bin)/jade $i/index.jade && mv $i/index.html ../build/pages/$i.html; done',
+          'mkdir -p build',
+          'cd content',
+          '$(npm bin)/jade index.jade && mv index.html ../build/index.html',
           'cd ..'
         ].join("&&")
       },
@@ -36,16 +35,12 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'shell:generic',
-    'shell:pages',
+    'shell:content',
     'shell:sass',
   ]);
 
-  grunt.registerTask('generic', [
-    'shell:generic'
-  ]);
-
-  grunt.registerTask('pages', [
-    'shell:pages'
+  grunt.registerTask('content', [
+    'shell:content'
   ]);
 
   grunt.registerTask('sass', [

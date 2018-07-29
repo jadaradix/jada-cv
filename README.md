@@ -1,4 +1,4 @@
 jadaSite
 ========
 
-This is my old website, sliced and diced to show just my CV over the past 3 years. The code is terrible, but the CV looks alright.
+My personal website. I wrote this over 4 years ago at university when Pug was called Jade and Angular 1 was hot.
