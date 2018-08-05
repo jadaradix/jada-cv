@@ -15,11 +15,6 @@
     padding: 0;
   }
 
-  .pane {
-    border-radius: 0 !important;
-    box-shadow: none !important;
-  }
-
   * {
     -webkit-print-color-adjust: exact;
   }
@@ -30,6 +25,7 @@
 
   .no-print {
     display: none;
+    visibility: hidden;
   }
 
   .break-before {

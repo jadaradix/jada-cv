@@ -8,15 +8,6 @@ body {
   color: black;
 }
 
-.pane {
-  border-radius: $radius;
-  background-color: white;
-}
-
-.pane ~ .pane {
-  margin-bottom: 0;
-}
-
 .center {
   margin-top: $spacing;
   padding: $spacing;
@@ -128,14 +119,16 @@ section {
             > * {
               @extend .lineHeight;
               display: inline-block;
-              span:last-child {
-                margin-right: $spacing / 1.5;
-              }
             }
-            span.fa {
+            a:not(:last-child) {
               margin-right: $spacing / 4;
+            }
+            a, span span.fa {
               font-size: 130%;
               color: $turquoise;
+            }
+            span span.fa {
+              margin-right: 4px;
             }
             span:not(.fa) {
               vertical-align: 2px;
@@ -150,14 +143,6 @@ section {
   }
   div:after {
     @extend .clear-fix;
-  }
-}
-
-section.unheadered {
-}
-
-section:not(.unheadered) {
-  > div {
   }
 }
 
@@ -226,29 +211,4 @@ hr {
     }
   }
 
-}
-
-@media (min-width: $r-width-2) {
-
-}
-
-.bar {
-  padding: ($spacing / 4) ($spacing / 2) ($spacing / 4) ($spacing / 2);
-  p {
-    color: $fg;
-    text-align: center;
-    letter-spacing: 0.5px;
-    line-height: $spacing * 1.5;
-    > * {
-      display: inline-block;
-      opacity: 0.5;
-      text-transform: uppercase;
-      span.fa {
-        margin-right: $spacing / 3;
-      }
-    }
-    > *:not(:first-child) {
-      margin-left: $spacing * 1.5;
-    }
-  }
 }
