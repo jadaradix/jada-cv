@@ -81,28 +81,6 @@ body {
   @extend .clear-fix;
 }
 
-#Wrapper > aside {
-  border-radius: $radius;
-}
-
-#Wrapper > main {
-  border-radius: $radius;
-}
-
-@media only screen and (min-width: $r-width-1) {
-
-  #Wrapper > aside {
-    position: fixed;
-    float: left;
-    width: $tile-size;
-  }
-
-  #Wrapper > main {
-    margin-left: $tile-size + $spacing;
-  }
-
-}
-
 #Content {
   display: none;
 }
@@ -131,5 +109,36 @@ a {
   @extend .no-split;
 }
 
-@import "_headers.scss";
-@import "_paragraphs.scss";
+h1, h2, h3 {
+  font-family: $font-heading;
+  font-weight: normal;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+h1 {
+  padding-top: $spacing;
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+p {
+  margin: ($spacing / 2) 0 ($spacing / 2) 0;
+  padding: 0;
+  text-align: justify;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+span.phone {
+  letter-spacing: 1px;
+}
