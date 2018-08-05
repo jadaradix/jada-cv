@@ -7,6 +7,7 @@ module.exports = grunt => {
     shell: {
       generic: {
         command: [
+          'rm -rf build',
           'mkdir -p build',
           'cp -r static build/static'
         ].join("&&")
