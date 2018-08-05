@@ -75,6 +75,14 @@ body {
   margin: 0 auto 0 auto;
   max-width: $r-width-2;
   padding: $spacing;
+  > div > h1 {
+    font-size: 44px;
+    color: black;
+    text-align: center;
+    text-transform: none;
+    letter-spacing: -1.5px;
+    padding-top: 0;
+  }
 }
 
 .wrapper:after {

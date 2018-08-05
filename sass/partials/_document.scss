@@ -46,15 +46,6 @@ h2.subtitle {
   display: none;
 }
 
-.pane > div > h1 {
-  font-size: 44px;
-  color: black;
-  text-align: center;
-  text-transform: none;
-  letter-spacing: -1.5px;
-  padding-top: 0;
-}
-
 section {
   margin-bottom: $spacing;
   header {
@@ -90,9 +81,6 @@ section {
           @extend .lineHeight;
           display: block;
         }
-        // span.stars, span.stars span {
-        //   display: inline !important;
-        // }
         span.look-at-me {
           color: black;
         }
@@ -123,7 +111,7 @@ section {
             a:not(:last-child) {
               margin-right: $spacing / 4;
             }
-            a, span span.fa {
+            a:not(.link), span span.fa {
               font-size: 130%;
               color: $turquoise;
             }
