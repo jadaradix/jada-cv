@@ -5,5 +5,10 @@ My personal website. I wrote this over 4 years ago at university when Pug was ca
 
 ## Starting in production
 ```
+forever start node_modules/.bin/http-server -p 1024 build --cors
+```
+
+## Starting in production (legacy)
+```
 forever start ./node_modules/.bin/http-server -p 1024 build --cors
 ```
