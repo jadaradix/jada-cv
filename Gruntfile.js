@@ -23,9 +23,7 @@ module.exports = grunt => {
       sass: {
         command: [
           'mkdir -p build/css',
-          'cd sass',
-          'for i in $(find *.scss -maxdepth 0); do sass $i:../build/css/$i.css --cache-location "cache" --style compressed ; done',
-          'cd ..'
+          'for i in $(find sass/*.scss -maxdepth 0); do ./node_modules/.bin/node-sass $i --output build/css --output-style compressed ; done',
         ].join("&&")
       }
     }

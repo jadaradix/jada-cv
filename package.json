@@ -22,5 +22,8 @@
     "grunt": "^1.0.1",
     "grunt-shell": "^1.3.0",
     "pug-cli": "^1.0.0-alpha6"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.3"
   }
 }
