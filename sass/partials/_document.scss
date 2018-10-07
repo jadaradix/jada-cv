@@ -60,6 +60,10 @@ section {
   > div {
     width: 100%;
     padding-top: ($spacing / 1.5);
+    a:target + div {
+      background-color: rgb(240, 240, 240);
+      border-radius: 4px;
+    }
     h2 {
       margin-bottom: ($spacing / 3);
       margin-left: 20%;
@@ -71,7 +75,8 @@ section {
       margin-top: ($spacing / 4);
     }
     > div {
-      margin-top: $spacing / 4;
+      padding-top: $spacing / 4;
+      padding-bottom: $spacing / 4;
       > aside {
         > span {
           font-family: $font-heading;
@@ -124,9 +129,6 @@ section {
           }
         }
       }
-    }
-    > div:not(.optional):not(:last-child) {
-      margin-bottom: $spacing / 2;
     }
   }
   div:after {
