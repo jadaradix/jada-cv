@@ -24,6 +24,7 @@
     "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
+    "http-server": "^0.11.1",
     "node-sass": "^4.9.3"
   }
 }
