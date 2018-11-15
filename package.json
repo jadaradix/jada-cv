@@ -19,12 +19,12 @@
   },
   "homepage": "https://github.com/jadaradix/jadaSite",
   "dependencies": {
-    "grunt": "^1.0.1",
-    "grunt-shell": "^1.3.0",
+    "grunt": "^1.0.3",
+    "grunt-shell": "^2.1.0",
     "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
-    "node-sass": "^4.9.3"
+    "node-sass": "^4.10.0"
   }
 }
