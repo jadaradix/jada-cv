@@ -1,5 +1,5 @@
 .DS_Store
 Thumbs.db
 node_modules
-sass/cache
-build
+src/sass/cache
+src/build

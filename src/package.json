@@ -20,11 +20,11 @@
   "homepage": "https://github.com/jadaradix/jadaSite",
   "dependencies": {
     "grunt": "^1.0.3",
-    "grunt-shell": "^2.1.0",
+    "grunt-shell": "^3.0.1",
     "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
-    "node-sass": "^4.10.0"
+    "node-sass": "^4.11.0"
   }
 }
