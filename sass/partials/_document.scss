@@ -139,28 +139,10 @@ section:last-child {
   margin-bottom: 0;
 }
 
-p.prose {
-  margin-top: $spacing;
-  margin-bottom: $spacing * 1.75;
-}
-
-hr {
-  border: 0;
-  margin-top: ($spacing / 1.5);
-  margin-bottom: ($spacing / 1.5);
-  border-top: 2px solid $grayer;
-  opacity: 0.5;
-}
-
 @media (min-width: $r-width-1) {
 
   body {
     padding: $spacing;
-  }
-
-  p.prose {
-    margin-left: 9.5%;
-    margin-right: 9.5%;
   }
 
   section {
@@ -173,7 +155,7 @@ hr {
           text-align: right;
         }
         > div {
-          padding-right: 10%;
+          padding-right: 5%;
           float: left;
           width: 80%;
           padding-top: 0;
