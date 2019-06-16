@@ -27,16 +27,4 @@
     letter-spacing: 0.5px;
     font-size: 140%;
   }
-  margin-bottom: $spacing * 2;
-  > div {
-    padding-top: 0;
-  }
-  > div > div > div ul.icons li > span {
-    margin-bottom: $spacing / 4;
-  }
-  > div > div > div {
-    padding-right: 0;
-    width: 100%;
-    text-align: center;
-  }
 }
