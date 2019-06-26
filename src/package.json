@@ -1,7 +1,7 @@
 {
-  "name": "jadaSite",
+  "name": "jada-site",
   "version": "2.0.0",
-  "description": "My personal website.",
+  "description": "My CV",
   "main": "index.js",
   "scripts": {
     "build": "grunt",
@@ -19,12 +19,12 @@
   },
   "homepage": "https://github.com/jadaradix/jadaSite",
   "dependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.0.4",
     "grunt-shell": "^3.0.1",
     "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
-    "node-sass": "^4.11.0"
+    "node-sass": "^4.12.0"
   }
 }
