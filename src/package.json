@@ -1,26 +1,23 @@
 {
   "name": "jada-site",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "My CV",
   "main": "index.js",
   "scripts": {
-    "build": "grunt",
     "start": "cd build; node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jadaradix/jadaSite.git"
+    "url": "https://github.com/jadaradix/jada-site.git"
   },
   "keywords": [],
   "author": "James Garner <j@jada.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jadaradix/jadaSite/issues"
+    "url": "https://github.com/jadaradix/jada-site/issues"
   },
-  "homepage": "https://github.com/jadaradix/jadaSite",
+  "homepage": "https://github.com/jadaradix/jada-site",
   "dependencies": {
-    "grunt": "^1.0.4",
-    "grunt-shell": "^3.0.1",
     "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
