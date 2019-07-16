@@ -10,16 +10,12 @@ npm i
 
 ## Build
 ```
-npm run build;
+. build.sh
 ```
 
 ## Run locally
 ```
-./node_modules/.bin/http-server build -p 8080;
-```
-
-## Starting in production (legacy)
-```
-./node_modules/.bin/http-server build -p 8080;
-npm run build; # etc etc etc
+cd src
+./node_modules/.bin/http-server build -p 7001
+cd ..
 ```
