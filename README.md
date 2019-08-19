@@ -1,4 +1,4 @@
-jadaSite
+jada-cv
 ========
 
 My CV. I wrote this over 5 years ago at university.
