@@ -1,8 +1,5 @@
-# cd src;
-#   npm i;
-# cd ..;
-
 cd src;
+  npm i;
   rm -rf build;
   mkdir -p build;
   mkdir -p build/css;
@@ -13,9 +10,9 @@ cd src;
   cd ..;
 cd ..;
 
-# docker stop jada-io-cv;
-# docker rm jada-io-cv;
-# docker build -t jada-io-cv .;
+docker stop jada-cv;
+docker rm jada-cv;
+docker build -t jada-cv .;
 
-# docker tag jada-io-cv eu.gcr.io/thegmc-219013/jada-io-cv:latest;
-# docker push eu.gcr.io/thegmc-219013/jada-io-cv:latest;
+docker tag jada-cv eu.gcr.io/euphoric-adventures/jada-cv:latest;
+docker push eu.gcr.io/euphoric-adventures/jada-cv:latest;
