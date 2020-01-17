@@ -73,6 +73,9 @@ section {
     h2:not(:first-child) {
       margin-top: ($spacing / 4);
     }
+    > div:not(:first-child) {
+      padding-top: $spacing * 1;
+    }
     > div {
       padding-top: $spacing / 4;
       padding-bottom: $spacing / 4;
@@ -90,7 +93,7 @@ section {
         }
       }
       > div {
-        padding-top: $spacing / 4;
+        padding-top: $spacing / 2;
         ul {
           li {
             text-align: justify;
