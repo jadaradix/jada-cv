@@ -6,7 +6,7 @@ cd src;
   cp -r static build/static;
   for i in $(find sass/*.scss -maxdepth 0); do ./node_modules/.bin/node-sass $i --output build/css --output-style compressed ; done
   cd content;
-    ../node_modules/.bin/pug index.jade && mv index.html ../build/index.html;
+    ../node_modules/.bin/pug index.pug && mv index.html ../build/index.html;
   cd ..;
 cd ..;
 
