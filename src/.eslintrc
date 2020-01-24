@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "strict": [
+      0,
+      "global"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
+    ],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ]
+  }
+}
