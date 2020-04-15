@@ -1,7 +1,6 @@
 //Fonts
-$font-heading: "Montserrat", "Arial", "Helvetica", sans-serif;
-$font-body: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
 $font-body-size: 18px;
+$font-body:  'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
 //Sizes
 $spacing: 16px;
@@ -14,17 +13,13 @@ $r-width-1: ($tile-size * 2) + ($spacing * 3);
 $r-width-2: ($tile-size * 3) + ($spacing * 4);
 
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  src: local('Source Sans Pro'), url('../static/fonts/Source Sans Pro.woff') format('woff');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  src: url('../static/fonts/Inter.var.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Montserrat-Regular'), url('../static/fonts/Montserrat.woff') format('woff');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+strong, strong span {
+  font-weight: 450;
+  font-variation-settings: 'wght' 550, 'slnt' 0;
 }

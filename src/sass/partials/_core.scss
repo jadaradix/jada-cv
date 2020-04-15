@@ -1,8 +1,3 @@
-/* From http://stackoverflow.com/questions/11402698/webkit-opacity-transition-issues-with-text */
-html {
-  -webkit-font-smoothing: antialiased;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -106,7 +101,8 @@ ul:after {
 }
 
 a.link {
-  font-weight: bold;
+  font-weight: 450;
+  font-variation-settings: 'wght' 550, 'slnt' 0;
   color: $turquoise;
   margin-left: 2px;
   margin-right: 2px;
@@ -118,9 +114,7 @@ a {
 }
 
 h1, h2, h3 {
-  font-family: $font-heading;
   font-weight: normal;
-  text-transform: uppercase;
   opacity: 0.75;
 }
 

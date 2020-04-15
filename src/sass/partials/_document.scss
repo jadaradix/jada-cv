@@ -39,7 +39,8 @@ h2.subtitle {
 
 .highlight {
   @extend .fg-turquoise;
-  font-weight: bold;
+  font-weight: 450;
+  font-variation-settings: 'wght' 550, 'slnt' 0;
 }
 
 .optional {
@@ -81,10 +82,8 @@ section {
       padding-bottom: $spacing / 4;
       > aside {
         > span {
-          font-family: $font-heading;
           font-size: 100%;
           color: $grayest;
-          text-transform: uppercase;
           @extend .lineHeight;
           display: block;
         }
@@ -102,8 +101,8 @@ section {
         ul:not(.icons) {
           li {
             margin-left: 3px;
-            margin-bottom: 4px;
-            line-height: 110%;
+            margin-bottom: 6px;
+            line-height: 120%;
           }
         }
         ul.icons {
