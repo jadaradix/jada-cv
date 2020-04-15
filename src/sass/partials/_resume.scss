@@ -13,18 +13,16 @@
 #details {
   li {
     float: left;
+    margin-top: 2px;
+    font-size: 150%;
   }
-  li.go-right {
-    float: right;
+  li + li {
+    margin-left: 1rem;
+  }
+  li:not(:first-child) {
+    opacity: 0.5;
   }
   ul {
     margin-right: 10%;
-  }
-  .name {
-    margin-top: 2px;
-    font-family: $font-heading;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 140%;
   }
 }
