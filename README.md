@@ -23,5 +23,5 @@ cd ..
 
 ## Print margins (CSS T order)
 ```
-6 0 10 2 mm
+12 0 12 0 mm
 ```
