@@ -1,8 +1,4 @@
 cd src;
-  npm i;
-cd ..;
-
-cd src;
   rm -rf build;
   mkdir -p build;
   mkdir -p build/css;
@@ -11,11 +7,6 @@ cd src;
   cd content;
     ../node_modules/.bin/pug index.pug && mv index.html ../build/index.html;
   cd ..;
+
+  ./node_modules/.bin/http-server build -p 7001
 cd ..;
-
-docker stop jada-cv;
-docker rm jada-cv;
-docker build -t jada-cv .;
-
-docker tag jada-cv eu.gcr.io/euphoric-adventures/jada-cv:latest;
-docker push eu.gcr.io/euphoric-adventures/jada-cv:latest;

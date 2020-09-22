@@ -15,10 +15,7 @@ npm i
 
 ## Run locally
 ```
-bash build.sh;
-cd src
-./node_modules/.bin/http-server build -p 7001
-cd ..
+bash test.sh
 ```
 
 ## Print margins (CSS T order)
